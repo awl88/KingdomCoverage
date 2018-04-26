@@ -5,42 +5,51 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Insured {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int age;
 	private char gender;
-	
-	@JoinColumn(name="species_id")
-	private int speciesId;
-	
-	@JoinColumn(name="occupation_id")
-	private int occupationId;
-	
-	@OneToMany(mappedBy="insured")
-	@JoinColumn(name="message_id")
+
+	@ManyToOne
+	@JoinColumn(name = "species_id")
+	private Species species;
+
+	@ManyToOne
+	@JoinColumn(name = "occupation_id")
+	private Occupation occupation;
+
+	@OneToMany(mappedBy = "insured")
+	@JoinColumn(name = "message_id")
 	private Message message;
-	
+
 	@OneToOne
-	@JoinColumn(name="address_id")
+	@JoinColumn(name = "address_id")
 	private Address address;
-	
+
+	@OneToMany(mappedBy = "insured")
+	@JoinColumn(name = "plan_id")
+	private InsurancePlan plan;
+
+	// End of fields
+
 	public Insured() {
 	}
 
-	public Insured(int id, int age, char gender, int speciesId, int occupationId, Message message, Address address) {
+	public Insured(int id, int age, char gender, Species species, Occupation occupation, Message message, Address address) {
 		super();
 		this.id = id;
 		this.age = age;
 		this.gender = gender;
-		this.speciesId = speciesId;
-		this.occupationId = occupationId;
+		this.species = species;
+		this.occupation = occupation;
 		this.message = message;
 		this.address = address;
 	}
@@ -61,20 +70,20 @@ public class Insured {
 		this.gender = gender;
 	}
 
-	public int getSpeciesId() {
-		return speciesId;
+	public Species getSpecies() {
+		return species;
 	}
 
-	public void setSpeciesId(int speciesId) {
-		this.speciesId = speciesId;
+	public void setspecies(Species species) {
+		this.species = species;
 	}
 
-	public int getOccupationId() {
-		return occupationId;
+	public Occupation getOccupation() {
+		return occupation;
 	}
 
-	public void setOccupationId(int occupationId) {
-		this.occupationId = occupationId;
+	public void setoccupation(Occupation occupation) {
+		this.occupation = occupation;
 	}
 
 	public Message getMessage() {
@@ -98,6 +107,27 @@ public class Insured {
 	}
 
 	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Insured [id=");
+		builder.append(id);
+		builder.append(", age=");
+		builder.append(age);
+		builder.append(", gender=");
+		builder.append(gender);
+		builder.append(", species=");
+		builder.append(species);
+		builder.append(", occupation=");
+		builder.append(occupation);
+		builder.append(", message=");
+		builder.append(message);
+		builder.append(", address=");
+		builder.append(address);
+		builder.append("]");
+		return builder.toString();
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -106,8 +136,9 @@ public class Insured {
 		result = prime * result + gender;
 		result = prime * result + id;
 		result = prime * result + ((message == null) ? 0 : message.hashCode());
-		result = prime * result + occupationId;
-		result = prime * result + speciesId;
+		result = prime * result + ((occupation == null) ? 0 : occupation.hashCode());
+		result = prime * result + ((plan == null) ? 0 : plan.hashCode());
+		result = prime * result + ((species == null) ? 0 : species.hashCode());
 		return result;
 	}
 
@@ -136,33 +167,22 @@ public class Insured {
 				return false;
 		} else if (!message.equals(other.message))
 			return false;
-		if (occupationId != other.occupationId)
+		if (occupation == null) {
+			if (other.occupation != null)
+				return false;
+		} else if (!occupation.equals(other.occupation))
 			return false;
-		if (speciesId != other.speciesId)
+		if (plan == null) {
+			if (other.plan != null)
+				return false;
+		} else if (!plan.equals(other.plan))
+			return false;
+		if (species == null) {
+			if (other.species != null)
+				return false;
+		} else if (!species.equals(other.species))
 			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Insured [id=");
-		builder.append(id);
-		builder.append(", age=");
-		builder.append(age);
-		builder.append(", gender=");
-		builder.append(gender);
-		builder.append(", speciesId=");
-		builder.append(speciesId);
-		builder.append(", occupationId=");
-		builder.append(occupationId);
-		builder.append(", message=");
-		builder.append(message);
-		builder.append(", address=");
-		builder.append(address);
-		builder.append("]");
-		return builder.toString();
-	}
-	
-	
 }

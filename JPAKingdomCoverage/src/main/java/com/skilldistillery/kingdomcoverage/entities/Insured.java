@@ -2,6 +2,7 @@ package com.skilldistillery.kingdomcoverage.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,11 +15,16 @@ import javax.persistence.OneToOne;
 @Entity
 public class Insured {
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int age;
 	private char gender;
+	@Column(name="first_name")
+	private String fName;
+	@Column(name="last_name")
+	private String lName;
 
 	@ManyToOne
 	@JoinColumn(name = "species_id")
@@ -45,12 +51,14 @@ public class Insured {
 	public Insured() {
 	}
 
-	public Insured(int id, int age, char gender, Species species, Occupation occupation, List<Message> messages,
-			Address address, List<InsurancePlan> plans) {
+	public Insured(int id, int age, char gender, String fName, String lName, Species species, Occupation occupation,
+			List<Message> messages, Address address, List<InsurancePlan> plans) {
 		super();
 		this.id = id;
 		this.age = age;
 		this.gender = gender;
+		this.fName = fName;
+		this.lName = lName;
 		this.species = species;
 		this.occupation = occupation;
 		this.messages = messages;
@@ -116,6 +124,22 @@ public class Insured {
 
 	public int getId() {
 		return id;
+	}
+
+	public String getfName() {
+		return fName;
+	}
+	
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+	
+	public String getlName() {
+		return lName;
+	}
+	
+	public void setlName(String lName) {
+		this.lName = lName;
 	}
 
 	@Override
@@ -198,6 +222,7 @@ public class Insured {
 			return false;
 		return true;
 	}
+
 
 
 }

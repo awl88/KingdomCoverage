@@ -126,7 +126,8 @@ DROP TABLE IF EXISTS `agent` ;
 
 CREATE TABLE IF NOT EXISTS `agent` (
   `id` INT NOT NULL,
-  `name` VARCHAR(100) NOT NULL,
+  `first_name` VARCHAR(100) NOT NULL,
+  `last_name` VARCHAR(100) NOT NULL,
   `address_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -326,7 +327,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `kingdom_coverage_db`;
-INSERT INTO `agent` (`id`, `name`, `address_id`, `user_id`) VALUES (1, 'Jake', 3, 3);
+INSERT INTO `agent` (`id`, `first_name`, `last_name`, `address_id`, `user_id`) VALUES (1, 'Jake', 'From State Farm', 3, 3);
 
 COMMIT;
 

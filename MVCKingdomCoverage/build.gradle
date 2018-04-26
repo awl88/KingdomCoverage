@@ -1,0 +1,64 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+sourceSets {
+  main {
+    java.srcDirs 'src/main/java'
+  }
+  test {
+    java.srcDirs 'src/test/java'
+  }
+}
+
+war {
+  archiveName = "${baseName}.war"
+  destinationDir = file("./")      // Project root
+}
+
+project.webAppDirName = 'WebContent'
+
+ext {
+  springVersion = "4.3.14.RELEASE"
+}
+
+repositories {
+   mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework', name: 'spring-orm', version:"$springVersion"
+    compile project(':JPAKingdomCoverage')
+    compile group: 'org.springframework', name: 'spring-webmvc', version:"$springVersion"
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version:'3.1.0'
+    compile group: 'javax.servlet', name: 'jstl', version:'1.2'
+    compile group: 'org.springframework', name: 'spring-tx', version: "$springVersion"
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.springframework', name: 'spring-test', version:"$springVersion"
+}
+
+eclipse {
+  classpath {
+    downloadSources = true
+  }
+  project  {
+    natures 'org.springframework.ide.eclipse.core.springnature',
+            'org.eclipse.buildship.core.gradleprojectnature'
+  }
+  wtp {
+    //Update the Project Facet "Dynamic Web Module" to 3.1
+    facet {
+      file {
+        whenMerged {
+          config -> config.facets.each {
+            if (it.type.toString() == 'installed' && it.name == 'jst.web') {
+              it.version = 3.1
+            }
+          }
+          config.facets.unique()
+        }
+      }
+    }
+  }
+}

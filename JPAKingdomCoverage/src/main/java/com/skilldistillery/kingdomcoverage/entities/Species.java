@@ -1,5 +1,7 @@
 package com.skilldistillery.kingdomcoverage.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +15,10 @@ public class Species {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToMany(mappedBy="species")
 	private String name;
+	
+	@OneToMany(mappedBy="species")
+	private List <Insured> clients;
 	
 	@Column(name="cost_multiplier")
 	private double costMultiplier;
@@ -47,6 +51,14 @@ public class Species {
 	}
 	public int getId() {
 		return id;
+	}
+	
+	public List<Insured> getClients() {
+		return clients;
+	}
+	
+	public void setClients(List<Insured> clients) {
+		this.clients = clients;
 	}
 	
 //	End of gets/sets
@@ -94,5 +106,5 @@ public class Species {
 			return false;
 		return true;
 	}
-	
+
 }

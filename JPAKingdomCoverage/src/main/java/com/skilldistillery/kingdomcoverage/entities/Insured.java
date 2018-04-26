@@ -1,5 +1,7 @@
 package com.skilldistillery.kingdomcoverage.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +30,7 @@ public class Insured {
 
 	@OneToMany(mappedBy = "insured")
 	@JoinColumn(name = "message_id")
-	private Message message;
+	private List <Message> messages;
 
 	@OneToOne
 	@JoinColumn(name = "address_id")
@@ -36,22 +38,24 @@ public class Insured {
 
 	@OneToMany(mappedBy = "insured")
 	@JoinColumn(name = "plan_id")
-	private InsurancePlan plan;
+	private List<InsurancePlan> plans;
 
 	// End of fields
 
 	public Insured() {
 	}
 
-	public Insured(int id, int age, char gender, Species species, Occupation occupation, Message message, Address address) {
+	public Insured(int id, int age, char gender, Species species, Occupation occupation, List<Message> messages,
+			Address address, List<InsurancePlan> plans) {
 		super();
 		this.id = id;
 		this.age = age;
 		this.gender = gender;
 		this.species = species;
 		this.occupation = occupation;
-		this.message = message;
+		this.messages = messages;
 		this.address = address;
+		this.plans = plans;
 	}
 
 	public int getAge() {
@@ -74,7 +78,7 @@ public class Insured {
 		return species;
 	}
 
-	public void setspecies(Species species) {
+	public void setSpecies(Species species) {
 		this.species = species;
 	}
 
@@ -82,16 +86,16 @@ public class Insured {
 		return occupation;
 	}
 
-	public void setoccupation(Occupation occupation) {
+	public void setOccupation(Occupation occupation) {
 		this.occupation = occupation;
 	}
 
-	public Message getMessage() {
-		return message;
+	public List<Message> getMessages() {
+		return messages;
 	}
 
-	public void setMessage(Message message) {
-		this.message = message;
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 
 	public Address getAddress() {
@@ -100,6 +104,14 @@ public class Insured {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public List<InsurancePlan> getPlans() {
+		return plans;
+	}
+
+	public void setPlans(List<InsurancePlan> plans) {
+		this.plans = plans;
 	}
 
 	public int getId() {
@@ -119,10 +131,12 @@ public class Insured {
 		builder.append(species);
 		builder.append(", occupation=");
 		builder.append(occupation);
-		builder.append(", message=");
-		builder.append(message);
+		builder.append(", messages=");
+		builder.append(messages);
 		builder.append(", address=");
 		builder.append(address);
+		builder.append(", plans=");
+		builder.append(plans);
 		builder.append("]");
 		return builder.toString();
 	}
@@ -135,9 +149,9 @@ public class Insured {
 		result = prime * result + age;
 		result = prime * result + gender;
 		result = prime * result + id;
-		result = prime * result + ((message == null) ? 0 : message.hashCode());
+		result = prime * result + ((messages == null) ? 0 : messages.hashCode());
 		result = prime * result + ((occupation == null) ? 0 : occupation.hashCode());
-		result = prime * result + ((plan == null) ? 0 : plan.hashCode());
+		result = prime * result + ((plans == null) ? 0 : plans.hashCode());
 		result = prime * result + ((species == null) ? 0 : species.hashCode());
 		return result;
 	}
@@ -162,20 +176,20 @@ public class Insured {
 			return false;
 		if (id != other.id)
 			return false;
-		if (message == null) {
-			if (other.message != null)
+		if (messages == null) {
+			if (other.messages != null)
 				return false;
-		} else if (!message.equals(other.message))
+		} else if (!messages.equals(other.messages))
 			return false;
 		if (occupation == null) {
 			if (other.occupation != null)
 				return false;
 		} else if (!occupation.equals(other.occupation))
 			return false;
-		if (plan == null) {
-			if (other.plan != null)
+		if (plans == null) {
+			if (other.plans != null)
 				return false;
-		} else if (!plan.equals(other.plan))
+		} else if (!plans.equals(other.plans))
 			return false;
 		if (species == null) {
 			if (other.species != null)
@@ -184,5 +198,6 @@ public class Insured {
 			return false;
 		return true;
 	}
+
 
 }

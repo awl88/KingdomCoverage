@@ -57,6 +57,14 @@ public class Occupation {
 	public int getId() {
 		return id;
 	}
+	
+	public List<Insured> getClients() {
+		return clients;
+	}
+	
+	public void setClients(List<Insured> clients) {
+		this.clients = clients;
+	}
 
 	@Override
 	public String toString() {
@@ -103,6 +111,7 @@ public class Occupation {
 			return false;
 		return true;
 	}
+
 	
 	
 }

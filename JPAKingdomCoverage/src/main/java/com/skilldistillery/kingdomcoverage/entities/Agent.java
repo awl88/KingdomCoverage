@@ -25,7 +25,7 @@ public class Agent {
 	private String lName;
 	
 	@OneToMany(mappedBy="agent")
-	@JoinColumn(name="message_id")
+	@Column(name="message_id")
 	private List <Message> messages;
 	@OneToOne
 	@JoinColumn(name="address_id")

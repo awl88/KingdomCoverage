@@ -1,6 +1,6 @@
 package com.skilldistillery.kingdomcoverage.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,20 +10,20 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.kingdomcoverage.entities.Species;
 
-class InsuredTest {
+
+class SpeciesTest {
 
 	private EntityManagerFactory emf;
 	private EntityManager em;
-	private Insured i;
-	
+	private Species s;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		emf = Persistence.createEntityManagerFactory("KingdomCoverage");
 		em = emf.createEntityManager();
-		i = em.find(Insured.class, 1);
+		s = em.find(Species.class, 1);
 	}
 
 	@AfterEach
@@ -33,8 +33,8 @@ class InsuredTest {
 	}
 	
 	@Test
-	void test_agent_associations() {
-		assertEquals("Bilbo", i.getfName()); 
+	void test_country_association() {
+		assertEquals("Hobbit", s.getName());
 	}
 
 }

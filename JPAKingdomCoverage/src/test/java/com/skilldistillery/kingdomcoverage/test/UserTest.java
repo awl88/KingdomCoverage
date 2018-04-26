@@ -10,20 +10,19 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.kingdomcoverage.entities.User;
 
-class InsuredTest {
+class UserTest {
 
 	private EntityManagerFactory emf;
 	private EntityManager em;
-	private Insured i;
-	
+	private User u;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		emf = Persistence.createEntityManagerFactory("KingdomCoverage");
 		em = emf.createEntityManager();
-		i = em.find(Insured.class, 1);
+		u = em.find(User.class, 1);
 	}
 
 	@AfterEach
@@ -33,8 +32,8 @@ class InsuredTest {
 	}
 	
 	@Test
-	void test_agent_associations() {
-		assertEquals("Bilbo", i.getfName()); 
+	void test_country_association() {
+		assertEquals("wombat1", u.getPassword());
 	}
 
 }

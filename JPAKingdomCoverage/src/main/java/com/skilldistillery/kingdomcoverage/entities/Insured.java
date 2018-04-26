@@ -35,7 +35,7 @@ public class Insured {
 	private Occupation occupation;
 
 	@OneToMany(mappedBy = "insured")
-	@JoinColumn(name = "message_id")
+	@Column(name = "message_id")
 	private List <Message> messages;
 
 	@OneToOne
@@ -43,7 +43,7 @@ public class Insured {
 	private Address address;
 
 	@OneToMany(mappedBy = "insured")
-	@JoinColumn(name = "plan_id")
+	@Column(name = "plan_id")
 	private List<InsurancePlan> plans;
 
 	// End of fields

@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Option {
+@Table(name="coverage_type")
+public class CoverageType {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;
@@ -14,7 +16,10 @@ public class Option {
 	private String name;
 	private double cost;
 	
-	public Option(int id, String name, double cost) {
+	public CoverageType() {
+	}
+	
+	public CoverageType(int id, String name, double cost) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -74,7 +79,7 @@ public class Option {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Option other = (Option) obj;
+		CoverageType other = (CoverageType) obj;
 		if (Double.doubleToLongBits(cost) != Double.doubleToLongBits(other.cost))
 			return false;
 		if (id != other.id)

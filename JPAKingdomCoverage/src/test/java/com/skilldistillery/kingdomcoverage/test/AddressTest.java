@@ -33,7 +33,7 @@ class AddressTest {
 	
 	@Test
 	void test_country_association() {
-		assertEquals("", a.getRealm());
+		assertEquals("Middle Earth", a.getRealm());
 	}
 
 }

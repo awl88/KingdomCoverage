@@ -34,7 +34,7 @@ class MessageTest {
 	
 	@Test
 	void test_message_to_agent_mapping() {
-		assertEquals("", m.getAgent().getfName());
+		assertEquals("Jake", m.getAgent().getfName());
 	}
 
 }

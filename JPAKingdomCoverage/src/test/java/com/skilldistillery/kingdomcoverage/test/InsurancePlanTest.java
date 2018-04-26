@@ -33,7 +33,7 @@ class InsurancePlanTest {
 	
 	@Test
 	void test_agent_associations() {
-		assertEquals("", plan.getName());
+		assertEquals("Wizard Plan", plan.getName());
 	}
 
 }

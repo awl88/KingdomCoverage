@@ -181,11 +181,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `option`
+-- Table `coverage_type`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `option` ;
+DROP TABLE IF EXISTS `coverage_type` ;
 
-CREATE TABLE IF NOT EXISTS `option` (
+CREATE TABLE IF NOT EXISTS `coverage_type` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `cost` DECIMAL(50) NOT NULL,
@@ -195,26 +195,26 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plan_option`
+-- Table `plan_coverage`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `plan_option` ;
+DROP TABLE IF EXISTS `plan_coverage` ;
 
-CREATE TABLE IF NOT EXISTS `plan_option` (
+CREATE TABLE IF NOT EXISTS `plan_coverage` (
   `insurance_plan_id` INT NOT NULL,
-  `option_id` INT NOT NULL,
-  INDEX `fk_plan_option_insurance_plan_id_insurance_plan_id_idx` (`insurance_plan_id` ASC),
-  PRIMARY KEY (`insurance_plan_id`, `option_id`),
-  INDEX `fk_plan_option_option_id_to_option_id_idx` (`option_id` ASC),
+  `coverage_id` INT NOT NULL,
+  INDEX `fk_plan_coverage_insurance_plan_id_insurance_plan_id_idx` (`insurance_plan_id` ASC),
+  PRIMARY KEY (`insurance_plan_id`, `coverage_id`),
+  INDEX `fk_plan_coverage_coverage_id_to_coverage_id_idx` (`coverage_id` ASC),
   UNIQUE INDEX `insurance_plan_id_UNIQUE` (`insurance_plan_id` ASC),
-  UNIQUE INDEX `option_id_UNIQUE` (`option_id` ASC),
-  CONSTRAINT `fk_plan_option_insurance_plan_id_to_insurance_plan_id`
+  UNIQUE INDEX `option_id_UNIQUE` (`coverage_id` ASC),
+  CONSTRAINT `fk_plan_coverage_insurance_plan_id_to_insurance_plan_id`
     FOREIGN KEY (`insurance_plan_id`)
     REFERENCES `insurance_plan` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_plan_option_option_id_to_options_id`
-    FOREIGN KEY (`option_id`)
-    REFERENCES `option` (`id`)
+  CONSTRAINT `fk_plan_coverage_coverage_id_to_coverage_type_id`
+    FOREIGN KEY (`coverage_id`)
+    REFERENCES `coverage_type` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -343,21 +343,21 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `option`
+-- Data for table `coverage_type`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `kingdom_coverage_db`;
-INSERT INTO `option` (`id`, `name`, `cost`) VALUES (1, 'Dragon Burns', 50);
+INSERT INTO `coverage_type` (`id`, `name`, `cost`) VALUES (1, 'Dragon Burns', 50.0);
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `plan_option`
+-- Data for table `plan_coverage`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `kingdom_coverage_db`;
-INSERT INTO `plan_option` (`insurance_plan_id`, `option_id`) VALUES (1, 1);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (1, 1);
 
 COMMIT;
 

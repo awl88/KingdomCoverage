@@ -8,14 +8,22 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider
     </provider>
     
-        <class>com.skilldistillery.jpakingdomcoverage.entities.PLACEHOLDER</class>
+        <class>com.skilldistillery.jpakingdomcoverage.entities.Address</class>
+        <class>com.skilldistillery.jpakingdomcoverage.entities.Insured</class>
+        <class>com.skilldistillery.jpakingdomcoverage.entities.Agent</class>
+        <class>com.skilldistillery.jpakingdomcoverage.entities.User</class>
+        <class>com.skilldistillery.jpakingdomcoverage.entities.Message</class>
+        <class>com.skilldistillery.jpakingdomcoverage.entities.InsurancePlan</class>
+        <class>com.skilldistillery.jpakingdomcoverage.entities.CoverageType</class>
+        <class>com.skilldistillery.jpakingdomcoverage.entities.Occupation</class>
+        <class>com.skilldistillery.jpakingdomcoverage.entities.Species</class>
         
         <properties>
             <property name="javax.persistence.jdbc.url"
-                value="jdbc:mysql://localhost:3306/PLACEHOLDER" />
-            <property name="javax.persistence.jdbc.user" value="PLACEHOLDER" />
+                value="jdbc:mysql://localhost:3306/kingdom_coverage_db" />
+            <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password"
-                value="PLACEHOLDER" />
+                value="root" />
             <property name="javax.persistence.jdbc.driver"
                 value="com.mysql.jdbc.Driver" />
 

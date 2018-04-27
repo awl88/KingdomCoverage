@@ -20,7 +20,7 @@ public class AgentDAOImpl implements AgentDAO {
 	
 	@Override
 	public List<Message> inboxShow(int id, Agent agent) {
-		String query = "SELECT a.message_id FROM Agent a WHERE a.id = :id";
+		String query = "SELECT a.messages FROM Agent a WHERE a.id = :id";
 		List<Message> messages = em.createQuery(query, Message.class).setParameter("id", id).getResultList();	
 		return messages;
 	}

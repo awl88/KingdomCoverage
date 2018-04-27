@@ -20,7 +20,7 @@ public class AgentDAOImpl implements AgentDAO {
 	private EntityManager em;
 	
 	@Override
-	public List<Message> inboxShow(int id, Agent agent) {
+	public List<Message> inboxShow(int id) {
 		String query = "SELECT a.messages FROM Agent a WHERE a.id = :id";
 		List<Message> messages = em.createQuery(query, Message.class).setParameter("id", id).getResultList();	
 		return messages;
@@ -32,7 +32,7 @@ public class AgentDAOImpl implements AgentDAO {
 	}
 
 	@Override
-	public List<Insured> getClients(int id, Agent agent) {
+	public List<Insured> getClients(int id) {
 		String query = "SELECT a.clients FROM Agent a WHERE a.id = :id";
 		List<Insured> clientList = em.createQuery(query, Insured.class).setParameter("id", id).getResultList();
 		return clientList;

@@ -11,7 +11,7 @@ import com.skilldistillery.kingdomcoverage.entities.Message;
 public interface AgentDAO {
 
 	public Agent show(int id);
-	public List<Message> inboxShow(int id, Agent agent);
-	List<Insured> getClients(int id, Agent agent);
+	public List<Message> inboxShow(int id);
+	List<Insured> getClients(int id);
 	
 }

@@ -10,4 +10,8 @@ public interface InsurancePlanDAO {
 
 	InsurancePlan update(int id, InsurancePlan coverage);
 
+	InsurancePlan deactivate(int id, InsurancePlan coverage);
+
+	InsurancePlan activate(int id, InsurancePlan coverage);
+
 }

@@ -51,7 +51,7 @@ public class InsuredDAOImpl implements InsuredDAO {
 		em.getTransaction().commit();
 		return managed;
 	}
-
+	
 	@Override
 	public List<Message> inboxShow(int id, Insured insured) {
 		String query = "SELECT in.messages FROM Insured in WHERE in.id = :id";

@@ -18,7 +18,7 @@
 	<!-- opening body container div -->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-4">
 		<form action="login.do" method="GET">
 			Username: <input type="text" name="name">
 			<br>
@@ -33,7 +33,9 @@
 		</form>
 		<!--forEach list of types of insurance for sale will go here, maybe a blurb about the company -->
 			</div>
-		<div class="col-md-9">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
 		<form action="login.do" method="GET">
 			Username: <input type="text" name="name">
 			<br>

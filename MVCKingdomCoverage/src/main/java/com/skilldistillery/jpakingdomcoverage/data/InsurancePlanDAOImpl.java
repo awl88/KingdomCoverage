@@ -45,10 +45,10 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	}
 	
 	@Override
-	public InsurancePlan deactivate(int id, InsurancePlan coverage) {
+	public InsurancePlan deactivate(int id) {
 		em.getTransaction().begin();
 		InsurancePlan managed = em.find(InsurancePlan.class, id);
-		if(coverage.isActive() == true) {
+		if(managed.isActive() == true) {
 			managed.setActive(false);	
 		} else {
 			managed.setActive(false);
@@ -60,10 +60,10 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	}
 	
 	@Override
-	public InsurancePlan activate(int id, InsurancePlan coverage) {
+	public InsurancePlan activate(int id) {
 		em.getTransaction().begin();
 		InsurancePlan managed = em.find(InsurancePlan.class, id);
-		if(coverage.isActive() == false) {
+		if(managed.isActive() == false) {
 			managed.setActive(true);	
 		} else {
 			managed.setActive(true);

@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.jpakingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.jpakingdomcoverage.data.InsuredDAO;
+import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 
 @Transactional
@@ -17,6 +19,8 @@ import com.skilldistillery.kingdomcoverage.entities.Insured;
 public class UserController {
 	@Autowired
 	InsuredDAO idao;
+	@Autowired
+	InsurancePlanDAO ipdao;
 
 	@RequestMapping(path = "index.do", method = RequestMethod.GET)
 	public ModelAndView index() {
@@ -45,8 +49,11 @@ public class UserController {
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public ModelAndView login(HttpSession session, int id) {
 		ModelAndView mv = new ModelAndView();
+		
 		Insured insured = idao.show(id);
+		
 		mv.addObject("insured", insured);
+		
 		session.setAttribute("insuredSession", insured);
 		mv.setViewName("insured.jsp");
 		
@@ -56,6 +63,7 @@ public class UserController {
 	@RequestMapping(path = "update.do", method = RequestMethod.GET)
 	public ModelAndView update(HttpSession session) {
 		session.getAttribute("insuredSession");
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("updateInsured.jsp");
 		
@@ -79,7 +87,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "deactivate.do", method = RequestMethod.POST)
-	public ModelAndView deactivate() {
+	public ModelAndView deactivate(HttpSession session, Insured insured, int id) {
+		session.getAttribute("insuredSession");
+		InsurancePlan plan = insured.getPlans().get(id);
+		plan = ipdao.deactivate(id);
+		
+		insured = idao.update(insured.getId(), insured);
+		
+		session.setAttribute("insuredSession", insured);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index.jsp");
 		

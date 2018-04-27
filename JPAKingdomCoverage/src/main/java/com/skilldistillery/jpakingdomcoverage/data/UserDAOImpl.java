@@ -6,6 +6,8 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.skilldistillery.kingdomcoverage.entities.User;
+
 @Transactional
 @Component
 public class UserDAOImpl implements UserDAO {

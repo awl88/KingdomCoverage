@@ -16,6 +16,8 @@
 
 	<!-- opening body container div -->
 	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
 		<form action="login.do" method="GET">
 			Username: <input type="text" name="name">
 			<br>
@@ -24,13 +26,13 @@
 			<input type="hidden" value="${insured}">
 			<input type="submit" class="btn btn-primary" value="Login As User">
 		</form>
-	</div>
 		<br>
 		<form action="create.do" method="GET">
 			<input type="submit" class="btn btn-info" value="Create Account">
 		</form>
 		<!--forEach list of types of insurance for sale will go here, maybe a blurb about the company -->
-		<br>
+			</div>
+		<div class="col-md-9">
 		<form action="login.do" method="GET">
 			Username: <input type="text" name="name">
 			<br>
@@ -40,6 +42,9 @@
 			<input type="submit" class="btn btn-primary" value="Login As Agent">
 		</form>
 	
+		</div>
+		</div>
+	</div>
 	<!-- closing body container div -->
 	
 <jsp:include page="partials/foot.jsp"></jsp:include>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skilldistillery.kingdomcoverage.entities.Agent;
+import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
 
 @Transactional
@@ -30,5 +31,11 @@ public class AgentDAOImpl implements AgentDAO {
 		return em.find(Agent.class, id);
 	}
 
+	@Override
+	public List<Insured> getClients(int id, Agent agent) {
+		String query = "SELECT a.clients FROM Agent a WHERE a.id = :id";
+		List<Insured> clientList = em.createQuery(query, Insured.class).setParameter("id", id).getResultList();
+		return clientList;
+	}
 		
 }

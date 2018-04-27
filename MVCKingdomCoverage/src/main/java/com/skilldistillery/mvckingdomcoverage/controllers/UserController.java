@@ -1,4 +1,4 @@
-package com.skilldistillery.mvckingdomdcoverage.controllers;
+package com.skilldistillery.mvckingdomcoverage.controllers;
 
 import javax.servlet.http.HttpSession;
 
@@ -48,7 +48,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
-	public ModelAndView login(HttpSession session, int id) {
+	public ModelAndView login(HttpSession session, Integer id) {
 		ModelAndView mv = new ModelAndView();
 		Insured insured = idao.show(id);
 		mv.addObject("insured", insured);

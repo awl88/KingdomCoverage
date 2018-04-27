@@ -1,4 +1,4 @@
-package com.skilldistillery.mvckingdomdcoverage.controllers;
+package com.skilldistillery.mvckingdomcoverage.controllers;
 
 import java.util.List;
 

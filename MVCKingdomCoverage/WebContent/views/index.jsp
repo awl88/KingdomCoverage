@@ -7,9 +7,9 @@
 	<!-- opening header div -->
 	<div>
 	
-		<h1>Kingdom has coverage if you have coin..</h1>
 		<!-- navbar, page headers will go here -->
 <jsp:include page="partials/navbar.jsp"></jsp:include>
+		<h1>Kingdom has coverage if you have coin..</h1>
 		<!-- option to login or create a user will go here as well --> 
 		
 	<!-- closing header div -->
@@ -41,7 +41,7 @@
 			<br>
 			Password: <input type="text" name="password">
 			<br>
-			<input type="hidden" value="${insured}">
+			<input type="hidden" value="${Insured.id}">
 			<input type="submit" class="btn btn-primary" value="Login As Agent">
 		</form>
 	

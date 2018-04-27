@@ -1,4 +1,4 @@
-package com.skilldistillery.mvckingdomdcoverage.controllers;
+package com.skilldistillery.mvckingdomcoverage.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,12 +9,5 @@ import org.springframework.web.servlet.ModelAndView;
 @Transactional
 @Controller
 public class TestController {
-     @RequestMapping(path = "index.do", method = RequestMethod.GET)
-     public ModelAndView index() {
-       ModelAndView mv = new ModelAndView();
-       mv.setViewName("index.jsp");
-
-       return mv;
-     }
 
 }

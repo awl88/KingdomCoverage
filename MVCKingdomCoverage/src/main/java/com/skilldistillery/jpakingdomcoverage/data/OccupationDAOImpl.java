@@ -46,7 +46,7 @@ public class OccupationDAOImpl implements OccupationDAO {
 	}
 	
 	@Override
-	public List<Insured> clientsShow(int id, Occupation occupation) {
+	public List<Insured> clientsShow(int id) {
 		String query = "SELECT o.clients FROM Occupation o WHERE o.id = :id";
 		List<Insured> messages = em.createQuery(query, Insured.class).setParameter("id", id).getResultList();	
 		return messages;

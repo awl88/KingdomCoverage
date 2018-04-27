@@ -13,6 +13,6 @@ public interface SpeciesDAO {
 
 	Species update(int id, Species species);
 
-	List<Insured> showClients(int id, Species species);
+	List<Insured> showClients(int id);
 
 }

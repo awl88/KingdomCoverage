@@ -46,7 +46,7 @@ public class SpeciesDAOImpl implements SpeciesDAO {
 	}
 	
 	@Override 
-	public List<Insured> showClients(int id, Species species) {
+	public List<Insured> showClients(int id) {
 		String query = "SELECT s.clients FROM Species s WHERE s.id = :id";
 		List<Insured> resultList = em.createQuery(query, Insured.class).setParameter("id", id).getResultList();
 		return resultList;

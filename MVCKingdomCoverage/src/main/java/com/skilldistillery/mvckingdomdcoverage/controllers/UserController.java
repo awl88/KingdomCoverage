@@ -16,8 +16,10 @@ import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
 @Transactional
 @Controller
 public class UserController {
+	
 	@Autowired
 	InsuredDAO idao;
+	
 	@Autowired
 	InsurancePlanDAO ipdao;
 

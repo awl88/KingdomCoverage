@@ -8,4 +8,6 @@ public interface InsurancePlanDAO {
 
 	InsurancePlan create(InsurancePlan plan);
 
+	InsurancePlan update(int id, InsurancePlan coverage);
+
 }

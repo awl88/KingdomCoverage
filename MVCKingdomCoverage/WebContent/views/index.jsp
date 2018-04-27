@@ -9,6 +9,7 @@
 	
 		<h1>Kingdom has coverage if you have coin..</h1>
 		<!-- navbar, page headers will go here -->
+<jsp:include page="partials/navbar.jsp"></jsp:include>
 		<!-- option to login or create a user will go here as well --> 
 		
 	<!-- closing header div -->

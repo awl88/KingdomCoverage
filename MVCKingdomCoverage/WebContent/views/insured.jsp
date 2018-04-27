@@ -12,6 +12,7 @@
 	
 		<h1>Your Profile</h1>
 		<!-- navbar, page headers will go here -->
+		<jsp:include page="partials/navbar.jsp"></jsp:include>
 		
 	<!-- closing header div -->
 	</div>

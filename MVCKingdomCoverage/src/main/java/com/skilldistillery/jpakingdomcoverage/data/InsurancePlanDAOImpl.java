@@ -21,6 +21,7 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	
 	@Override
 	public InsurancePlan create(InsurancePlan plan) {
+		activate(plan.getId());
 		em.getTransaction().begin();
 		em.persist(plan);
 		em.flush();

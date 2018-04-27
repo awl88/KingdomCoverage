@@ -7,7 +7,7 @@
 	<!-- opening header div -->
 	<div>
 	
-		<h1>create plan route test</h1>
+		<h1>Choose A Plan!</h1>
 		<!-- navbar, page headers will go here -->
 		
 	<!-- closing header div -->
@@ -15,6 +15,17 @@
 
 	<!-- opening body container div -->
 	<div class="container">
+		<form action="insured.do">
+			Get your Plan
+			<br>
+			<select name="coverages">
+				<c:forEach var = "c" items="${InsurancePlan.coverages}">
+					<${c.name}>
+					<br>
+				</c:forEach>			
+			</select> 
+			
+		</form>
 	
 		<!-- a form to create a new plan will go here -->
 		

@@ -8,4 +8,6 @@ public interface AddressDAO {
 
 	Address update(int id, Address addr);
 
+	Address show(int id);
+
 }

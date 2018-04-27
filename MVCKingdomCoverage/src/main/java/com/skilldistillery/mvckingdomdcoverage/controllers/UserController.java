@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpakingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.jpakingdomcoverage.data.InsuredDAO;
-import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 
 @Transactional
@@ -89,9 +88,8 @@ public class UserController {
 	@RequestMapping(path = "deactivate.do", method = RequestMethod.POST)
 	public ModelAndView deactivate(HttpSession session, Insured insured, int id) {
 		session.getAttribute("insuredSession");
-		InsurancePlan plan = insured.getPlans().get(id);
-		plan = ipdao.deactivate(id);
-		
+		ipdao.deactivate(id);
+
 		insured = idao.update(insured.getId(), insured);
 		
 		session.setAttribute("insuredSession", insured);

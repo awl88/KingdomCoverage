@@ -11,9 +11,9 @@ public interface InsuredDAO {
 
 	public Insured update(int id, Insured insured);
 
-	public List<Message> inboxShow(int id, Insured insured);
+	public List<Message> inboxShow(int id);
 
-	public List<InsurancePlan> listPlans(int id, Insured insured);
+	public List<InsurancePlan> listPlans(int id);
 
 	public Insured show(int id);
 	

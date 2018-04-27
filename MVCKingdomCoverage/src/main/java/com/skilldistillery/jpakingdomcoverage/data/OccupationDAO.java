@@ -13,6 +13,6 @@ public interface OccupationDAO {
 
 	Occupation update(int id, Occupation occupation);
 
-	List<Insured> clientsShow(int id, Occupation occupation);
+	List<Insured> clientsShow(int id);
 
 }

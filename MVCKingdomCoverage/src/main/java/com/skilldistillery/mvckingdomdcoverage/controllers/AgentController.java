@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.skilldistillery.jpakingdomcoverage.data.AgentDAO;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
 
 public class AgentController {
 	@Autowired

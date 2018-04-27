@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.skilldistillery.jpakingdomcoverage.data.InsurancePlanDAO;
-import com.skilldistillery.jpakingdomcoverage.data.InsuredDAO;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
+import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
 
 @Transactional
 @Controller
@@ -57,7 +57,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "update.do", method = RequestMethod.GET)
+	@RequestMapping(path = "updateInsured.do", method = RequestMethod.GET)
 	public ModelAndView update(HttpSession session) {
 		session.getAttribute("insuredSession");
 		ModelAndView mv = new ModelAndView();

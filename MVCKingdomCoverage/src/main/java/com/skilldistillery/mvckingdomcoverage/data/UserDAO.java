@@ -1,4 +1,4 @@
-package com.skilldistillery.jpakingdomcoverage.data;
+package com.skilldistillery.mvckingdomcoverage.data;
 
 import com.skilldistillery.kingdomcoverage.entities.User;
 

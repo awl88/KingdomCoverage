@@ -1,4 +1,4 @@
-package com.skilldistillery.jpakingdomcoverage.data;
+package com.skilldistillery.mvckingdomcoverage.data;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

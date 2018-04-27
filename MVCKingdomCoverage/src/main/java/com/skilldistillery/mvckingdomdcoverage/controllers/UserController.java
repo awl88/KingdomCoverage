@@ -32,7 +32,7 @@ public class UserController {
 	@RequestMapping(path = "create.do", method = RequestMethod.GET)
 	public ModelAndView createUser() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("createUser.jsp");
+		mv.setViewName("views/createUser.jsp");
 
 		return mv;
 	}
@@ -41,7 +41,7 @@ public class UserController {
 	public ModelAndView createdUser(Insured insured) {
 		ModelAndView mv = new ModelAndView();
 		idao.create(insured);
-		mv.setViewName("index.jsp");
+		mv.setViewName("views/index.jsp");
 		return mv;
 	}
 	
@@ -52,7 +52,7 @@ public class UserController {
 		mv.addObject("insured", insured);
 		
 		session.setAttribute("insuredSession", insured);
-		mv.setViewName("insured.jsp");
+		mv.setViewName("views/insured.jsp");
 		
 		return mv;
 	}
@@ -61,7 +61,7 @@ public class UserController {
 	public ModelAndView update(HttpSession session) {
 		session.getAttribute("insuredSession");
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("updateInsured.jsp");
+		mv.setViewName("views/updateInsured.jsp");
 		
 		return mv;
 	}
@@ -76,7 +76,7 @@ public class UserController {
 		
 		String updateMessage = "Request successfully submitted";
 		mv.addObject("updateMessage", updateMessage);
-		mv.setViewName("insured.jsp");
+		mv.setViewName("views/insured.jsp");
 		
 		return mv;
 	}
@@ -90,7 +90,7 @@ public class UserController {
 		
 		session.setAttribute("insuredSession", insured);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.jsp");
+		mv.setViewName("views/index.jsp");
 		
 		return mv;
 	}

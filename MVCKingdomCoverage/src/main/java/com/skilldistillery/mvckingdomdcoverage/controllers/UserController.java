@@ -48,9 +48,7 @@ public class UserController {
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public ModelAndView login(HttpSession session, int id) {
 		ModelAndView mv = new ModelAndView();
-		
 		Insured insured = idao.show(id);
-		
 		mv.addObject("insured", insured);
 		
 		session.setAttribute("insuredSession", insured);
@@ -62,7 +60,6 @@ public class UserController {
 	@RequestMapping(path = "update.do", method = RequestMethod.GET)
 	public ModelAndView update(HttpSession session) {
 		session.getAttribute("insuredSession");
-		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("updateInsured.jsp");
 		
@@ -76,7 +73,6 @@ public class UserController {
 		Insured updated = idao.update(id, insured);
 		
 		session.setAttribute("insuredSession", updated);
-		
 		
 		String updateMessage = "Request successfully submitted";
 		mv.addObject("updateMessage", updateMessage);

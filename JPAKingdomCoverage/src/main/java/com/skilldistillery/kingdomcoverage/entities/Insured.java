@@ -45,6 +45,9 @@ public class Insured {
 	@OneToMany(mappedBy = "insured")
 	@Column(name = "plan_id")
 	private List<InsurancePlan> plans;
+	
+	@ManyToOne
+	private Agent agent;
 
 	// End of fields
 

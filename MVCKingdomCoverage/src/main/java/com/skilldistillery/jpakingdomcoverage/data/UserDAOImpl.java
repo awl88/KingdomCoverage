@@ -17,17 +17,11 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public User create(User user) {
-		// start the transaction
-				em.getTransaction().begin();
-				// write the actor to the database
-				em.persist(user);
-				// update the "local" Actor object
-				em.flush();
-				// commit the changes (actually perform the operation)
-				em.getTransaction().commit();
-
-				// return the Customer object
-				return user;
+		em.getTransaction().begin();
+		em.persist(user);
+		em.flush();
+		em.getTransaction().commit();
+		return user;
 	}
 
 	@Override

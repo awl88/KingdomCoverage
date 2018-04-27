@@ -22,12 +22,21 @@
 			Password: <input type="text" name="password">
 			<br>
 			<input type="hidden" value="${insured}">
-			<input type="submit" class="btn btn-primary" value="Login">
+			<input type="submit" class="btn btn-primary" value="Login As User">
 		</form>
-		<!--forEach list of types of insurance for sale will go here, maybe a blurb about the company -->
-	
+		<br>
 		<form action="create.do" method="GET">
 			<input type="submit" class="btn btn-info" value="Create Account">
+		</form>
+		<!--forEach list of types of insurance for sale will go here, maybe a blurb about the company -->
+		<br>
+		<form action="login.do" method="GET">
+			Username: <input type="text" name="name">
+			<br>
+			Password: <input type="text" name="password">
+			<br>
+			<input type="hidden" value="${insured}">
+			<input type="submit" class="btn btn-primary" value="Login As Agent">
 		</form>
 	
 	<!-- closing body container div -->

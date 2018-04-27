@@ -55,7 +55,7 @@
 			<input type="text" name="street"/>
 			
 			<label for="city">Please enter your city:</label>
-			<input type="text" name="street"/>
+			<input type="text" name="city"/>
 			
 			<label for="realm">Please enter your realm:</label>
 			<input type="text" name="realm"/>

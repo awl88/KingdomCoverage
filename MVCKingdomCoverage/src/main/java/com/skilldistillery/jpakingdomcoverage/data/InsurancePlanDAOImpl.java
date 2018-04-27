@@ -43,4 +43,34 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 		em.getTransaction().commit();
 		return managed;
 	}
+	
+	@Override
+	public InsurancePlan deactivate(int id, InsurancePlan coverage) {
+		em.getTransaction().begin();
+		InsurancePlan managed = em.find(InsurancePlan.class, id);
+		if(coverage.isActive() == true) {
+			managed.setActive(false);	
+		} else {
+			managed.setActive(false);
+		}
+		em.persist(managed);
+		em.flush();
+		em.getTransaction().commit();
+		return managed;
+	}
+	
+	@Override
+	public InsurancePlan activate(int id, InsurancePlan coverage) {
+		em.getTransaction().begin();
+		InsurancePlan managed = em.find(InsurancePlan.class, id);
+		if(coverage.isActive() == false) {
+			managed.setActive(true);	
+		} else {
+			managed.setActive(true);
+		}
+		em.persist(managed);
+		em.flush();
+		em.getTransaction().commit();
+		return managed;
+	}
 }

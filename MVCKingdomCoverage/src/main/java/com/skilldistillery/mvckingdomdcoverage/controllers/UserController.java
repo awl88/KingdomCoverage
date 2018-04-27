@@ -24,7 +24,7 @@ public class UserController {
 	@RequestMapping(path = "index.do", method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("index.jsp");
+		mv.setViewName("views/index.jsp");
 
 		return mv;
 	}

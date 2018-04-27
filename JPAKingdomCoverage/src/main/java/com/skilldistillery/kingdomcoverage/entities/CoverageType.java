@@ -1,9 +1,12 @@
 package com.skilldistillery.kingdomcoverage.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,11 @@ public class CoverageType {
 	
 	private String name;
 	private double cost;
+	
+	@ManyToMany(mappedBy="coverages")
+	private List<InsurancePlan> plans;
+
+//	End of fields
 	
 	public CoverageType() {
 	}
@@ -45,6 +53,7 @@ public class CoverageType {
 	public int getId() {
 		return id;
 	}
+	
 
 	@Override
 	public String toString() {

@@ -1,6 +1,7 @@
 package com.skilldistillery.kingdomcoverage.entities;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -35,6 +38,12 @@ public class InsurancePlan {
 	
 	@Column(name="end_date")
 	private Date endDate;
+	
+	@ManyToMany
+	@JoinTable(name="plan_coverage", 
+	joinColumns = @JoinColumn(name="insurance_plan_id"), 
+	inverseJoinColumns= @JoinColumn(name="coverage_id"))
+	private List<CoverageType> coverages;
 	
 //	End of fields
 

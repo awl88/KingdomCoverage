@@ -47,6 +47,11 @@
 			<input type="submit" class="btn btn-primary" value="Edit Plans">
 		</form>
 		
+		<br>
+		
+		<form action="createPlan.do" method="get">
+			<input type="submit" class="btn btn-default" value = "Add a Plan">
+		</form>
 	
 		<!--a list of all the insured's plans will be here, as well as information about their agent, maybe an 
 		option to view or edit their insured field values(age, gender, etc.), plans they have been approved for 

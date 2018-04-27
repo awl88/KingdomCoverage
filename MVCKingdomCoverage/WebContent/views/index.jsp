@@ -25,6 +25,7 @@
 			<input type="hidden" value="${insured}">
 			<input type="submit" class="btn btn-primary" value="Login As User">
 		</form>
+	</div>
 		<br>
 		<form action="create.do" method="GET">
 			<input type="submit" class="btn btn-info" value="Create Account">
@@ -41,7 +42,6 @@
 		</form>
 	
 	<!-- closing body container div -->
-	</div>
 	
 <jsp:include page="partials/foot.jsp"></jsp:include>
 </body>

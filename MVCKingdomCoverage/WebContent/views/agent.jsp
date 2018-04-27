@@ -18,7 +18,7 @@
 	<div class="container">
 	Clients:
 		<c:forEach var="c" items="${Agent.clients}">
-			<a href="insured.jsp">${c.fName} ${c.lName}</a>
+			<a href="insuredInfo.jsp">${c.fName} ${c.lName}</a>
 			<br>
 		</c:forEach>
 		<br>

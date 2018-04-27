@@ -8,4 +8,6 @@ public interface CoverageTypeDAO {
 
 	CoverageType update(int id, CoverageType coverage);
 
+	CoverageType show(int id);
+
 }

@@ -6,40 +6,40 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.skilldistillery.kingdomcoverage.entities.CoverageType;
-
+import com.skilldistillery.kingdomcoverage.entities.Agent;
+import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 
 @Transactional
 @Component
-public class CoverageTypeDAOImpl implements CoverageTypeDAO {
-
+public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Override
-	public CoverageType create(CoverageType coverage) {
-
-		// start the transaction
-		em.getTransaction().begin();
-		// write the actor to the database
-		em.persist(coverage);
-		// update the "local" Actor object
-		em.flush();
-		// commit the changes (actually perform the operation)
-		em.getTransaction().commit();
-		// return the Customer object
-		return coverage;
+	public InsurancePlan show(int id) {
+		return em.find(InsurancePlan.class, id);
 	}
 	
 	@Override
-	public CoverageType update(int id, CoverageType coverage) {
+	public InsurancePlan create(InsurancePlan plan) {
+
+		em.getTransaction().begin();
+		em.persist(plan);
+		em.flush();
+		em.getTransaction().commit();
+		return plan;
+	}
+	
+	@Override
+	public InsurancePlan update(int id, InsurancePlan coverage) {
 		// start the transaction
 		em.getTransaction().begin();
 		// retrieve actor to update using id passed in
-		CoverageType managed = em.find(CoverageType.class, id);
+		InsurancePlan managed = em.find(InsurancePlan.class, id);
 		// update using the actor passed in
 		managed.setName(coverage.getName());
-		managed.setCost(coverage.getCost());
+		managed.setActive(coverage.isActive());
+		managed.setActive(coverage.getActive());
 		// write the actor to the database
 		em.persist(managed);
 		// update the "local" Actor object

@@ -27,9 +27,13 @@ public class Agent {
 	@OneToMany(mappedBy="agent")
 	@Column(name="message_id")
 	private List <Message> messages;
+	
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
+	
+	@OneToMany(mappedBy="agent")
+	private List<Insured> clients;
 	
 //	End of fields
 	
@@ -75,6 +79,14 @@ public class Agent {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public List<Insured> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Insured> clients) {
+		this.clients = clients;
 	}
 
 	public int getId() {

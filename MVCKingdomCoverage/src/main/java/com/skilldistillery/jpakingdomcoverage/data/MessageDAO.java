@@ -8,4 +8,6 @@ public interface MessageDAO {
 
 	boolean destroy(int id);
 
+	Message show(int id);
+
 }

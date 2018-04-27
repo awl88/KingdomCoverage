@@ -41,4 +41,9 @@ public class MessageDAOImpl implements MessageDAO {
 			return true;
 		}
 	}
+	
+	@Override
+	public Message show(int id) {
+		return em.find(Message.class, id);
+	}
 }

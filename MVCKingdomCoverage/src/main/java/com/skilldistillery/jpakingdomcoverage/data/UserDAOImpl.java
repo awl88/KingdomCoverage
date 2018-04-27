@@ -30,6 +30,9 @@ public class UserDAOImpl implements UserDAO {
 				return user;
 	}
 
-	
+	@Override
+	public User show (int id) {
+		return em.find(User.class, id);
+	}
 	
 }

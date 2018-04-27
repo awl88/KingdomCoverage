@@ -6,7 +6,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 
 @Transactional
@@ -39,7 +38,10 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 		// update using the actor passed in
 		managed.setName(coverage.getName());
 		managed.setActive(coverage.isActive());
-		managed.setActive(coverage.getActive());
+		managed.setInsured(coverage.getInsured());
+		managed.setAgent(coverage.getAgent());
+		managed.setCreateDate(coverage.getCreateDate());
+		managed.setEndDate(coverage.getEndDate());
 		// write the actor to the database
 		em.persist(managed);
 		// update the "local" Actor object

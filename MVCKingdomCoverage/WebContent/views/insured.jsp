@@ -18,6 +18,33 @@
 
 	<!-- opening body container div -->
 	<div class="container">
+		Name: ${Insured.fName} ${Insured.lName}
+		<br>
+		Age: ${Insured.age}
+		<br>
+		Gender: ${Insured.gender}
+		<br>
+		Address: ${Insured.address}
+		<br>
+		Agent: ${Insured.agent}
+		<br>
+		Messages:
+		<c:forEach var="m" items="${Insured.messages}">
+			Message Id: ${m.id}
+		<!-- May change to an if conditional so that FROM displays the insured if the user is an agent -->
+			From: ${m.agent}
+			To: ${m.insured}
+			Message: ${m.messageBody}
+		</c:forEach>
+		Plans:
+			<ul>
+		<c:forEach var="p" items="${Insured.plans}">
+				<li>${p.name}</li>
+		</c:forEach>
+			</ul>
+		<form action="update.do" method="get">
+			<input type="submit" class="btn btn-primary" value="Edit Plans">
+		</form>
 		
 	
 		<!--a list of all the insured's plans will be here, as well as information about their agent, maybe an 

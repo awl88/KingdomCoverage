@@ -18,7 +18,6 @@ public class CoverageTypeDAOImpl implements CoverageTypeDAO {
 	
 	@Override
 	public CoverageType create(CoverageType coverage) {
-
 		em.getTransaction().begin();
 		em.persist(coverage);
 		em.flush();

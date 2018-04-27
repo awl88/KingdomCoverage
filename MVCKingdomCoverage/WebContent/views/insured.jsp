@@ -6,6 +6,9 @@
 
 	<!-- opening header div -->
 	<div>
+	<c:if test="${updateMessage not empty}">
+		<h3>${updateMessage}</h3>
+	</c:if>
 	
 		<h1>insured route test</h1>
 		<!-- navbar, page headers will go here -->

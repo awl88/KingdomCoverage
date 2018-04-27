@@ -21,7 +21,6 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	
 	@Override
 	public InsurancePlan create(InsurancePlan plan) {
-
 		em.getTransaction().begin();
 		em.persist(plan);
 		em.flush();
@@ -31,22 +30,16 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	
 	@Override
 	public InsurancePlan update(int id, InsurancePlan coverage) {
-		// start the transaction
 		em.getTransaction().begin();
-		// retrieve actor to update using id passed in
 		InsurancePlan managed = em.find(InsurancePlan.class, id);
-		// update using the actor passed in
 		managed.setName(coverage.getName());
 		managed.setActive(coverage.isActive());
 		managed.setInsured(coverage.getInsured());
 		managed.setAgent(coverage.getAgent());
 		managed.setCreateDate(coverage.getCreateDate());
 		managed.setEndDate(coverage.getEndDate());
-		// write the actor to the database
 		em.persist(managed);
-		// update the "local" Actor object
 		em.flush();
-		// commit changes
 		em.getTransaction().commit();
 		return managed;
 	}

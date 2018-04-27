@@ -17,15 +17,10 @@ public class MessageDAOImpl implements MessageDAO {
 	
 	@Override
 	public Message create(Message message) {
-		// start the transaction
 		em.getTransaction().begin();
-		// write the insured to the database
 		em.persist(message);
-		// update the "local" Insured object
 		em.flush();
-		// commit the changes (actually perform the operation)
 		em.getTransaction().commit();
-		// return the Insured object
 		return message;
 	}
 	

@@ -3,11 +3,11 @@
 ## A program to provide affordable and full coverage to all species, and all occupants within the Realm.
 
 ## Collaborators
-#### Andrew Lyon(awl88), Eli Harper(EliHarper), Andrew Dufresne(addufresne), Rebecca Allen(RAAllen)
+#### Andrew Lyon([awl88](https://github.com/awl88)), Eli Harper([EliHarper](https://github.com/EliHarper)), Andrew Dufresne([addufres](https://github.com/addufres)), Rebecca Allen([RAAllen](https://github.com/RAAllen))
 
 ## Setup/Installation requirements
 
-* If you want to interact with the finished program, please visit: INSERT_URL_HERE_WHEN_UPLOADED.
+* If you want to interact with the finished program, please visit: [Kingdom Coverage](INSERT_URL_HERE_WHEN_UPLOADED).
 * In order to edit this project and work with it on your own machine you will need a terminal application such as Terminal or Bash. Since this project has a Gradle and Spring nature, you will need to have the Spring Tool Suite installed. You will also need a database server program such as MAMP or LAMP.
 * Start by opening the terminal application and typing the command
 ```
@@ -32,6 +32,7 @@ You will then be prompted to enter a password in the terminal, type `admin`. You
 
 ## Program Behavior/Specifications
 
+### Insurance Client
 * The user will be able to log in as a client if they are a client.
 * The client will be directed to a page showing their insurance policies and messages.
 * The client will be able to submit new messages to their agent.
@@ -39,6 +40,7 @@ You will then be prompted to enter a password in the terminal, type `admin`. You
 * The client will be able to create a new policy for themselves.
 * The client will be able to delete a message.
 
+### Insurance Agent
 * The user will be able to log in as an agent if they are an agent.
 * The agent will be directed to a page showing their clients and messages.
 * The agent will be able to click on their clients and see more details about that client.

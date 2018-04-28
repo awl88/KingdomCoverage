@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-// test comment
+
 @Entity
 public class Agent {
 	
@@ -48,6 +48,8 @@ public class Agent {
 		this.messages = messages;
 		this.address = address;
 	}
+	
+//	End of constructors
 
 	public String getfName() {
 		return fName;

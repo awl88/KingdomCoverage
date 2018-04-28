@@ -22,7 +22,10 @@ public class InsurancePlan {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name="name")
 	private String name;
+	
+	@Column(name="active")
 	private boolean active;
 	
 	@ManyToOne

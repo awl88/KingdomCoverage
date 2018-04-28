@@ -15,14 +15,19 @@ import javax.persistence.OneToOne;
 @Entity
 public class Insured {
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(name="age")
 	private int age;
+	
+	@Column(name="gender")
 	private char gender;
+	
 	@Column(name="first_name")
 	private String fName;
+	
 	@Column(name="last_name")
 	private String lName;
 

@@ -11,10 +11,12 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Species {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name="name")
 	private String name;
 	
 	@OneToMany(mappedBy="species")

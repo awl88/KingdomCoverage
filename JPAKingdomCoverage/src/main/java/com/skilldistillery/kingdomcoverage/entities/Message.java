@@ -39,6 +39,8 @@ public class Message {
 		this.insured = insured;
 	}
 	
+//	End of constructors
+	
 	public Agent getAgent() {
 		return agent;
 	}

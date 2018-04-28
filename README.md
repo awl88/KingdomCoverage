@@ -8,7 +8,7 @@
 ## Setup/Installation requirements
 
 * If you want to interact with the finished program, please visit: [Kingdom Coverage](INSERT_URL_HERE_WHEN_UPLOADED).
-* In order to edit this project and work with it on your own machine you will need a terminal application such as Terminal or Bash. Since this project has a Gradle and Spring nature, you will need to have the Spring Tool Suite installed. You will also need a database server program such as MAMP or LAMP.
+* In order to edit this project and work with it on your own machine you will need a terminal application such as Terminal or Bash. Since this project has a Gradle and Spring nature, you will need to have the [Spring Tool Suite](https://spring.io/tools) installed. You will also need a database server program such as [MAMP](https://www.mamp.info/en/) and a web server program such as [Apache](https://www.apache.org/).
 * Start by opening the terminal application and typing the command
 ```
 git clone https://github.com/awl88/KingdomCoverage.git
@@ -27,7 +27,7 @@ mysql> exit;
 mysql -u admin -p
 ```
 * You will then be prompted to enter a password in the terminal, type `admin`. You can now use mysql syntax to interact with the database.
-* From this point on you should be able to edit the program and see changes when altering it in the Spring Tool Suite.
+* From this point on you should be able to edit the program and see changes when altering it in the Spring Tool Suite. 
 
 
 ## Program Behavior/Specifications

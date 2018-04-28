@@ -21,7 +21,7 @@ public class CoverageType {
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="name")
+	@Column(name="cost")
 	private double cost;
 	
 	@ManyToMany(mappedBy="coverages")

@@ -20,13 +20,13 @@ after navigating with the `cd` command to the location you would like the projec
 mysql -u root -p < games.sql
 mysql -u root -p
 ```
-You will then be prompted to enter a password in the terminal, type `root`.
+* You will then be prompted to enter a password in the terminal, type `root`.
 ```
 mysql> CREATE USER admin@localhost IDENTIFIED BY 'admin';
 mysql> exit;
 mysql -u admin -p
 ```
-You will then be prompted to enter a password in the terminal, type `admin`. You can now use mysql syntax to interact with the database.
+* You will then be prompted to enter a password in the terminal, type `admin`. You can now use mysql syntax to interact with the database.
 * From this point on you should be able to edit the program and see changes when altering it in the Spring Tool Suite.
 
 

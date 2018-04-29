@@ -29,4 +29,15 @@ public class UserDAOImpl implements UserDAO {
 		return em.find(User.class, id);
 	}
 	
+	@Override
+	public Integer getUserIdByNameAndPass(String name, String password) {
+		User user = new User();
+		String query = "SELECT u from User u where u.name = :name and u.password = :password";
+		user = em.createQuery(query, User.class)
+				.setParameter("name", name)
+				.setParameter("password", password)
+				.getSingleResult();
+		return user.getId();
+	}
+	
 }

@@ -22,7 +22,6 @@ public class User {
 	// End of fields
 
 	public User() {
-
 	}
 
 	public User(int id, String name, String password) {

@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.kingdomcoverage.entities.User;
 import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
+import com.skilldistillery.mvckingdomcoverage.data.UserDAO;
 
 @Transactional
 @Controller
@@ -19,6 +21,9 @@ public class UserController {
 	
 	@Autowired
 	InsuredDAO idao;
+	
+	@Autowired
+	UserDAO udao;
 	
 	@Autowired
 	InsurancePlanDAO ipdao;
@@ -48,13 +53,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
-	public ModelAndView login(HttpSession session, Integer id) {
+	public ModelAndView login(HttpSession session, String name, String password) {
 		ModelAndView mv = new ModelAndView();
-		Insured insured = idao.show(id);
+		Insured insured = idao.show(udao.getUserIdByNameAndPass(name, password));
+		
 		mv.addObject("insured", insured);
+		mv.setViewName("views/insured.jsp");
 		
 		session.setAttribute("insuredSession", insured);
-		mv.setViewName("views/insured.jsp");
 		
 		return mv;
 	}

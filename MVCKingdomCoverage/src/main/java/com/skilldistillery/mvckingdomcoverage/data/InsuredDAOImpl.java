@@ -1,5 +1,6 @@
 package com.skilldistillery.mvckingdomcoverage.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -61,20 +62,27 @@ public class InsuredDAOImpl implements InsuredDAO {
 	
 	@Override
 	public List<Agent> getAgentsByInsuredId(Integer id){
+		List<Agent> agents = new ArrayList<>();
 		String query = "SELECT i from Insured i JOIN FETCH i.agents where i.id = :id";
 		List <Insured> insured = em.createQuery(query, Insured.class)
 				.setParameter("id", id)
 				.getResultList();
-		return insured.get(0).getAgents();
+		if (insured.size() != 0) {
+			agents = insured.get(0).getAgents();
+		}
+		return agents;
 	}
 	
 	@Override
 	public List<Message> getMessagesByInsuredId(Integer id) {
+		List<Message> messages = new ArrayList<>();
 		String query = "SELECT i from Insured i JOIN FETCH i.messages where i.id = :id";
 		List<Insured> insured = em.createQuery(query, Insured.class)
 				.setParameter("id", id)
 				.getResultList();
-		return insured.get(0).getMessages();
+		if(insured.size() != 0)
+			messages = insured.get(0).getMessages();
+		return messages;
 	}
 	
 	@Override
@@ -119,11 +127,12 @@ public class InsuredDAOImpl implements InsuredDAO {
 		insured.setGender(dto.getInsuredGender());
 		insured.setSpecies(sdao.showSpecies(dto.getInsuredSpeciesId()));
 		insured.setOccupation(odao.show(dto.getInsuredOccupationId()));
-		String query = "SELECT a FROM Agent a JOIN FETCH a.address WHERE a.address.realm = :realm";
-		List<Agent> agents = em.createQuery(query, Agent.class)
-//				.setParameter("realm", sdao.showSpecies(dto.getInsuredSpeciesId()).getRealm())
-				.getResultList();
-		insured.setAgents(agents);
+//		
+//		String query = "SELECT a FROM Agent a JOIN FETCH a.address WHERE a.address.realm = :realm";
+//		List<Agent> agents = em.createQuery(query, Agent.class)
+//				.setParameter("realm", dto.getAddressRealm())
+//				.getResultList();
+//		insured.setAgents(agents);
 		insured.setUser(user);
 		insured.setAddress(address);
 		

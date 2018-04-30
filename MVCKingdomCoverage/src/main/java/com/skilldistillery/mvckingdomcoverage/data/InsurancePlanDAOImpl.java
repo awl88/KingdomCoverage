@@ -22,16 +22,13 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	@Override
 	public InsurancePlan create(InsurancePlan plan) {
 		activate(plan.getId());
-		em.getTransaction().begin();
 		em.persist(plan);
 		em.flush();
-		em.getTransaction().commit();
 		return plan;
 	}
 	
 	@Override
 	public InsurancePlan update(int id, InsurancePlan coverage) {
-		em.getTransaction().begin();
 		InsurancePlan managed = em.find(InsurancePlan.class, id);
 		managed.setName(coverage.getName());
 		managed.setActive(coverage.isActive());
@@ -39,39 +36,28 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 		managed.setAgent(coverage.getAgent());
 		managed.setCreateDate(coverage.getCreateDate());
 		managed.setEndDate(coverage.getEndDate());
-		em.persist(managed);
-		em.flush();
-		em.getTransaction().commit();
 		return managed;
 	}
 	
 	@Override
 	public InsurancePlan deactivate(int id) {
-		em.getTransaction().begin();
 		InsurancePlan managed = em.find(InsurancePlan.class, id);
 		if(managed.isActive() == true) {
 			managed.setActive(false);	
 		} else {
 			managed.setActive(false);
 		}
-		em.persist(managed);
-		em.flush();
-		em.getTransaction().commit();
 		return managed;
 	}
 	
 	@Override
 	public InsurancePlan activate(int id) {
-		em.getTransaction().begin();
 		InsurancePlan managed = em.find(InsurancePlan.class, id);
 		if(managed.isActive() == false) {
 			managed.setActive(true);	
 		} else {
 			managed.setActive(true);
 		}
-		em.persist(managed);
-		em.flush();
-		em.getTransaction().commit();
 		return managed;
 	}
 }

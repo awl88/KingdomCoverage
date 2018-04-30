@@ -32,7 +32,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Integer getUserIdByNameAndPass(String name, String password) {
 		User user = new User();
-		String query = "SELECT u from User u where u.name = :name and u.password = :password";
+		String query = "SELECT u FROM User u WHERE u.name = :name AND u.password = :password";
 		user = em.createQuery(query, User.class)
 				.setParameter("name", name)
 				.setParameter("password", password)

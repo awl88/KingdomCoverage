@@ -25,23 +25,17 @@ public class SpeciesDAOImpl implements SpeciesDAO {
 	
 	@Override
 	public Species create(Species species) {
-		em.getTransaction().begin();
 		em.persist(species);
 		em.flush();
-		em.getTransaction().commit();
 		return species;
 	}
 	
 	@Override
 	public Species update(int id, Species species) {
-		em.getTransaction().begin();
 		Species managed = em.find(Species.class, id);
 		managed.setName(species.getName());
 		managed.setClients(species.getClients());
 		managed.setCostMultiplier(species.getCostMultiplier());
-		em.persist(managed);
-		em.flush();
-		em.getTransaction().commit();
 		return managed;
 	}
 	

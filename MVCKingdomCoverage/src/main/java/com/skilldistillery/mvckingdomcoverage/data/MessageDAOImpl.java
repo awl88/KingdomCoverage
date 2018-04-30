@@ -17,10 +17,8 @@ public class MessageDAOImpl implements MessageDAO {
 	
 	@Override
 	public Message create(Message message) {
-		em.getTransaction().begin();
 		em.persist(message);
 		em.flush();
-		em.getTransaction().commit();
 		return message;
 	}
 	
@@ -30,9 +28,7 @@ public class MessageDAOImpl implements MessageDAO {
 			return false;
 		} else {
 			Message m = em.find(Message.class, id);
-			em.getTransaction().begin();
 			em.remove(m); // performs the delete on the managed entity
-			em.getTransaction().commit();
 			return true;
 		}
 	}

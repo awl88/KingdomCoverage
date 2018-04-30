@@ -22,14 +22,14 @@ public class AgentController {
 		List<Insured> clients = adao.getClients(id);
 		mv.addObject("listOfInsured", clients);
 
-		mv.setViewName("getClient.jsp");
+		mv.setViewName("views/insuredInfo.jsp");
 		return mv;
 	}
 	
 	@RequestMapping(path = "approved.do", method = RequestMethod.POST)
 	public ModelAndView approbed(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("insuredAgent.jsp");
+		mv.setViewName("views/agent.jsp");
 		
 		return mv;
 	}
@@ -37,7 +37,7 @@ public class AgentController {
 	@RequestMapping(path = "declined.do", method = RequestMethod.POST)
 	public ModelAndView declined() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("insuredAgent.jsp");
+		mv.setViewName("views/agent.jsp");
 		
 		return mv;
 	}

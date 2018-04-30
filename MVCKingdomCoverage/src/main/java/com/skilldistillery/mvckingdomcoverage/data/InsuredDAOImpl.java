@@ -119,6 +119,11 @@ public class InsuredDAOImpl implements InsuredDAO {
 		insured.setGender(dto.getInsuredGender());
 		insured.setSpecies(sdao.showSpecies(dto.getInsuredSpeciesId()));
 		insured.setOccupation(odao.show(dto.getInsuredOccupationId()));
+		String query = "SELECT a FROM Agent a JOIN FETCH a.address WHERE a.address.realm = :realm";
+		List<Agent> agents = em.createQuery(query, Agent.class)
+//				.setParameter("realm", sdao.showSpecies(dto.getInsuredSpeciesId()).getRealm())
+				.getResultList();
+		insured.setAgents(agents);
 		insured.setUser(user);
 		insured.setAddress(address);
 		

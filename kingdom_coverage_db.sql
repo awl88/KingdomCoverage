@@ -471,7 +471,7 @@ COMMIT;
 START TRANSACTION;
 USE `kingdom_coverage_db`;
 INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (1, 131, 'm', 1, 1, 6, 6, 'Bilbo', 'Baggins');
-INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (2, 2000, 'm', 2, 2, 7, 7, 'Gandalf', 'The White');
+INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (2, 2000, 'm', 2, 2, 7, 7, 'Gandalf', 'The Grey');
 INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (3, 25, 'm', 1, 11, 8, 8, 'Chlodowig', 'Mugwort');
 INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (4, 43, 'm', 1, 3, 9, 9, 'Turpin', 'Stoor');
 INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (5, 44, 'm', 2, 4, 10, 10, 'Ragnfred', 'Clayhanger');

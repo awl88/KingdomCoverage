@@ -7,7 +7,7 @@
 	<!-- opening header div -->
 	<div>
 	
-		<h1>Agent ${Agent.lName}'s Profile</h1>
+		<h1>Agent ${agent.lName}'s Profile</h1>
 		<!-- navbar, page headers will go here -->
 		<jsp:include page="partials/navbar.jsp"></jsp:include>
 		
@@ -17,17 +17,17 @@
 	<!-- opening body container div -->
 	<div class="container">
 	Clients:
-		<c:forEach var="c" items="${Agent.clients}">
+		<c:forEach var="c" items="${agent.clients}">
 			<a href="insuredInfo.jsp">${c.fName} ${c.lName}</a>
 			<br>
 		</c:forEach>
 		<br>
 	Messages:
-		<c:forEach var="m" items="${Agent.messages}">
-			Message Id: ${m.id}
-			From: ${m.insured.fName} ${m.insured.lName}
-			To: ${m.insured}
-			Message: ${m.messageBody}
+		<c:forEach var="m" items="${agent.messages}">
+			Message Id: ${m.id}<br>
+			From: ${m.agent.fName} ${m.agent.lName}<br>
+			To: ${m.insured.fName} ${m.insured.lName}<br>
+			Message: ${m.messageBody}<br>
 		</c:forEach>
 		<!--a list of all of the insured that the agent has as clients will be here, 
 		each being a clickable link to a more detailed view of them-->

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
+import com.skilldistillery.kingdomcoverage.entities.User;
 
 @Transactional
 @Component
@@ -45,6 +46,18 @@ public class AgentDAOImpl implements AgentDAO {
 				.setParameter("id", id)
 				.getResultList();
 		return agent.get(0).getMessages();
+	}
+	
+	@Override
+	public Integer getUserIdByNameAndPass(String name, String password) {
+		User user = new User();
+		String query = "Select u from User u where u.name = :name and u.password = :password";
+		
+		user = em.createQuery(query, User.class)
+				.setParameter("name", name)
+				.setParameter("password", password)
+				.getSingleResult();
+		return user.getId();
 	}
 		
 }

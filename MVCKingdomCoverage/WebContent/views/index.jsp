@@ -35,12 +35,11 @@
 		<div class="col-md-4">
 		</div>
 		<div class="col-md-4">
-		<form action="login.do" method="GET">
+		<form action="loginAgent.do" method="GET">
 			Username: <input type="text" name="name">
 			<br>
 			Password: <input type="text" name="password">
 			<br>
-			<input type="hidden" value="${Insured.id}">
 			<input type="submit" class="btn btn-primary" value="Login As Agent">
 		</form>
 	

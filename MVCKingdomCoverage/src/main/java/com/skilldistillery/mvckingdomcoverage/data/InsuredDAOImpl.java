@@ -71,10 +71,10 @@ public class InsuredDAOImpl implements InsuredDAO {
 	@Override
 	public Integer getInsuredIdByUserId(Integer id) {
 		String query = "SELECT i From Insured i where i.user.id = :id";
-		Insured insured = em.createQuery(query, Insured.class)
+		List<Insured> insured = em.createQuery(query, Insured.class)
 				.setParameter("id", id)
-				.getSingleResult();
-		return insured.getId();
+				.getResultList();
+		return insured.get(0).getId();
 	}
 	
 	@Override

@@ -35,7 +35,6 @@
 		Messages:<br>
 		<c:forEach var="m" items="${insured.messages}">
 			Message Id: ${m.id}<br>
-		<!-- May change to an if conditional so that FROM displays the insured if the user is an agent -->
 			From: ${m.agent.fName} ${m.agent.lName}<br>
 			To: ${m.insured.fName} ${m.insured.lName}<br>
 			Message: ${m.messageBody}<br>

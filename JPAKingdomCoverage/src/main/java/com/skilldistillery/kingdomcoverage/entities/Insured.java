@@ -2,6 +2,7 @@ package com.skilldistillery.kingdomcoverage.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,9 +32,10 @@ public class Insured {
 	@Column(name="last_name")
 	private String lName;
 	
-	@OneToOne
+	@OneToOne(cascade= CascadeType.PERSIST)
 	@JoinColumn(name="user_id")
-	private int userId;
+	private User user;
+
 
 	@ManyToOne
 	@JoinColumn(name = "species_id")
@@ -78,12 +80,12 @@ public class Insured {
 		this.plans = plans;
 	}
 
-	public int getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
 	
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	public Agent getAgent() {

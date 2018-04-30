@@ -20,8 +20,8 @@ public class User {
 	@Column(name="password")
 	private String password;
 
-	@OneToOne(mappedBy="userId")
-	private int insuredId;
+//	@OneToOne(mappedBy="userId")
+//	private int insuredId;
 	// End of fields
 
 
@@ -37,13 +37,13 @@ public class User {
 
 	// End of constructors
 
-	public int getInsuredId() {
-		return insuredId;
-	}
-	
-	public void setInsuredId(int insuredId) {
-		this.insuredId = insuredId;
-	}
+//	public int getInsuredId() {
+//		return insuredId;
+//	}
+//	
+//	public void setInsuredId(int insuredId) {
+//		this.insuredId = insuredId;
+//	}
 
 	public String getName() {
 		return name;

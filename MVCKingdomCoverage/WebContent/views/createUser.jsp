@@ -19,7 +19,7 @@
 		<!-- a form to create a new user will go here -->
 		
 		<!-- action will need to be changed to actual route, remove this comment once that has been done -->
-		<form action="addInsuredToDatabase.do" method="POST">
+		<form action="created.do" method="POST">
 		
 			<!-- some of the values will need to be altered and matched later, remove this comment once this has been done -->
 			<label for="userName">Please enter the username you would like for your account:</label>

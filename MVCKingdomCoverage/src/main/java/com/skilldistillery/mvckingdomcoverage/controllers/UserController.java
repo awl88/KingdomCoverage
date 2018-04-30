@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.kingdomcoverage.entities.Agent;
+import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.kingdomcoverage.entities.Message;
 import com.skilldistillery.kingdomcoverage.entities.Occupation;
 import com.skilldistillery.kingdomcoverage.entities.Species;
 import com.skilldistillery.kingdomcoverage.entities.UserInsuredAddressDTO;
 import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
+import com.skilldistillery.mvckingdomcoverage.data.CoverageTypeDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
+import com.skilldistillery.mvckingdomcoverage.data.MessageDAO;
 import com.skilldistillery.mvckingdomcoverage.data.OccupationDAO;
 import com.skilldistillery.mvckingdomcoverage.data.SpeciesDAO;
 import com.skilldistillery.mvckingdomcoverage.data.UserDAO;
@@ -42,6 +46,12 @@ public class UserController {
 	
 	@Autowired
 	SpeciesDAO sdao;
+	
+	@Autowired
+	CoverageTypeDAO ctdao;
+	
+	@Autowired
+	MessageDAO mdao;
 	
 	@Autowired
 	InsurancePlanDAO ipdao;
@@ -69,6 +79,8 @@ public class UserController {
 	public ModelAndView createPlan(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		session.getAttribute("insuredSession");
+		List<CoverageType> allPlans = ctdao.getAllTypes();
+		mv.addObject("allPlans", allPlans);
 		mv.setViewName("views/createPlan.jsp");
 		return mv;
 	}
@@ -110,6 +122,25 @@ public class UserController {
 		mv.setViewName("views/insured.jsp");
 		
 		session.setAttribute("insuredSession", insured);
+		
+		return mv;
+	}
+	
+	@RequestMapping(path = "insuredWithMessage.do", method = RequestMethod.POST)
+	public ModelAndView requestNewCoverage(HttpSession session, @RequestParam("message") String messageBody) {
+		
+		Insured insured = (Insured) session.getAttribute("insuredSession");
+		ModelAndView mv = new ModelAndView();
+		String fullMessage = "Hey, " + insured.getAgents().get(0).getfName() + "! " + insured.getfName() + " " + insured.getlName() + " would like a new " + messageBody + " plan.";
+		Message message = new Message();
+		message.setMessageBody(fullMessage);
+		message.setInsured(insured);
+		message.setAgent(((Insured) session.getAttribute("insuredSession")).getAgents().get(0));
+		((Insured)session.getAttribute("insuredSession")).getAgents().get(0).addMessageToMessages(message);
+		mdao.create(message);
+		
+		mv.setViewName("views/insured.jsp");
+		mv.addObject("insured", session.getAttribute("insuredSession"));
 		
 		return mv;
 	}

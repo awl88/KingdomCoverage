@@ -1,5 +1,8 @@
 package com.skilldistillery.mvckingdomcoverage.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
+import com.skilldistillery.kingdomcoverage.entities.Occupation;
 
 @Transactional
 @Component
@@ -59,5 +63,14 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 			managed.setActive(true);
 		}
 		return managed;
+	}
+	
+	@Override
+	public List<InsurancePlan> getAllPlans() {
+		List<InsurancePlan> plans = new ArrayList<>();
+		String query = "SELECT p FROM InsurancePlan p";
+		plans = em.createQuery(query, InsurancePlan.class)
+				.getResultList();
+		return plans;
 	}
 }

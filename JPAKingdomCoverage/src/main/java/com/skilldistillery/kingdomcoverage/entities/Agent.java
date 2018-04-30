@@ -1,5 +1,6 @@
 package com.skilldistillery.kingdomcoverage.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -81,6 +82,13 @@ public class Agent {
 
 	public Address getAddress() {
 		return address;
+	}
+	
+	public void addMessageToMessages(Message message) {
+		if(message == null) messages = new ArrayList<>();
+        if(!messages.contains(message)) {
+            messages.add(message);
+        }
 	}
 
 	public void setAddress(Address address) {

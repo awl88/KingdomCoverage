@@ -7,24 +7,31 @@
 	<!-- opening header div -->
 	<div>
 	
-		<h1>Choose A Plan!</h1>
+		<!-- opening header div -->
+	<div>
+	
 		<!-- navbar, page headers will go here -->
+		<jsp:include page="partials/navbar.jsp"></jsp:include>
+		
+	<!-- closing header div -->
+	</div>
+		<h3>Please select the coverage you would like: </h3>
 		
 	<!-- closing header div -->
 	</div>
 
 	<!-- opening body container div -->
 	<div class="container">
-		<form action="insured.do">
-			Get your Plan
+		<form action="insuredWithMessage.do" method = "POST">
 			<br>
-			<select name="coverages">
-				<c:forEach var = "c" items="${InsurancePlan.coverages}">
-					<${c.name}>
-					<br>
+			<select name="message">
+				<c:forEach var = "coverage" items="${allPlans}">
+					<option value="${coverage.name}">${coverage.name}</option>
 				</c:forEach>			
 			</select> 
-			
+			<br>
+			<br>
+			<input type="submit" class="btn btn-primary" value="Request Coverage">
 		</form>
 	
 		<!-- a form to create a new plan will go here -->

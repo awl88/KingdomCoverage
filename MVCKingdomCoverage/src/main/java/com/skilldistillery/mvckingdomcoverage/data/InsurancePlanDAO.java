@@ -1,5 +1,7 @@
 package com.skilldistillery.mvckingdomcoverage.data;
 
+import java.util.List;
+
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 
 public interface InsurancePlanDAO {
@@ -13,5 +15,7 @@ public interface InsurancePlanDAO {
 	InsurancePlan deactivate(int id);
 
 	InsurancePlan activate(int id);
+
+	List<InsurancePlan> getAllPlans();
 
 }

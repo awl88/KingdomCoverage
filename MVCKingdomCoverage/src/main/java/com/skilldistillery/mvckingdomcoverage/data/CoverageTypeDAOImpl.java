@@ -1,5 +1,8 @@
 package com.skilldistillery.mvckingdomcoverage.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
+import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 
 
 @Transactional
@@ -34,5 +38,14 @@ public class CoverageTypeDAOImpl implements CoverageTypeDAO {
 	@Override
 	public CoverageType show(int id) {
 		return em.find(CoverageType.class, id);
+	}
+	
+	@Override
+	public List<CoverageType> getAllTypes() {
+		List<CoverageType> types = new ArrayList<>();
+		String query = "SELECT c FROM CoverageType c";
+		types = em.createQuery(query, CoverageType.class)
+				.getResultList();
+		return types;
 	}
 }

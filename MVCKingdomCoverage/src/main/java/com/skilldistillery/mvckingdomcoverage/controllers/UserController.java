@@ -65,6 +65,14 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping(path= "createPlan.do", method = RequestMethod.GET)
+	public ModelAndView createPlan(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		session.getAttribute("insuredSession");
+		mv.setViewName("views/createPlan.jsp");
+		return mv;
+	}
+	
 //	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
 //	public ModelAndView createUser(User user) {
 //		ModelAndView mv = new ModelAndView();

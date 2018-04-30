@@ -25,40 +25,40 @@
 			<label for="userName">Please enter the username you would like for your account:</label>
 			<input type="text" name="userName" placeholder="bobdobbs"/>
 			
-			<label for="password">Please enter a password:</label>
-			<input type="text" name="password" placeholder="Wombat1"/>
+			<label for="userPassword">Please enter a password:</label>
+			<input type="text" name="userPassword" placeholder="Wombat1"/>
 			
-			<label for="firstName">Please enter your first name:</label>
-			<input type="text" name="firstName" placeholder="Bob"/>
+			<label for="insuredFirstName">Please enter your first name:</label>
+			<input type="text" name="insuredFirstName" placeholder="Bob"/>
 			
-			<label for="lastName">Please enter your last name:</label>
-			<input type="text" name="lastName" placeholder="Dobbs"/>
+			<label for="insuredLastName">Please enter your last name:</label>
+			<input type="text" name="insuredLastName" placeholder="Dobbs"/>
 			
-			<label for="age">Please enter your age:</label>
-			<input type="number" name="age"/>
+			<label for="insuredAge">Please enter your age:</label>
+			<input type="number" name="insuredAge"/>
 		
-			<label for="species">Please select your species:</label>
-			<select name="species">
+			<label for="insuredSpeciesId">Please select your species:</label>
+			<select name="insuredSpeciesId">
 				<c:forEach var="species" items="${allSpecies}">
 					<option name="${species.name}" value="${species.id}">${species.name}</option>
 				</c:forEach>
 			</select>
 			
-			<label for="occupation">Please select your occupation:</label>
-			<select name="occupation">
+			<label for="insuredOccupationId">Please select your occupation:</label>
+			<select name="insuredOccupationId">
 				<c:forEach var="job" items="${jobs}">
 					<option name="${job.name}" value="${job.id}">${job.name}</option>
 				</c:forEach>
 			</select>
 		
-			<label for="street">Please enter your street address:</label>
-			<input type="text" name="street"/>
+			<label for="addressStreet">Please enter your street address:</label>
+			<input type="text" name="addressStreet"/>
 			
-			<label for="city">Please enter your city:</label>
-			<input type="text" name="city"/>
+			<label for="addressCity">Please enter your city:</label>
+			<input type="text" name="addressCity"/>
 			
-			<label for="realm">Please enter your realm:</label>
-			<input type="text" name="realm"/>
+			<label for="addressRealm">Please enter your realm:</label>
+			<input type="text" name="addressRealm"/>
 			
 			<input type="submit" value="Submit"/>
 		

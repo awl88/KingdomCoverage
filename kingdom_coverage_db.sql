@@ -78,7 +78,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `insured` ;
 
 CREATE TABLE IF NOT EXISTS `insured` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `age` INT NOT NULL,
   `gender` CHAR(1) NOT NULL,
   `species_id` INT NOT NULL,
@@ -123,7 +123,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `agent` ;
 
 CREATE TABLE IF NOT EXISTS `agent` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(100) NOT NULL,
   `last_name` VARCHAR(100) NOT NULL,
   `address_id` INT NOT NULL,
@@ -196,7 +196,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `plan_coverage` ;
 
 CREATE TABLE IF NOT EXISTS `plan_coverage` (
-  `insurance_plan_id` INT NOT NULL,
+  `insurance_plan_id` INT NOT NULL AUTO_INCREMENT,
   `coverage_id` INT NOT NULL,
   INDEX `fk_plan_coverage_insurance_plan_id_insurance_plan_id_idx` (`insurance_plan_id` ASC),
   PRIMARY KEY (`insurance_plan_id`, `coverage_id`),
@@ -220,7 +220,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `message` ;
 
 CREATE TABLE IF NOT EXISTS `message` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `insured_id` INT NOT NULL,
   `agent_id` INT NOT NULL,
   `message_body` VARCHAR(500) NOT NULL,

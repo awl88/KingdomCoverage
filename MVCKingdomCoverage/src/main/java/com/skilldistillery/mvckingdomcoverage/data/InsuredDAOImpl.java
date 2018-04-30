@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,8 +14,6 @@ import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
-import com.skilldistillery.kingdomcoverage.entities.Occupation;
-import com.skilldistillery.kingdomcoverage.entities.Species;
 import com.skilldistillery.kingdomcoverage.entities.User;
 import com.skilldistillery.kingdomcoverage.entities.UserInsuredAddressDTO;
 
@@ -24,8 +23,12 @@ public class InsuredDAOImpl implements InsuredDAO {
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	@Autowired
 	private SpeciesDAO sdao = new SpeciesDAOImpl();
-	private OccupationDAO idao = new OccupationDAOImpl();
+	
+	@Autowired
+	private OccupationDAO odao = new OccupationDAOImpl();
 	
 	@Override
 	public Insured show(int id) {
@@ -99,6 +102,7 @@ public class InsuredDAOImpl implements InsuredDAO {
 	
 	@Override
 	public Insured createUserAndInsuredAndAddress(UserInsuredAddressDTO dto) {
+		System.out.println(dto);
 		User user = new User();
 		user.setName(dto.getUserName());
 		user.setPassword(dto.getUserPassword());
@@ -113,12 +117,8 @@ public class InsuredDAOImpl implements InsuredDAO {
 		insured.setlName(dto.getInsuredLastName());
 		insured.setAge(dto.getInsuredAge());
 		insured.setGender(dto.getInsuredGender());
-		int speciesId = dto.getInsuredSpeciesId();
-		Species species = sdao.showSpecies(speciesId);
-		insured.setSpecies(species);
-		int occupationId = dto.getInsuredOccupationId();
-		Occupation occupation = idao.show(occupationId);
-		insured.setOccupation(occupation);
+		insured.setSpecies(sdao.showSpecies(dto.getInsuredSpeciesId()));
+		insured.setOccupation(odao.show(dto.getInsuredOccupationId()));
 		insured.setUser(user);
 		insured.setAddress(address);
 		

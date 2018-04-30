@@ -111,5 +111,18 @@ public class UserInsuredAddressDTO {
 	public void setAddressRealm(String addressRealm) {
 		this.addressRealm = addressRealm;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("UserInsuredAddressDTO [userName=").append(userName).append(", userPassword=")
+				.append(userPassword).append(", insuredAge=").append(insuredAge).append(", insuredGender=")
+				.append(insuredGender).append(", insuredFirstName=").append(insuredFirstName)
+				.append(", insuredLastName=").append(insuredLastName).append(", insuredSpeciesId=")
+				.append(insuredSpeciesId).append(", insuredOccupationId=").append(insuredOccupationId)
+				.append(", addressStreet=").append(addressStreet).append(", addressCity=").append(addressCity)
+				.append(", addressRealm=").append(addressRealm).append("]");
+		return builder.toString();
+	}
 	
 }

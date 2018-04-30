@@ -13,5 +13,6 @@ public interface AgentDAO {
 	public Agent show(int id);
 	public List<Message> inboxShow(int id);
 	List<Insured> getClients(int id);
+	List<Message> getMessagesByAgentId(Integer id);
 	
 }

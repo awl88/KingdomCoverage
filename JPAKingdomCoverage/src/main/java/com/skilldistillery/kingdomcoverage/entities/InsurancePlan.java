@@ -119,26 +119,26 @@ public class InsurancePlan {
 		return id;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("InsurancePlan [id=");
-		builder.append(id);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", active=");
-		builder.append(active);
-		builder.append(", insured=");
-		builder.append(insured);
-		builder.append(", agent=");
-		builder.append(agent);
-		builder.append(", createDate=");
-		builder.append(createDate);
-		builder.append(", endDate=");
-		builder.append(endDate);
-		builder.append("]");
-		return builder.toString();
-	}
+//	@Override
+//	public String toString() {
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("InsurancePlan [id=");
+//		builder.append(id);
+//		builder.append(", name=");
+//		builder.append(name);
+//		builder.append(", active=");
+//		builder.append(active);
+//		builder.append(", insured=");
+//		builder.append(insured);
+//		builder.append(", agent=");
+//		builder.append(agent);
+//		builder.append(", createDate=");
+//		builder.append(createDate);
+//		builder.append(", endDate=");
+//		builder.append(endDate);
+//		builder.append("]");
+//		return builder.toString();
+//	}
 
 	@Override
 	public int hashCode() {

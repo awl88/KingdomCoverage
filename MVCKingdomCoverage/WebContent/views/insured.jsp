@@ -19,23 +19,26 @@
 
 	<!-- opening body container div -->
 	<div class="container">
-		Name: ${Insured.fName} ${Insured.lName}
+		Name: ${insured.fName} ${insured.lName}
 		<br>
-		Age: ${Insured.age}
+		Age: ${insured.age}
 		<br>
-		Gender: ${Insured.gender}
+		Gender: ${insured.gender}
 		<br>
-		Address: ${Insured.address}
+		Address: ${insured.address.street}, ${insured.address.city}, ${insured.address.realm}
 		<br>
-		Agent: ${Insured.agent}
+		Agent: 
+		<c:forEach var="a" items="${insured.agents}">
+			${a.fName} ${a.lName}
+		</c:forEach>
 		<br>
-		Messages:
-		<c:forEach var="m" items="${Insured.messages}">
-			Message Id: ${m.id}
+		Messages:<br>
+		<c:forEach var="m" items="${insured.messages}">
+			Message Id: ${m.id}<br>
 		<!-- May change to an if conditional so that FROM displays the insured if the user is an agent -->
-			From: ${m.agent}
-			To: ${m.insured}
-			Message: ${m.messageBody}
+			From: ${m.agent.fName} ${m.agent.lName}<br>
+			To: ${m.insured.fName} ${m.insured.lName}<br>
+			Message: ${m.messageBody}<br>
 		</c:forEach>
 		Plans:
 			<ul>

@@ -65,15 +65,15 @@ public class Address {
 		return id;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Address [id=").append(id)
-		.append(", street=").append(street)
-		.append(", city=").append(city)
-		.append(", realm=").append(realm).append("]");
-		return builder.toString();
-	}
+//	@Override
+//	public String toString() {
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("Address [id=").append(id)
+//		.append(", street=").append(street)
+//		.append(", city=").append(city)
+//		.append(", realm=").append(realm).append("]");
+//		return builder.toString();
+//	}
 
 	@Override
 	public int hashCode() {

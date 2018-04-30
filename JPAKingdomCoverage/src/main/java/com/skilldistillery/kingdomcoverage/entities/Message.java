@@ -69,20 +69,20 @@ public class Message {
 		this.messageBody = messageBody;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Message [id=");
-		builder.append(id);
-		builder.append(", agent=");
-		builder.append(agent);
-		builder.append(", insured=");
-		builder.append(insured);
-		builder.append(", messageBody=");
-		builder.append(messageBody);
-		builder.append("]");
-		return builder.toString();
-	}
+//	@Override
+//	public String toString() {
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("Message [id=");
+//		builder.append(id);
+//		builder.append(", agent=");
+//		builder.append(agent);
+//		builder.append(", insured=");
+//		builder.append(insured);
+//		builder.append(", messageBody=");
+//		builder.append(messageBody);
+//		builder.append("]");
+//		return builder.toString();
+//	}
 
 	@Override
 	public int hashCode() {

@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
@@ -47,6 +48,24 @@ public class InsuredDAOImpl implements InsuredDAO {
 		managed.setAddress(insured.getAddress());
 		managed.setPlans(insured.getPlans());
 		return managed;
+	}
+	
+	@Override
+	public List<Agent> getAgentsByInsuredId(Integer id){
+		String query = "SELECT i from Insured i JOIN FETCH i.agents where i.id = :id";
+		List <Insured> insured = em.createQuery(query, Insured.class)
+				.setParameter("id", id)
+				.getResultList();
+		return insured.get(0).getAgents();
+	}
+	
+	@Override
+	public List<Message> getMessagesByInsuredId(Integer id) {
+		String query = "SELECT i from Insured i JOIN FETCH i.messages where i.id = :id";
+		List<Insured> insured = em.createQuery(query, Insured.class)
+				.setParameter("id", id)
+				.getResultList();
+		return insured.get(0).getMessages();
 	}
 	
 	@Override

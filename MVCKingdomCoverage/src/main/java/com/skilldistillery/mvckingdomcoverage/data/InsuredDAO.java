@@ -2,6 +2,7 @@ package com.skilldistillery.mvckingdomcoverage.data;
 
 import java.util.List;
 
+import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
@@ -18,5 +19,9 @@ public interface InsuredDAO {
 	public Insured show(int id);
 
 	Integer getInsuredIdByUserId(Integer userId);
+
+	List<Agent> getAgentsByInsuredId(Integer id);
+
+	List<Message> getMessagesByInsuredId(Integer id);
 	
 }

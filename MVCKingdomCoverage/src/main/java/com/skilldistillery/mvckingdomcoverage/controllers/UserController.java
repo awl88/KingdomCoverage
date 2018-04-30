@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.User;
+import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
 import com.skilldistillery.mvckingdomcoverage.data.UserDAO;
@@ -19,6 +21,9 @@ import com.skilldistillery.mvckingdomcoverage.data.UserDAO;
 @Transactional
 @Controller
 public class UserController {
+	
+	@Autowired
+	AgentDAO adao;
 	
 	@Autowired
 	InsuredDAO idao;
@@ -66,6 +71,11 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		
 		Insured insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));
+		insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
+		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
+		
+		Agent agent = adao.show(insured.getAgents().get(0).getId());
+		agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		
 		mv.addObject("insured", insured);
 		mv.setViewName("views/insured.jsp");

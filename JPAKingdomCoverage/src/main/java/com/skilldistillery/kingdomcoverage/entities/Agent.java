@@ -107,22 +107,22 @@ public class Agent {
 		this.plans = plans;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Agent [id=");
-		builder.append(id);
-		builder.append(", fName=");
-		builder.append(fName);
-		builder.append(", lName=");
-		builder.append(lName);
-		builder.append(", messages=");
-		builder.append(messages);
-		builder.append(", address=");
-		builder.append(address);
-		builder.append("]");
-		return builder.toString();
-	}
+//	@Override
+//	public String toString() {
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("Agent [id=");
+//		builder.append(id);
+//		builder.append(", fName=");
+//		builder.append(fName);
+//		builder.append(", lName=");
+//		builder.append(lName);
+//		builder.append(", messages=");
+//		builder.append(messages);
+//		builder.append(", address=");
+//		builder.append(address);
+//		builder.append("]");
+//		return builder.toString();
+//	}
 
 	@Override
 	public int hashCode() {

@@ -174,28 +174,28 @@ public class Insured {
 		this.agents = agents;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Insured [id=");
-		builder.append(id);
-		builder.append(", age=");
-		builder.append(age);
-		builder.append(", gender=");
-		builder.append(gender);
-		builder.append(", species=");
-		builder.append(species);
-		builder.append(", occupation=");
-		builder.append(occupation);
-		builder.append(", messages=");
-		builder.append(messages);
-		builder.append(", address=");
-		builder.append(address);
-		builder.append(", plans=");
-		builder.append(plans);
-		builder.append("]");
-		return builder.toString();
-	}
+//	@Override
+//	public String toString() {
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("Insured [id=");
+//		builder.append(id);
+//		builder.append(", age=");
+//		builder.append(age);
+//		builder.append(", gender=");
+//		builder.append(gender);
+//		builder.append(", species=");
+//		builder.append(species);
+//		builder.append(", occupation=");
+//		builder.append(occupation);
+//		builder.append(", messages=");
+//		builder.append(messages);
+//		builder.append(", address=");
+//		builder.append(address);
+//		builder.append(", plans=");
+//		builder.append(plans);
+//		builder.append("]");
+//		return builder.toString();
+//	}
 
 	@Override
 	public int hashCode() {

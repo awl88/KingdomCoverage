@@ -6,7 +6,7 @@
 
 	<!-- opening header div -->
 	<div>
-	<c:if test="${updateMessage not empty}">
+	<c:if test="${! empty updateMessage}">
 		<h3>${updateMessage}</h3>
 	</c:if>
 	

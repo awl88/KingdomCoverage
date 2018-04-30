@@ -55,7 +55,7 @@ public class UserController {
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public ModelAndView login(HttpSession session, String name, String password) {
 		ModelAndView mv = new ModelAndView();
-		Insured insured = idao.show(udao.getUserIdByNameAndPass(name, password));
+		Insured insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));
 		
 		mv.addObject("insured", insured);
 		mv.setViewName("views/insured.jsp");

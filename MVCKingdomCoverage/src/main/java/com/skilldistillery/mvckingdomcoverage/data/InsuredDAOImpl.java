@@ -47,15 +47,24 @@ public class InsuredDAOImpl implements InsuredDAO {
 	}
 	
 	@Override
+	public Integer getInsuredIdByUserId(Integer id) {
+		String query = "SELECT i.id From Insured i where i.userId = :id";
+		Integer insuredId = em.createQuery(query, Integer.class)
+				.setParameter("id", id)
+				.getSingleResult();
+		return insuredId;
+	}
+	
+	@Override
 	public List<Message> inboxShow(int id) {
-		String query = "SELECT in.messages FROM Insured in WHERE in.id = :id";
+		String query = "SELECT i.messages FROM Insured i WHERE i.id = :id";
 		List<Message> messages = em.createQuery(query, Message.class).setParameter("id", id).getResultList();	
 		return messages;
 	}
 	
 	@Override
 	public List<InsurancePlan> listPlans(int id) {
-		String query = "SELECT in.plans FROM Insured in WHERE in.id = :id";
+		String query = "SELECT i.plans FROM Insured i WHERE i.id = :id";
 		List<InsurancePlan> plans = em.createQuery(query, InsurancePlan.class).setParameter("id", id).getResultList();
 		return plans;		
 	}

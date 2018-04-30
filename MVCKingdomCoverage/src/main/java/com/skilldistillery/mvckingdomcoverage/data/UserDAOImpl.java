@@ -2,7 +2,6 @@ package com.skilldistillery.mvckingdomcoverage.data;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,14 +31,11 @@ public class UserDAOImpl implements UserDAO {
 	public Integer getUserIdByNameAndPass(String name, String password) {
 		User user = new User();
 		String query = "SELECT u from User u where u.name = :name and u.password = :password";
-		try {
-			user = em.createQuery(query, User.class)
-					.setParameter("name", name)
-					.setParameter("password", password)
-					.getSingleResult();
-		} catch (PersistenceException e) {
-			e.printStackTrace();
-		}
+	
+		user = em.createQuery(query, User.class)
+				.setParameter("name", name)
+				.setParameter("password", password)
+				.getSingleResult();
 		return user.getId();
 	}
 }

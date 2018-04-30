@@ -16,5 +16,7 @@ public interface InsuredDAO {
 	public List<InsurancePlan> listPlans(int id);
 
 	public Insured show(int id);
+
+	Integer getInsuredIdByUserId(Integer userId);
 	
 }

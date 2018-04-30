@@ -30,6 +30,10 @@ public class Insured {
 	
 	@Column(name="last_name")
 	private String lName;
+	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private int userId;
 
 	@ManyToOne
 	@JoinColumn(name = "species_id")
@@ -72,6 +76,22 @@ public class Insured {
 		this.messages = messages;
 		this.address = address;
 		this.plans = plans;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
+	public Agent getAgent() {
+		return agent;
+	}
+	
+	public void setAgent(Agent agent) {
+		this.agent = agent;
 	}
 
 	public int getAge() {

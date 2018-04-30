@@ -34,9 +34,11 @@ public class AgentDAOImpl implements AgentDAO {
 
 	@Override
 	public List<Insured> getClients(int id) {
-		String query = "SELECT a.clients FROM Agent a WHERE a.id = :id";
-		List<Insured> clientList = em.createQuery(query, Insured.class).setParameter("id", id).getResultList();
-		return clientList;
+		String query = "SELECT a FROM Agent a JOIN FETCH a.clients WHERE a.id = :id";
+		List<Agent> agent = em.createQuery(query, Agent.class)
+				.setParameter("id", id)
+				.getResultList();
+		return agent.get(0).getClients();
 	}
 	
 	@Override

@@ -15,19 +15,28 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
+import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
 
 @Transactional
 @Controller
 public class AgentController {
+	
 	@Autowired
 	AgentDAO adao;
 
+	@Autowired
+	InsuredDAO idao;
+	
 	@RequestMapping(path= "loginAgent.do", method = RequestMethod.GET)
 	public ModelAndView loginAgent(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password){
 		ModelAndView mv = new ModelAndView();
 		
 		Agent agent = adao.show(adao.getUserIdByNameAndPass(name, password));
+		agent.setClients(adao.getClients(agent.getId()));
 		agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
+		
+		Insured insured = idao.show(agent.getClients().get(0).getId());
+		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 		
 		mv.addObject("agent", agent);
 		mv.setViewName("views/agent.jsp");

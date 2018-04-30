@@ -35,8 +35,8 @@
 		Messages:<br>
 		<c:forEach var="m" items="${insured.messages}">
 			Message Id: ${m.id}<br>
-			From: ${m.agent.fName} ${m.agent.lName}<br>
-			To: ${m.insured.fName} ${m.insured.lName}<br>
+			From: ${m.insured.fName} ${m.insured.lName}<br>
+			To: ${m.agent.fName} ${m.agent.lName}<br>
 			Message: ${m.messageBody}<br>
 		</c:forEach>
 		Plans:

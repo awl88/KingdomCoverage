@@ -31,6 +31,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public Integer getUserIdByNameAndPass(String name, String password) {
 		User user = new User();
+<<<<<<< HEAD
 		String query = "SELECT u from User u where u.name = :name and u.password = :password";
 		try {
 			user = em.createQuery(query, User.class)
@@ -40,6 +41,13 @@ public class UserDAOImpl implements UserDAO {
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 		}
+=======
+		String query = "SELECT u FROM User u WHERE u.name = :name AND u.password = :password";
+		user = em.createQuery(query, User.class)
+				.setParameter("name", name)
+				.setParameter("password", password)
+				.getSingleResult();
+>>>>>>> 64fcaba2bb87577919f1adaa400020e050212249
 		return user.getId();
 	}
 	

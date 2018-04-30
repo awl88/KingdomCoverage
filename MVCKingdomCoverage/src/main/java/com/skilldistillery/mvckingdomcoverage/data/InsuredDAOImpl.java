@@ -26,16 +26,13 @@ public class InsuredDAOImpl implements InsuredDAO {
 	
 	@Override
 	public Insured create(Insured insured) {
-		em.getTransaction().begin();
 		em.persist(insured);
 		em.flush();
-		em.getTransaction().commit();
 		return insured;
 	}
 	
 	@Override
 	public Insured update(int id, Insured insured) {
-		em.getTransaction().begin();
 		Insured managed = em.find(Insured.class, id);
 		managed.setAge(insured.getAge());
 		managed.setGender(insured.getGender());
@@ -46,9 +43,6 @@ public class InsuredDAOImpl implements InsuredDAO {
 		managed.setMessages(insured.getMessages());
 		managed.setAddress(insured.getAddress());
 		managed.setPlans(insured.getPlans());
-		em.persist(managed);
-		em.flush();
-		em.getTransaction().commit();
 		return managed;
 	}
 	

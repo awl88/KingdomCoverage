@@ -18,22 +18,16 @@ public class CoverageTypeDAOImpl implements CoverageTypeDAO {
 	
 	@Override
 	public CoverageType create(CoverageType coverage) {
-		em.getTransaction().begin();
 		em.persist(coverage);
 		em.flush();
-		em.getTransaction().commit();
 		return coverage;
 	}
 	
 	@Override
 	public CoverageType update(int id, CoverageType coverage) {
-		em.getTransaction().begin();
 		CoverageType managed = em.find(CoverageType.class, id);
 		managed.setName(coverage.getName());
 		managed.setCost(coverage.getCost());
-		em.persist(managed);
-		em.flush();
-		em.getTransaction().commit();
 		return managed;
 	}
 	

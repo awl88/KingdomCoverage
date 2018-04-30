@@ -25,23 +25,17 @@ public class OccupationDAOImpl implements OccupationDAO {
 	
 	@Override
 	public Occupation create(Occupation occupation) {
-		em.getTransaction().begin();
 		em.persist(occupation);
 		em.flush();
-		em.getTransaction().commit();
 		return occupation;
 	}
 
 	@Override
 	public Occupation update(int id, Occupation occupation) {
-		em.getTransaction().begin();
 		Occupation managed = em.find(Occupation.class, id);
 		managed.setName(occupation.getName());
 		managed.setClients(occupation.getClients());
 		managed.setCostMultiplier(occupation.getCostMultiplier());
-		em.persist(managed);
-		em.flush();
-		em.getTransaction().commit();
 		return managed;
 	}
 	

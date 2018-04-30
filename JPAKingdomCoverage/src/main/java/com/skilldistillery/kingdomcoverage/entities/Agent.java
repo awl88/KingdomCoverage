@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -32,8 +33,11 @@ public class Agent {
 	@JoinColumn(name="address_id")
 	private Address address;
 	
-	@OneToMany(mappedBy="agent")
+	@ManyToMany(mappedBy="agents")
 	private List<Insured> clients;
+	
+	@OneToMany(mappedBy="agent")
+	private List<InsurancePlan> plans;
 	
 //	End of fields
 	
@@ -93,6 +97,14 @@ public class Agent {
 
 	public int getId() {
 		return id;
+	}
+
+	public List<InsurancePlan> getPlans() {
+		return plans;
+	}
+
+	public void setPlans(List<InsurancePlan> plans) {
+		this.plans = plans;
 	}
 
 	@Override

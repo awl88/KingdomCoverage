@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -36,7 +38,6 @@ public class Insured {
 	@JoinColumn(name="user_id")
 	private User user;
 
-
 	@ManyToOne
 	@JoinColumn(name = "species_id")
 	private Species species;
@@ -54,12 +55,13 @@ public class Insured {
 	private Address address;
 
 	@OneToMany(mappedBy = "insured")
-	@Column(name = "plan_id")
 	private List<InsurancePlan> plans;
 	
-	@ManyToOne
-	private Agent agent;
-
+	@ManyToMany
+	@JoinTable(name="insurance_plan", joinColumns= @JoinColumn(name="insured_id"), 
+	inverseJoinColumns = @JoinColumn(name="agent_id"))
+	private List<Agent> agents;
+	
 	// End of fields
 
 	public Insured() {
@@ -86,14 +88,6 @@ public class Insured {
 	
 	public void setUser(User user) {
 		this.user = user;
-	}
-	
-	public Agent getAgent() {
-		return agent;
-	}
-	
-	public void setAgent(Agent agent) {
-		this.agent = agent;
 	}
 
 	public int getAge() {
@@ -170,6 +164,14 @@ public class Insured {
 	
 	public void setlName(String lName) {
 		this.lName = lName;
+	}
+	
+	public List<Agent> getAgents() {
+		return agents;
+	}
+
+	public void setAgents(List<Agent> agents) {
+		this.agents = agents;
 	}
 
 	@Override

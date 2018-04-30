@@ -19,7 +19,7 @@ public class Address {
 	@Column(name = "city")
 	private String city;
 
-	@Column(name = "realm)")
+	@Column(name = "realm")
 	private String realm;
 
 	// End of fields

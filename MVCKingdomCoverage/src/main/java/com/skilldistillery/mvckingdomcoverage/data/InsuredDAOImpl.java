@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
+import com.skilldistillery.kingdomcoverage.entities.User;
 
 @Transactional
 @Component
@@ -26,6 +27,8 @@ public class InsuredDAOImpl implements InsuredDAO {
 	
 	@Override
 	public Insured create(Insured insured) {
+		User u = new User();
+		u.setName(insured.getfName());
 		em.persist(insured);
 		em.flush();
 		return insured;
@@ -48,11 +51,11 @@ public class InsuredDAOImpl implements InsuredDAO {
 	
 	@Override
 	public Integer getInsuredIdByUserId(Integer id) {
-		String query = "SELECT i.id From Insured i where i.userId = :id";
-		Integer insuredId = em.createQuery(query, Integer.class)
+		String query = "SELECT i From Insured i where i.user.id = :id";
+		Insured insured = em.createQuery(query, Insured.class)
 				.setParameter("id", id)
 				.getSingleResult();
-		return insuredId;
+		return insured.getId();
 	}
 	
 	@Override

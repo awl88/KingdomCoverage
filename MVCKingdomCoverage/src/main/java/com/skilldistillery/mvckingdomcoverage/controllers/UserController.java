@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.kingdomcoverage.entities.Insured;
@@ -61,8 +62,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
-	public ModelAndView login(HttpSession session, String name, String password) {
+	public ModelAndView login(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password) {
 		ModelAndView mv = new ModelAndView();
+		
 		Insured insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));
 		
 		mv.addObject("insured", insured);

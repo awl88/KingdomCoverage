@@ -24,8 +24,6 @@
 			<br>
 			Password: <input type="text" name="password">
 			<br>
-			<input type="hidden" value="${insured.name}">
-			<input type="hidden" value="${insured.password}">
 			<input type="submit" class="btn btn-primary" value="Login As User">
 		</form>
 		<br>

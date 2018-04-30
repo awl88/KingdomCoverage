@@ -47,7 +47,12 @@ public class UserDAOImpl implements UserDAO {
 		List<User> users = em.createQuery(query, User.class)
 				.setParameter("name", name)
 				.getResultList();
-		User user = users.get(0);
+		User user = new User();
+		if (users.size() != 0) {
+			user = users.get(0);
+		} else {
+			user = null;
+		}
 		return user;
 	}
 	

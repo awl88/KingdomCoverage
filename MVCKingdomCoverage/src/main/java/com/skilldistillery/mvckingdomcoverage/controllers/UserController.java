@@ -1,5 +1,7 @@
 package com.skilldistillery.mvckingdomcoverage.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.kingdomcoverage.entities.Occupation;
+import com.skilldistillery.kingdomcoverage.entities.Species;
 import com.skilldistillery.kingdomcoverage.entities.UserInsuredAddressDTO;
 import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
+import com.skilldistillery.mvckingdomcoverage.data.OccupationDAO;
+import com.skilldistillery.mvckingdomcoverage.data.SpeciesDAO;
 import com.skilldistillery.mvckingdomcoverage.data.UserDAO;
 
 @Transactional
@@ -32,6 +38,12 @@ public class UserController {
 	UserDAO udao;
 	
 	@Autowired
+	OccupationDAO odao;
+	
+	@Autowired
+	SpeciesDAO sdao;
+	
+	@Autowired
 	InsurancePlanDAO ipdao;
 
 	@RequestMapping(path = "index.do", method = RequestMethod.GET)
@@ -45,6 +57,10 @@ public class UserController {
 	@RequestMapping(path = "create.do", method = RequestMethod.GET)
 	public ModelAndView createUser() {
 		ModelAndView mv = new ModelAndView();
+		List<Occupation> jobs = odao.getAllOccupations();
+		List<Species> allSpecies = sdao.getAllSpecies();
+		mv.addObject("jobs", jobs);
+		mv.addObject("allSpecies", allSpecies);
 		mv.setViewName("views/createUser.jsp");
 		return mv;
 	}

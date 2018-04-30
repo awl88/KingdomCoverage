@@ -50,7 +50,7 @@ public class Insured {
 	@Column(name = "message_id")
 	private List <Message> messages;
 
-	@OneToOne
+	@OneToOne(cascade= CascadeType.PERSIST)
 	@JoinColumn(name = "address_id")
 	private Address address;
 
@@ -65,6 +65,20 @@ public class Insured {
 	// End of fields
 
 	public Insured() {
+	}
+	
+	public Insured(int age, char gender, String fName, String lName, Species species, Occupation occupation,
+			List<Message> messages, Address address, List<InsurancePlan> plans) {
+		super();
+		this.age = age;
+		this.gender = gender;
+		this.fName = fName;
+		this.lName = lName;
+		this.species = species;
+		this.occupation = occupation;
+		this.messages = messages;
+		this.address = address;
+		this.plans = plans;
 	}
 
 	public Insured(int id, int age, char gender, String fName, String lName, Species species, Occupation occupation,

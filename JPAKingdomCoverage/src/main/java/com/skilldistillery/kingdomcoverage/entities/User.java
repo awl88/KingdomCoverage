@@ -27,6 +27,11 @@ public class User {
 
 	public User() {
 	}
+	
+	public User(String name, String password) {
+		this.name = name;
+		this.password = password;	
+	}
 
 	public User(int id, String name, String password) {
 		super();

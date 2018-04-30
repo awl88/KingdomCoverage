@@ -26,6 +26,13 @@ public class Address {
 
 	public Address() {
 	}
+	
+	public Address(String street, String city, String realm) {
+		super();
+		this.street = street;
+		this.city = city;
+		this.realm = realm;
+	}
 
 	public Address(int id, String street, String city, String realm) {
 		super();

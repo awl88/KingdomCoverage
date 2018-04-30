@@ -6,6 +6,7 @@ import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
+import com.skilldistillery.kingdomcoverage.entities.UserInsuredAddressDTO;
 
 public interface InsuredDAO {
 	public Insured create(Insured insured);
@@ -23,5 +24,7 @@ public interface InsuredDAO {
 	List<Agent> getAgentsByInsuredId(Integer id);
 
 	List<Message> getMessagesByInsuredId(Integer id);
+
+	Insured createUserAndInsuredAndAddress(UserInsuredAddressDTO dto);
 	
 }

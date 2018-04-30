@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
-import com.skilldistillery.kingdomcoverage.entities.User;
+import com.skilldistillery.kingdomcoverage.entities.UserInsuredAddressDTO;
 import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
@@ -49,20 +49,25 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-	public ModelAndView createUser(User user) {
-		ModelAndView mv = new ModelAndView();
-		udao.create(user);
-		mv.addObject("user", user);
-		mv.setViewName("views/createInsured.jsp");
-		return mv;
-	}
+//	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
+//	public ModelAndView createUser(User user) {
+//		ModelAndView mv = new ModelAndView();
+//		udao.create(user);
+//		mv.addObject("user", user);
+//		mv.setViewName("views/createInsured.jsp");
+//		return mv;
+//	}
 	
 	@RequestMapping(path = "created.do", method = RequestMethod.POST)
-	public ModelAndView createdInsured(Insured insured) {
+	public ModelAndView createdInsured(UserInsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
-		idao.create(insured);
-		mv.setViewName("views/index.jsp");
+		if(udao.getUserByName(dto.getUserName()) == null) {
+			Insured insured = idao.createUserAndInsuredAndAddress(dto);
+			mv.setViewName("views/index.jsp");
+		} else {
+			//put in a method to pass the dto object back to the form later, take this out when that is done
+			mv.setViewName("views/createUser.jsp");
+		}
 		return mv;
 	}
 	

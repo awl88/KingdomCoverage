@@ -7,7 +7,7 @@ import com.skilldistillery.kingdomcoverage.entities.Species;
 
 public interface SpeciesDAO {
 
-	Species show(int id);
+	Species showSpecies(int id);
 
 	Species create(Species species);
 

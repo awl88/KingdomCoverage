@@ -8,4 +8,6 @@ public interface UserDAO {
 	User show(int id);
 
 	Integer getUserIdByNameAndPass(String name, String password);
+	
+	User getUserByName(String name);
 }

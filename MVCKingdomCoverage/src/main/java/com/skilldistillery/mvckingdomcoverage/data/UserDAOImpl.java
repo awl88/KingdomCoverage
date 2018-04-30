@@ -1,5 +1,7 @@
 package com.skilldistillery.mvckingdomcoverage.data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,7 +12,7 @@ import com.skilldistillery.kingdomcoverage.entities.User;
 
 @Transactional
 @Component
-public class UserDAOImpl implements UserDAO {
+public abstract class UserDAOImpl implements UserDAO {
 	
 	@PersistenceContext
 	private EntityManager em;
@@ -38,4 +40,15 @@ public class UserDAOImpl implements UserDAO {
 				.getSingleResult();
 		return user.getId();
 	}
+	
+	@Override
+	public User getUserByName(String name) {
+		String query = "SELECT u FROM User u WHERE u.name = :name";
+		List<User> users = em.createQuery(query, User.class)
+				.setParameter("name", name)
+				.getResultList();
+		User user = users.get(0);
+		return user;
+	}
+	
 }

@@ -8,11 +8,15 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.skilldistillery.kingdomcoverage.entities.Address;
 import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
+import com.skilldistillery.kingdomcoverage.entities.Occupation;
+import com.skilldistillery.kingdomcoverage.entities.Species;
 import com.skilldistillery.kingdomcoverage.entities.User;
+import com.skilldistillery.kingdomcoverage.entities.UserInsuredAddressDTO;
 
 @Transactional
 @Component
@@ -20,6 +24,8 @@ public class InsuredDAOImpl implements InsuredDAO {
 
 	@PersistenceContext
 	private EntityManager em;
+	private SpeciesDAOImpl sdao = new SpeciesDAOImpl();
+	private OccupationDAOImpl idao = new OccupationDAOImpl();
 	
 	@Override
 	public Insured show(int id) {
@@ -89,5 +95,36 @@ public class InsuredDAOImpl implements InsuredDAO {
 		String query = "SELECT i.plans FROM Insured i WHERE i.id = :id";
 		List<InsurancePlan> plans = em.createQuery(query, InsurancePlan.class).setParameter("id", id).getResultList();
 		return plans;		
+	}
+	
+	@Override
+	public Insured createUserAndInsuredAndAddress(UserInsuredAddressDTO dto) {
+		User user = new User();
+		user.setName(dto.getUserName());
+		user.setPassword(dto.getUserPassword());
+		
+		Address address = new Address();
+		address.setStreet(dto.getAddressStreet());
+		address.setCity(dto.getAddressCity());
+		address.setRealm(dto.getAddressRealm());
+		
+		Insured insured = new Insured();
+		insured.setfName(dto.getInsuredFirstName());
+		insured.setlName(dto.getInsuredLastName());
+		insured.setAge(dto.getInsuredAge());
+		insured.setGender(dto.getInsuredGender());
+		int speciesId = dto.getInsuredSpeciesId();
+		Species species = sdao.showSpecies(speciesId);
+		insured.setSpecies(species);
+		int occupationId = dto.getInsuredOccupationId();
+		Occupation occupation = idao.show(occupationId);
+		insured.setOccupation(occupation);
+		insured.setUser(user);
+		insured.setAddress(address);
+		
+		em.persist(insured);
+		em.flush();
+		
+		return insured;
 	}
 }

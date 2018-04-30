@@ -20,7 +20,7 @@ public class SpeciesDAOImpl implements SpeciesDAO {
 	private EntityManager em;
 	
 	@Override
-	public Species show(int id) {
+	public Species showSpecies(int id) {
 		return em.find(Species.class, id);
 	}
 	

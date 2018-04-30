@@ -15,4 +15,6 @@ public interface SpeciesDAO {
 
 	List<Insured> showClients(int id);
 
+	List<Species> getAllSpecies();
+
 }

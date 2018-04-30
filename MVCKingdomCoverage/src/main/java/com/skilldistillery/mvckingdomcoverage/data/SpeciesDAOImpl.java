@@ -1,5 +1,6 @@
 package com.skilldistillery.mvckingdomcoverage.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -44,5 +45,14 @@ public class SpeciesDAOImpl implements SpeciesDAO {
 		String query = "SELECT s.clients FROM Species s WHERE s.id = :id";
 		List<Insured> resultList = em.createQuery(query, Insured.class).setParameter("id", id).getResultList();
 		return resultList;
+	}
+	
+	@Override 
+	public List<Species> getAllSpecies() {
+		List<Species> allSpecies = new ArrayList<>();
+		String query = "SELECT s FROM Species s";
+		allSpecies = em.createQuery(query, Species.class)
+				.getResultList();
+		return allSpecies;
 	}
 }

@@ -1,5 +1,6 @@
 package com.skilldistillery.mvckingdomcoverage.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -44,5 +45,14 @@ public class OccupationDAOImpl implements OccupationDAO {
 		String query = "SELECT o.clients FROM Occupation o WHERE o.id = :id";
 		List<Insured> messages = em.createQuery(query, Insured.class).setParameter("id", id).getResultList();	
 		return messages;
+	}
+	
+	@Override
+	public List<Occupation> getAllOccupations() {
+		List<Occupation> jobs = new ArrayList<>();
+		String query = "SELECT o FROM Occupation o";
+		jobs = em.createQuery(query, Occupation.class)
+				.getResultList();
+		return jobs;
 	}
 }

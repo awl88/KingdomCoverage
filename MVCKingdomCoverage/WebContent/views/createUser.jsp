@@ -28,38 +28,6 @@
 			<label for="password">Please enter a password:</label>
 			<input type="text" name="password" placeholder="Wombat1"/>
 			
-			<label for="firstName">Please enter your first name:</label>
-			<input type="text" name="firstName" placeholder="Bob"/>
-			
-			<label for="lastName">Please enter your last name:</label>
-			<input type="text" name="lastName" placeholder="Dobbs"/>
-			
-			<label for="age">Please enter your age:</label>
-			<input type="number" name="age"/>
-			
-			<label for="species">Please select your species:</label>
-				<select name="species">
-				<option name="hobbit" value="1">Hobbit</option>
-				<option name="human" value="2">Human</option>
-				<!-- insert all the species options here, remove this comment once this has been done -->
-			</select>
-			
-			<label for="occupation">Please select your occupation:</label>
-				<select name="occupation">
-				<option name="adventurer" value="1">Adventurer</option>
-				<option name="wizard" value="2">Wizard</option>
-				<!-- insert all the occupation options here, remove this comment once this has been done -->
-			</select>
-			
-			<label for="street">Please enter your street address:</label>
-			<input type="text" name="street"/>
-			
-			<label for="city">Please enter your city:</label>
-			<input type="text" name="city"/>
-			
-			<label for="realm">Please enter your realm:</label>
-			<input type="text" name="realm"/>
-			  
 			<input type="submit" value="Submit"/>
 		
 		</form>

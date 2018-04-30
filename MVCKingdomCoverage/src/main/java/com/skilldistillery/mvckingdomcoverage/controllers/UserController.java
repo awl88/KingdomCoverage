@@ -40,12 +40,20 @@ public class UserController {
 	public ModelAndView createUser() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("views/createUser.jsp");
-
+		return mv;
+	}
+	
+	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
+	public ModelAndView createUser(User user) {
+		ModelAndView mv = new ModelAndView();
+		udao.create(user);
+		mv.addObject("user", user);
+		mv.setViewName("views/createInsured.jsp");
 		return mv;
 	}
 	
 	@RequestMapping(path = "created.do", method = RequestMethod.POST)
-	public ModelAndView createdUser(Insured insured) {
+	public ModelAndView createdInsured(Insured insured) {
 		ModelAndView mv = new ModelAndView();
 		idao.create(insured);
 		mv.setViewName("views/index.jsp");

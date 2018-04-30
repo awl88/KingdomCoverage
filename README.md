@@ -27,7 +27,7 @@ mysql> exit;
 mysql -u admin -p
 ```
 * You will then be prompted to enter a password in the terminal, type `admin`. You can now use mysql syntax to interact with the database.
-* From this point on you should be able to edit the program and see changes when altering it in the Spring Tool Suite. 
+* From this point on you should be able to edit the program and see changes when altering it in the Spring Tool Suite.
 
 
 ## Program Behavior/Specifications
@@ -50,7 +50,7 @@ mysql -u admin -p
 
 ## Support and Contact Details
 
-_Please contact [Rebecca Allen](RebeccaZarsky@gmail.com), [Andrew Dufresne](), [Eli Harper]() or [Andrew Lyon]() for technical questions or assistance running the program._
+_Please contact [Rebecca Allen](RebeccaZarsky@gmail.com), [Andrew Dufresne](anlyon99@gmail.com), [Eli Harper](eli.harper@gmail.com) or [Andrew Lyon](adufresplatinum@gmail.com) for technical questions or assistance running the program._
 
 
 ## Technologies Used

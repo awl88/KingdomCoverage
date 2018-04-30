@@ -15,4 +15,6 @@ public interface OccupationDAO {
 
 	List<Insured> clientsShow(int id);
 
+	List<Occupation> getAllOccupations();
+
 }

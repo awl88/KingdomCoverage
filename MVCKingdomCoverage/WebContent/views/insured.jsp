@@ -52,6 +52,7 @@
 		<br>
 		
 		<form action="createPlan.do" method="get">
+			<input type="hidden" value="${insured.id}">
 			<input type="submit" class="btn btn-default" value = "Add a Plan">
 		</form>
 	

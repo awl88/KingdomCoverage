@@ -12,7 +12,7 @@ import com.skilldistillery.kingdomcoverage.entities.User;
 
 @Transactional
 @Component
-public abstract class UserDAOImpl implements UserDAO {
+public class UserDAOImpl implements UserDAO {
 	
 	@PersistenceContext
 	private EntityManager em;

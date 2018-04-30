@@ -24,8 +24,8 @@ public class InsuredDAOImpl implements InsuredDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	private SpeciesDAOImpl sdao = new SpeciesDAOImpl();
-	private OccupationDAOImpl idao = new OccupationDAOImpl();
+	private SpeciesDAO sdao = new SpeciesDAOImpl();
+	private OccupationDAO idao = new OccupationDAOImpl();
 	
 	@Override
 	public Insured show(int id) {

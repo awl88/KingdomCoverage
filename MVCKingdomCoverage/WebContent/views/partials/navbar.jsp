@@ -11,7 +11,7 @@
 
 	<div class="collapse navbar-collapse" id="navbarColor02">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="#">Home
+			<li class="nav-item active"><a class="nav-link" href="http://localhost:8080/MVCKingdomCoverage/">Home
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">Plans</a></li>

@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.skilldistillery.kingdomcoverage.entities.Address;
 import com.skilldistillery.kingdomcoverage.entities.Agent;
+import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
@@ -110,7 +111,6 @@ public class InsuredDAOImpl implements InsuredDAO {
 	
 	@Override
 	public Insured createUserAndInsuredAndAddress(UserInsuredAddressDTO dto) {
-		System.out.println(dto);
 		User user = new User();
 		user.setName(dto.getUserName());
 		user.setPassword(dto.getUserPassword());
@@ -140,5 +140,18 @@ public class InsuredDAOImpl implements InsuredDAO {
 		em.flush();
 		
 		return insured;
+	}
+	
+	@Override
+	public List<CoverageType> getCoveragesByInsuredId(int id) {
+		List<CoverageType> coverages = new ArrayList<>();
+		String query = "SELECT p FROM InsurancePlan p JOIN FETCH p.coverages WHERE p.insured.id = :id";
+		List<InsurancePlan> plans = em.createQuery(query, InsurancePlan.class)
+				.setParameter("id", id)
+				.getResultList();
+		
+		coverages = plans.get(0).getCoverages();
+		return coverages;
+		
 	}
 }

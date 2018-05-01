@@ -33,7 +33,7 @@
 					Message: ${m.messageBody}<br>
 				</c:forEach>
 			</c:if>
-			Plans:
+			Plans:<br>
 			<c:forEach var="p" items="${insured.plans}">
 				<c:forEach items="${p.coverages}" var="c">
 					<input type="checkbox" name="plan" value="${c.id}">
@@ -44,13 +44,10 @@
 		their plans and info, there will be options to edit the plans, add a new one
 		or delete the plan -->
 
-			<!-- closing body container div -->
-			<input type="submit" class="btn btn-warning" value="Remove policies">
-		</form>
 
 		<!-- Trigger the modal with a button -->
 		<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-			data-target="#myModal">Open Modal</button>
+			data-target="#myModal">Remove Policies</button>
 
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
@@ -59,20 +56,22 @@
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Modal Header</h4>
+						<h4 class="modal-title">Remove Policies</h4>
 					</div>
 					<div class="modal-body">
-						<p>Are you sure you would like to render this account inactive?</p>
+						<p>Are you sure you would like to delete this policy from the plan?</p>
 						<input type="submit" class="btn btn-warning" value="Yes">
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
 					</div>
 				</div>
 
 			</div>
 		</div>
+			<!-- closing body container div -->
+		</form>
+		
 	</div>
 
 	<jsp:include page="partials/foot.jsp"></jsp:include>

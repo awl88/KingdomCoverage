@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
+import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
 import com.skilldistillery.kingdomcoverage.entities.Occupation;
@@ -105,7 +106,7 @@ public class UserController {
 		Insured insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));
 		insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
 		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
-		
+		ipdao.getTotalCostOfPlanAndMultiplier(insured);
 		List<Agent> agents = insured.getAgents();
 		if (agents.size() > 0) {
 			Agent agent = adao.show(agents.get(0).getId());

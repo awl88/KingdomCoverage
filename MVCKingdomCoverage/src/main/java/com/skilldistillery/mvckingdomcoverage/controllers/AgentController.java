@@ -77,13 +77,17 @@ public class AgentController {
 	}
 	
 	@RequestMapping(path= "clientChanges.do", method = RequestMethod.POST)
-	public ModelAndView postClientChanges(HttpSession session, @RequestParam("plan") List<CoverageType> coverages) {
+	public ModelAndView postClientChanges(HttpSession session, 
+				@RequestParam("plan") List<CoverageType> coverages,
+				@RequestParam("iid") int id) {
 		
 		Agent agent= (Agent) session.getAttribute("agentSession");
 		ModelAndView mv = new ModelAndView();
+		Insured insured = idao.show(id);
+		
 		
 		for (CoverageType coverage : coverages) {
-			ctdao.deactivate(coverage.getId());
+			ipdao.deleteCoverageTypeBytId(insured.getPlans().get(0).getId(), coverages.get(0).getId());
 		}
 		
 		mv.setViewName("views/agent.jsp");

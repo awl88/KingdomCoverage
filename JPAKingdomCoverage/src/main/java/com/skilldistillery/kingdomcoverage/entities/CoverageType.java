@@ -38,7 +38,9 @@ public class CoverageType {
 		this.name = name;
 		this.cost = cost;
 	}
-
+	
+//	End of Constructors
+	
 	public String getName() {
 		return name;
 	}
@@ -59,7 +61,14 @@ public class CoverageType {
 		return id;
 	}
 	
+	public List<InsurancePlan> getPlans() {
+		return plans;
+	}
 
+	public void setPlans(List<InsurancePlan> plans) {
+		this.plans = plans;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

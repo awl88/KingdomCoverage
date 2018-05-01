@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
+import com.skilldistillery.kingdomcoverage.entities.Insured;
 
 @Transactional
 @Component
@@ -74,21 +75,24 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	}
 	
 	@Override
-	public double getTotalCostOfPlanAndMultiplier() {
-		String coverageTypeQuery = "SELECT SUM(ip.coverages.cost) FROM InsurancePlan ip JOIN FETCH ip.coverages";
-		List<Double> coverageCost = em.createQuery(coverageTypeQuery, Double.class)
-				.getResultList();
-		double totalCoverageCost = coverageCost.get(0);
-		String occupationQuery = "SELECT i.occupation.costMultiplier FROM Insured i";
-		List<Double> occupationMultiplier = em.createQuery(occupationQuery, Double.class)
-				.getResultList();
-		double occupationCostMultiplier = occupationMultiplier.get(0);
-		String speciesQuery = "SELECT i.species.costMultiplier FROM Insured i";
-		List<Double> speciesMultiplier = em.createQuery(speciesQuery, Double.class)
-				.getResultList();
-		double speciesCostMultiplier = speciesMultiplier.get(0);
-		double totalMultiplier = (speciesCostMultiplier + occupationCostMultiplier)/2;
-		double totalCostOfPlan = totalCoverageCost * totalMultiplier;
-		return totalCostOfPlan;
+	public void getTotalCostOfPlanAndMultiplier(Insured insured) {
+		List<InsurancePlan> plans = insured.getPlans();
+		if(plans.size() > 0) {
+			String coverageTypeQuery = "SELECT SUM(ip.coverages.cost) FROM InsurancePlan ip JOIN FETCH ip.coverages";
+			List<Double> coverageCost = em.createQuery(coverageTypeQuery, Double.class)
+					.getResultList();
+			double totalCoverageCost = coverageCost.get(0);
+			String occupationQuery = "SELECT i.occupation.costMultiplier FROM Insured i";
+			List<Double> occupationMultiplier = em.createQuery(occupationQuery, Double.class)
+					.getResultList();
+			double occupationCostMultiplier = occupationMultiplier.get(0);
+			String speciesQuery = "SELECT i.species.costMultiplier FROM Insured i";
+			List<Double> speciesMultiplier = em.createQuery(speciesQuery, Double.class)
+					.getResultList();
+			double speciesCostMultiplier = speciesMultiplier.get(0);
+			double totalMultiplier = (speciesCostMultiplier + occupationCostMultiplier)/2;
+			double totalCostOfPlan = totalCoverageCost * totalMultiplier;
+			plans.get(0).setTotalCostOfPlan(totalCostOfPlan);
+		}
 	}
 }

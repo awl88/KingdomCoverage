@@ -48,6 +48,9 @@ public class InsurancePlan {
 	joinColumns = @JoinColumn(name="insurance_plan_id"), 
 	inverseJoinColumns= @JoinColumn(name="coverage_id"))
 	private List<CoverageType> coverages;
+	
+	@Transient
+	private double totalCostOfPlan;
 
 //	End of fields
 
@@ -67,6 +70,14 @@ public class InsurancePlan {
 	}
 	
 //	End of constructors
+
+	public double getTotalCostOfPlan() {
+		return totalCostOfPlan;
+	}
+
+	public void setTotalCostOfPlan(double totalCostOfPlan) {
+		this.totalCostOfPlan = totalCostOfPlan;
+	}
 
 	public String getName() {
 		return name;

@@ -3,6 +3,7 @@ package com.skilldistillery.mvckingdomcoverage.data;
 import java.util.List;
 
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
+import com.skilldistillery.kingdomcoverage.entities.Insured;
 
 public interface InsurancePlanDAO {
 
@@ -18,6 +19,6 @@ public interface InsurancePlanDAO {
 
 	List<InsurancePlan> getAllPlans();
 
-	double getTotalCostOfPlanAndMultiplier();
+	void getTotalCostOfPlanAndMultiplier(Insured insured);
 
 }

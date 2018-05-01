@@ -65,7 +65,6 @@ public class UserController {
 		session.removeAttribute("insuredSession");
 		session.removeAttribute("agentSession");
 		mv.setViewName("views/index.jsp");
-
 		return mv;
 	}
 

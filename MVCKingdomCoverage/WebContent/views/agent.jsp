@@ -7,9 +7,10 @@
 	<!-- opening header div -->
 	<div>
 	
-		<h1>Agent ${agent.lName}'s Profile</h1>
 		<!-- navbar, page headers will go here -->
 		<jsp:include page="partials/navbar.jsp"></jsp:include>
+		
+		<h1>Agent ${agent.lName}'s Profile</h1>
 		
 		<!-- Verification of request for coverage being submitted -->
 		<c:if test="${! empty updateMessage}">

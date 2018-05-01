@@ -55,6 +55,17 @@ public class AgentController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(path = "logoutAgent.do", method = RequestMethod.GET)
+	public ModelAndView logoutAgent(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		session.removeAttribute("agentSession");
+		
+		mv.setViewName("views/index.jsp");
+		
+		return mv;
+	}
 
 	@RequestMapping(path = "getClient.do", method = RequestMethod.GET)
 	public ModelAndView getClient(HttpSession session, @RequestParam("id") int id) {

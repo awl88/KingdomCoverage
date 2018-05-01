@@ -12,15 +12,19 @@
 
 	<div class="companyNameSmaller collapse navbar-collapse" id="navbarColor02">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="index.do">Home
+		
+			<c:if test="${sessionScope.agentSession != null}">
+			<li class="nav-item active"><a class="nav-link" href="logoutAgent.do">Logout
 					<span class="sr-only">(current)</span>
 			</a></li>
+			</c:if>
+			
 			<li class="nav-item">
 				<c:if test="${sessionScope.insuredSession != null}">
-					<a class="nav-link" href="createPlan.jsp">Plans</a>
+					<a class="nav-link" href="createPlan.do">Plans</a>
 				</c:if>
 				<c:if test="${sessionScope.agentSession == null && sessionScope.insuredSession == null}">
-					<a class="nav-link" href="index.jsp">Plans</a>
+					<a class="nav-link" href="index.do">Plans</a>
 				</c:if>
 			</li>
 		</ul>

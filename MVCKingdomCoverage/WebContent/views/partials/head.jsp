@@ -15,5 +15,6 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
 	integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
 	crossorigin="anonymous">
+	
+<!--   <link rel="stylesheet" type="text/css" href="css/blended_layout.css"> -->
 <title>Kingdom Coverage</title>
-</head>

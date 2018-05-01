@@ -77,22 +77,27 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	
 	@Override
 	public void getTotalCostOfPlanAndMultiplier(Insured insured) {
+		Double totalCoverageCost = 0.0;
 		List<InsurancePlan> plans = insured.getPlans();
 		if(plans.size() > 0) {
-			String coverageTypeQuery = "SELECT SUM(ip.coverages.cost) FROM InsurancePlan ip JOIN FETCH ip.coverages";
-			List<Double> coverageCost = em.createQuery(coverageTypeQuery, Double.class)
-					.getResultList();
-			double totalCoverageCost = coverageCost.get(0);
+			InsurancePlan plan = plans.get(0);
+			List<CoverageType> coverages = plan.getCoverages();
+			if(coverages.size() > 0) {
+				for (CoverageType coverage : coverages) {
+					Double cost = coverage.getCost();
+					totalCoverageCost += cost;
+				}
+			}
 			String occupationQuery = "SELECT i.occupation.costMultiplier FROM Insured i";
 			List<Double> occupationMultiplier = em.createQuery(occupationQuery, Double.class)
 					.getResultList();
-			double occupationCostMultiplier = occupationMultiplier.get(0);
+			Double occupationCostMultiplier = occupationMultiplier.get(0);
 			String speciesQuery = "SELECT i.species.costMultiplier FROM Insured i";
 			List<Double> speciesMultiplier = em.createQuery(speciesQuery, Double.class)
 					.getResultList();
-			double speciesCostMultiplier = speciesMultiplier.get(0);
-			double totalMultiplier = (speciesCostMultiplier + occupationCostMultiplier)/2;
-			double totalCostOfPlan = totalCoverageCost * totalMultiplier;
+			Double speciesCostMultiplier = speciesMultiplier.get(0);
+			Double totalMultiplier = (speciesCostMultiplier + occupationCostMultiplier)/2;
+			Double totalCostOfPlan = totalCoverageCost * totalMultiplier;
 			plans.get(0).setTotalCostOfPlan(totalCostOfPlan);
 		}
 	}

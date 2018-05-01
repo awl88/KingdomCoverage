@@ -18,8 +18,8 @@
 		<div class="row">
 			<div class="formTextLight leftColumn col-md-3">
 				<form action="login.do" method="POST">
-					Username: <input type="text" name="name"> <br>
-					Password: <input type="text" name="password"> <br> <input
+					Username: <input type="text" name="name" style="border-radius: 5px; margin-bottom: 2px;"> <br>
+					Password: <input type="password" name="password" style="border-radius: 5px; margin-bottom: 2px;"> <br> <input
 						type="submit" class="gimmeRoom btn btn-primary"
 						value="Login As User">
 				</form>
@@ -45,8 +45,8 @@
 			</div>
 			<div class="formTextLight rightColumn col-md-3">
 				<form action="loginAgent.do" method="POST">
-					Username: <input type="text" name="name"> <br>
-					Password: <input type="text" name="password"> <br> <input
+					Username: <input type="text" name="name" style="border-radius: 5px; margin-bottom: 2px;"> <br>
+					Password: <input type="password" name="password" style="border-radius: 5px; margin-bottom: 2px;"> <br> <input
 						type="submit" class="gimmeRoom btn btn-primary"
 						value="Login As Agent">
 				</form>

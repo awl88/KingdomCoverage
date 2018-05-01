@@ -149,8 +149,11 @@ public class InsuredDAOImpl implements InsuredDAO {
 				.setParameter("id", id)
 				.getResultList();
 		
-		coverages = plans.get(0).getCoverages();
-		return coverages;
+		if (plans.size() != 0) {
+			coverages = plans.get(0).getCoverages();
+			return coverages;
+		}
 		
+		return null;
 	}
 }

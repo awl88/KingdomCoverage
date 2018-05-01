@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.skilldistillery.kingdomcoverage.entities.Address;
 import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
@@ -161,11 +162,27 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "updateInsured.do", method = RequestMethod.GET)
-	public ModelAndView update(HttpSession session) {
-		session.getAttribute("insuredSession");
+	public ModelAndView updateInsured(HttpSession session) {
+		Insured insured = (Insured) session.getAttribute("insuredSession");
 		ModelAndView mv = new ModelAndView();
+		Address address = insured.getAddress();
+		List<Species> allSpecies = sdao.getAllSpecies();
+		mv.addObject("allSpecies", allSpecies);
+		List<Occupation> jobs = odao.getAllOccupations();
+		mv.addObject("address", address);
+		mv.addObject("jobs", jobs);
+		mv.addObject("insured", insured);
 		mv.setViewName("views/updateInsured.jsp");
-
+		
+//		if (udao.getUserByName(dto.getUserName()) == null) {
+//			Insured insured = idao.createUserAndInsuredAndAddress(dto);
+//			mv.setViewName("views/index.jsp");
+//		} else {
+//			// put in a method to pass the dto object back to the form later, take this out
+//			// when that is done
+//			mv.setViewName("views/createUser.jsp");
+//		}
+		
 		return mv;
 	}
 

@@ -85,15 +85,6 @@ public class UserController {
 		return mv;
 	}
 	
-//	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-//	public ModelAndView createUser(User user) {
-//		ModelAndView mv = new ModelAndView();
-//		udao.create(user);
-//		mv.addObject("user", user);
-//		mv.setViewName("views/createInsured.jsp");
-//		return mv;
-//	}
-	
 	@RequestMapping(path = "created.do", method = RequestMethod.POST)
 	public ModelAndView createdInsured(UserInsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();

@@ -20,7 +20,7 @@
 
 	<!-- opening body container div -->
 	<div class="container">
-	Clients:
+	Clients:<br>
 		<c:forEach var="c" items="${agent.clients}">
 			<a href="getClient.do?id=${c.id}">${c.fName} ${c.lName}</a>
 			<br>

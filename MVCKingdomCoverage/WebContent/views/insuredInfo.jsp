@@ -37,8 +37,7 @@
 			<c:forEach var="p" items="${insured.plans}">
 				<c:forEach items="${p.coverages}" var="c">
 					<input type="checkbox" name="plan" value="${c.id}">
-					${c.name}
-					<br>
+					${c.name}<br>
 				</c:forEach>
 			</c:forEach>
 			<!-- a more detailed view of a single insured will go here, including all 

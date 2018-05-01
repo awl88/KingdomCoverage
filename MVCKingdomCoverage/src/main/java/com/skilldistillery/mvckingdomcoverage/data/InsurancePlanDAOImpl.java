@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
-import com.skilldistillery.kingdomcoverage.entities.Occupation;
 
 @Transactional
 @Component
@@ -73,4 +72,6 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 				.getResultList();
 		return plans;
 	}
+	
+	
 }

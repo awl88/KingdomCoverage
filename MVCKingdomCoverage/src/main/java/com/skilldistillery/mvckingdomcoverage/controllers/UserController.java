@@ -85,15 +85,6 @@ public class UserController {
 		return mv;
 	}
 	
-//	@RequestMapping(path = "createUser.do", method = RequestMethod.POST)
-//	public ModelAndView createUser(User user) {
-//		ModelAndView mv = new ModelAndView();
-//		udao.create(user);
-//		mv.addObject("user", user);
-//		mv.setViewName("views/createInsured.jsp");
-//		return mv;
-//	}
-	
 	@RequestMapping(path = "created.do", method = RequestMethod.POST)
 	public ModelAndView createdInsured(UserInsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
@@ -107,7 +98,7 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "login.do", method = RequestMethod.GET)
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public ModelAndView login(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password) {
 		ModelAndView mv = new ModelAndView();
 		

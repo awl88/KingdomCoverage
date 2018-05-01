@@ -11,6 +11,10 @@
 		<!-- navbar, page headers will go here -->
 		<jsp:include page="partials/navbar.jsp"></jsp:include>
 		
+		<!-- Verification of request for coverage being submitted -->
+		<c:if test="${! empty updateMessage}">
+			<h3>${updateMessage}</h3>
+		</c:if>
 	<!-- closing header div -->
 	</div>
 

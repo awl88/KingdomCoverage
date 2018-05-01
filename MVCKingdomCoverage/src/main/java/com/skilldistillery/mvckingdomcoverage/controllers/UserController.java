@@ -147,6 +147,7 @@ public class UserController {
 	public ModelAndView requestNewCoverage(HttpSession session, @RequestParam("message") String messageBody) {
 
 		Insured insured = (Insured) session.getAttribute("insuredSession");
+		ipdao.getTotalCostOfPlanAndMultiplier(insured);
 		ModelAndView mv = new ModelAndView();
 		String fullMessage = "Hey, " + insured.getAgents().get(0).getfName() + "! " + insured.getfName() + " "
 				+ insured.getlName() + " would like a new " + messageBody + " plan.";
@@ -157,6 +158,9 @@ public class UserController {
 		((Insured) session.getAttribute("insuredSession")).getAgents().get(0).addMessageToMessages(message);
 		mdao.create(message);
 		mv.setViewName("views/insured.jsp");
+		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
+		mv.addObject("plans", insured.getPlans().get(0));
+		mv.addObject("insured", insured);
 		mv.addObject("insured", session.getAttribute("insuredSession"));
 		mv.addObject("updateMessage", "Your request has been submitted!");
 
@@ -182,12 +186,17 @@ public class UserController {
 	public ModelAndView submitRequest(HttpSession session, InsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
 		Insured insured = (Insured) session.getAttribute("insuredSession");
+		insured.setPlans(idao.listPlans(insured.getId()));
 		Address address = idao.getAddressByInsuredId(insured.getId());
 		insured.setAddress(idao.getAddressByInsuredId(insured.getId()));
 		idao.updateInsured(dto, address, insured);
+		ipdao.getTotalCostOfPlanAndMultiplier(insured);
 		session.setAttribute("insuredSession", insured);
-		String updateMessage = "Request successfully submitted";
+		String updateMessage = "Profile successfully updated";
 		mv.addObject("updateMessage", updateMessage);
+		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
+		mv.addObject("plans", insured.getPlans().get(0));
+		mv.addObject("insured", insured);
 		mv.setViewName("views/insured.jsp");
 
 		return mv;

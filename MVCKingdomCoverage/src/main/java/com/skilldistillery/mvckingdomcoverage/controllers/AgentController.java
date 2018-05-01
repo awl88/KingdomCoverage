@@ -88,6 +88,7 @@ public class AgentController {
 		
 		
 		mv.addObject("insured", insured);
+		mv.addObject("agent", insured.getAgents().get(0));
 		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
 		mv.addObject("allCoverages", ctdao.getAllTypes());
 		

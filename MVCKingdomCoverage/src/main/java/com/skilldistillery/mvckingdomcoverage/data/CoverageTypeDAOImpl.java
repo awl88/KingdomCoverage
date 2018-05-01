@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
-import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
-
 
 @Transactional
 @Component

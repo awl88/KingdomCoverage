@@ -18,4 +18,6 @@ public interface InsurancePlanDAO {
 
 	List<InsurancePlan> getAllPlans();
 
+	double getTotalCostOfPlanAndMultiplier();
+
 }

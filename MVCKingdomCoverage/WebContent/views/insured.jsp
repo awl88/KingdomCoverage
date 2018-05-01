@@ -73,6 +73,10 @@
 							</tr>
 						</tbody>
 					</table>
+					<form action="updateInsured.do" method="GET">
+								<input type="hidden" value="${insured.id}"> <input
+									type="submit" class="btn btn-default" value="Update Profile">
+					</form>
 				</div>
 				<div class="feed">
 				<br>
@@ -85,30 +89,21 @@
 									<c:otherwise>
 										<c:forEach var="p" items="${insured.plans}">
 											<c:forEach items="${p.coverages}" var="c">
-												<input type="checkbox" name="plan" value="${c.id}">
-											${c.name}<br>
-												<input type="hidden" name="iid" value="${insured.id}">
+												<h5>${c.name}</h5>
 											</c:forEach>
 										</c:forEach>
-										
-					
-										
-										<!-- closing body container div -->
 									</c:otherwise>
 								</c:choose>
 							
 					<div class="row">
-						<div class="col-md-6">
-							<form action="update.do" method="get">
-								<input type="submit" class="btn btn-primary" value="Edit Plans">
-							</form>
-						</div>
+						<div class="col-md-3"></div>
 						<div class="col-md-6">
 							<form action="createPlan.do" method="get">
 								<input type="hidden" value="${insured.id}"> <input
 									type="submit" class="btn btn-default" value="Add a Plan">
 							</form>
 						</div>
+						<div class="col-md-3"></div>
 					</div>
 				</div>
 			</div>
@@ -117,7 +112,7 @@
 				<table>
 					<thead>
 						<tr>
-							<td>Messages:</td>
+							<td><h3 class="companyName">Messages:</h3></td>
 						</tr>
 					</thead>
 					<tbody>

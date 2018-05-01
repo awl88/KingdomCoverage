@@ -115,9 +115,11 @@ public class UserController {
 		insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
 		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 		
-		Agent agent = adao.show(insured.getAgents().get(0).getId());
-		agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
-		
+		List<Agent> agents = insured.getAgents();
+		if (agents.size() > 0) {
+			Agent agent = adao.show(agents.get(0).getId());
+			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
+		}
 		mv.addObject("insured", insured);
 		mv.setViewName("views/insured.jsp");
 		

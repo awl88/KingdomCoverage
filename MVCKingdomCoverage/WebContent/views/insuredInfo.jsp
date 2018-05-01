@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="container">
-	<form action = "agent.jsp" method = "POST"></form>
+	<form action = "agent.jsp" method = "POST">
 		Name: ${insured.fName} ${insured.lName}
 		<br>
 		Age: ${insured.age}
@@ -49,6 +49,10 @@
 		or delete the plan -->
 	
 	<!-- closing body container div -->
+		<input type="submit" class ="btn btn-warning" value = "Remove policies">
+	</form>
+	
+	
 	</div>
 	
 <jsp:include page="partials/foot.jsp"></jsp:include>

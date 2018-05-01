@@ -47,7 +47,7 @@ public class InsurancePlan {
 	joinColumns = @JoinColumn(name="insurance_plan_id"), 
 	inverseJoinColumns= @JoinColumn(name="coverage_id"))
 	private List<CoverageType> coverages;
-	
+
 //	End of fields
 
 	public InsurancePlan() {
@@ -118,27 +118,35 @@ public class InsurancePlan {
 	public int getId() {
 		return id;
 	}
+	
+	public List<CoverageType> getCoverages() {
+		return coverages;
+	}
 
-//	@Override
-//	public String toString() {
-//		StringBuilder builder = new StringBuilder();
-//		builder.append("InsurancePlan [id=");
-//		builder.append(id);
-//		builder.append(", name=");
-//		builder.append(name);
-//		builder.append(", active=");
-//		builder.append(active);
-//		builder.append(", insured=");
-//		builder.append(insured);
-//		builder.append(", agent=");
-//		builder.append(agent);
-//		builder.append(", createDate=");
-//		builder.append(createDate);
-//		builder.append(", endDate=");
-//		builder.append(endDate);
-//		builder.append("]");
-//		return builder.toString();
-//	}
+	public void setCoverages(List<CoverageType> coverages) {
+		this.coverages = coverages;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("InsurancePlan [id=");
+		builder.append(id);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", active=");
+		builder.append(active);
+		builder.append(", insured=");
+		builder.append(insured);
+		builder.append(", agent=");
+		builder.append(agent);
+		builder.append(", createDate=");
+		builder.append(createDate);
+		builder.append(", endDate=");
+		builder.append(endDate);
+		builder.append("]");
+		return builder.toString();
+	}
 
 	@Override
 	public int hashCode() {

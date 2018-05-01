@@ -24,7 +24,7 @@
 						value="Login As User">
 				</form>
 				<br>
-				<form action="create.do" method="POST">
+				<form action="create.do" method="GET">
 					<input type="submit" class="gimmeRoom btn btn-info"
 						value="Create Account">
 				</form>

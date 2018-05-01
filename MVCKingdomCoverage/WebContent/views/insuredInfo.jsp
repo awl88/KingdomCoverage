@@ -18,49 +18,31 @@
 			</div>
 		</div>
 		<div class="row">
-			<!-- <form action="agent.jsp" method="POST"> -->
-			<form action="clientChanges.do" method="POST">
-				<div class="feedHost col-md-8">
-
+			<div class="formTextLight leftColumn col-md-2"></div>
+			<div class="feedHost col-md-8">
+				<form action="clientChanges.do" method="POST">
 					<div class="feed">
-						<table>
-							<tbody>
-								<tr>
-									<td>Name:</td>
-									<td>-------------------------------</td>
-									<td>${insured.fName}${insured.lName}</td>
-								</tr>
-								<tr>
-									<td>Age:</td>
-									<td>-------------------------------</td>
-									<td>${insured.age}</td>
-								</tr>
-								<tr>
-									<td>Gender:</td>
-									<td>-------------------------------</td>
-									<td>${insured.gender}</td>
-								</tr>
-								<tr>
-									<td>Address:</td>
-									<td>-------------------------------</td>
-									<td>${insured.address.street},${insured.address.city},
-										${insured.address.realm}</td>
-								</tr>
-								<tr>
-									<td>Agent:</td>
-									<td>-------------------------------</td>
-									<td><c:if test="${!empty insured.agents}">
-											<c:forEach var="a" items="${insured.agents}">
+						<h4>Name: </h4>
+						<h6>${insured.fName} ${insured.lName}</h6>
+						<h4>Age: </h4>
+						<h6>${insured.age} years young</h6>
+						<h4>Gender: </h4>
+						<h6>${insured.gender}</h6>
+						<h4>Address: </h4>
+						<h6>${insured.address.street}, ${insured.address.city},
+										${insured.address.realm}
+						</h6>
+						<h4>Agent: </h4>
+						<h6>
+							<c:if test="${!empty insured.agents}">
+								<c:forEach var="a" items="${insured.agents}">
 									${a.fName} ${a.lName}
 								</c:forEach>
-										</c:if></td>
-								</tr>
-
-							</tbody>
-						</table>
+							</c:if>
+						</h6>
 					</div>
 					<div class="feed">
-						<h4>Plans:</h4>
+						<h4 style="margin-top: 1em;">Plans:</h4>
 						<c:choose>
 							<c:when test="${empty coverages}">
 								<h3>No plans to display at this time. Go sell more
@@ -76,7 +58,7 @@
 								</c:forEach>
 								<!-- Trigger the modal with a button -->
 								<button type="button" class="btn btn-info btn-lg"
-									data-toggle="modal" data-target="#myModal">Remove
+									data-toggle="modal" data-target="#myModal" style="margin: 1em 1em 1em 1em;">Remove
 									Policies</button>
 
 								<!-- Modal -->
@@ -105,71 +87,48 @@
 							</c:otherwise>
 						</c:choose>
 					</div>
-				</div>
-			</form>
-		</div>
-
-		<div class="addPolicies">
-			<form action="addPolicies.do" method="POST">
-				<!-- Trigger the modal with a button -->
-				<button type="button" class="btn btn-info btn-lg"
-					data-toggle="modal" data-target="#addModal">Add Policies</button>
-
-				<!-- Modal -->
-				<div id="addModal" class="modal fade" role="dialog">
-					<div class="modal-dialog">
-
-						<!-- Modal content-->
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title">Add Policies</h4>
-							</div>
-							<div class="modal-body">
-								<select name="coverage">
-									<c:forEach var="c" items="${allCoverages}">
-										<option value="${c.name}">${c.name}</option>
-									</c:forEach>
-								</select>
-								<p>Are you sure you want to add this policy?</p>
-								<input type="hidden" name="iid" value="${insured.id}">
-								<input type="submit" class="btn btn-warning" value="Yes">
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Back</button>
+				</form>
+				<div class="feed addPolicies">
+					<form action="addPolicies.do" method="POST">
+					<!-- Trigger the modal with a button -->
+					<button type="button" class="btn btn-info btn-lg"
+						data-toggle="modal" data-target="#addModal" style="margin: 2em 2em 2em 2em;">Add Policies</button>
+					<!-- Modal -->
+					<div id="addModal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
+							<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title">Add Policies</h4>
+									</div>
+									<div class="modal-body">
+										<select name="coverage">
+											<c:forEach var="c" items="${allCoverages}">
+												<option value="${c.name}">${c.name}</option>
+											</c:forEach>
+										</select>
+										<p>Are you sure you want to add this policy?</p>
+										<input type="hidden" name="iid" value="${insured.id}">
+										<input type="submit" class="btn btn-warning" value="Yes">
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Back</button>
+									</div>
+								</div>
 							</div>
 						</div>
-
-					</div>
+					</form>
 				</div>
-			</form>
-		</div>
+			</div>
+		
 
-		<div class="formTextLight rightColumn col-md-4">
-			<table>
-				<thead>
-					<tr>
-						<td>Messages:</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><c:if test="${!empty insured.messages}">
-								<c:forEach var="m" items="${insured.messages}">
-									Message Id: ${m.id}<br>
-									From: ${m.insured.fName} ${m.insured.lName}<br>
-									To: ${m.agent.fName} ${m.agent.lName}<br>
-									Message: ${m.messageBody}<br>
-									<br>
-								</c:forEach>
-							</c:if></td>
-					</tr>
-				</tbody>
-			</table>
+		
+		
+		<div class="formTextLight rightColumn col-md-2"></div>
 		</div>
 	</div>
 	<div class="row"></div>
-	</div>
 	<jsp:include page="partials/foot.jsp"></jsp:include>
 </body>
 </html>

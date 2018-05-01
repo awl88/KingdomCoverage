@@ -75,8 +75,10 @@
 								<td>-------------------------------</td>
 								<td>
 									<ul>
-										<c:forEach var="p" items="${Insured.plans}">
-											<li>${p.name}</li>
+										<c:forEach var ="c" items="${plans.coverages}">
+											<li>${c.name}</li>
+										</c:forEach>
+										<c:forEach var="p" items="${insured.plans}">
 											<li>${p.totalCostOfPlan}</li>
 										</c:forEach>
 									</ul>

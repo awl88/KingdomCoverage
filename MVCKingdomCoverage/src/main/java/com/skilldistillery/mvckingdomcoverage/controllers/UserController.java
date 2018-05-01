@@ -106,6 +106,7 @@ public class UserController {
 		Insured insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));
 		insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
 		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
+//		insured.setPlans(idao.);
 		ipdao.getTotalCostOfPlanAndMultiplier(insured);
 		List<Agent> agents = insured.getAgents();
 		if (agents.size() > 0) {

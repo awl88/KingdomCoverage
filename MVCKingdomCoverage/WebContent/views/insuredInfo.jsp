@@ -1,8 +1,7 @@
-"WebContent/views/insuredInfo.jsp"<%@ page language="java"
+<%@ page language="java"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="partials/head.jsp"></jsp:include>
-
 <body>
 
 	<!-- opening header div -->
@@ -34,47 +33,53 @@
 				</c:forEach>
 			</c:if>
 			Plans:<br>
-			<c:if test="${!empty coverages}">
-				<c:forEach var="p" items="${insured.plans}">
-					<c:forEach items="${p.coverages}" var="c">
-						<input type="checkbox" name="plan" value="${c.id}">
+			<c:choose>
+				<c:when test="${empty coverages}">
+					<h3>No plans to display at this time. Contact your agent</h3>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="p" items="${insured.plans}">
+						<c:forEach items="${p.coverages}" var="c">
+							<input type="checkbox" name="plan" value="${c.id}">
 						${c.name}<br>
+							<input type="hidden" name="iid" value="${insured.id}">
+						</c:forEach>
 					</c:forEach>
-				</c:forEach>
-			</c:if>
-			<input type="hidden" name="iid" value="${insured.id}">
-			<!-- a more detailed view of a single insured will go here, including all 
+					<!-- a more detailed view of a single insured will go here, including all 
 		their plans and info, there will be options to edit the plans, add a new one
 		or delete the plan -->
 
 
-			<!-- Trigger the modal with a button -->
-			<button type="button" class="btn btn-info btn-lg" data-toggle="modal"
-				data-target="#myModal">Remove Policies</button>
+					<!-- Trigger the modal with a button -->
+					<button type="button" class="btn btn-info btn-lg"
+						data-toggle="modal" data-target="#myModal">Remove
+						Policies</button>
 
-			<!-- Modal -->
-			<div id="myModal" class="modal fade" role="dialog">
-				<div class="modal-dialog">
+					<!-- Modal -->
+					<div id="myModal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
 
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">Remove Policies</h4>
-						</div>
-						<div class="modal-body">
-							<p>Are you sure you would like to delete this policy from the
-								plan?</p>
-							<input type="submit" class="btn btn-warning" value="Yes">
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Back</button>
+							<!-- Modal content-->
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title">Remove Policies</h4>
+								</div>
+								<div class="modal-body">
+									<p>Are you sure you would like to delete this policy from
+										the plan?</p>
+									<input type="submit" class="btn btn-warning" value="Yes">
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Back</button>
+								</div>
+							</div>
+
 						</div>
 					</div>
-
-				</div>
-			</div>
-			<!-- closing body container div -->
+					<!-- closing body container div -->
+				</c:otherwise>
+			</c:choose>
 		</form>
 
 	</div>

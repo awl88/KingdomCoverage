@@ -15,6 +15,7 @@ import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.kingdomcoverage.entities.InsuredAddressDTO;
 import com.skilldistillery.kingdomcoverage.entities.Message;
 import com.skilldistillery.kingdomcoverage.entities.User;
 import com.skilldistillery.kingdomcoverage.entities.UserInsuredAddressDTO;
@@ -59,6 +60,45 @@ public class InsuredDAOImpl implements InsuredDAO {
 		managed.setAddress(insured.getAddress());
 		managed.setPlans(insured.getPlans());
 		return managed;
+	}
+	
+	@Override
+	public Insured updateInsured(InsuredAddressDTO dto, Address address, Insured insured) {
+		address.setStreet(dto.getAddressStreet());
+		address.setCity(dto.getAddressCity());
+		address.setRealm(dto.getAddressRealm());
+		
+		insured.setfName(dto.getInsuredFirstName());
+		insured.setlName(dto.getInsuredLastName());
+		insured.setAge(dto.getInsuredAge());
+		insured.setGender(dto.getInsuredGender());
+		insured.setSpecies(sdao.showSpecies(dto.getInsuredSpeciesId()));
+		insured.setOccupation(odao.show(dto.getInsuredOccupationId()));
+		
+		Insured managed = em.find(Insured.class, insured.getId());
+		managed.setAge(insured.getAge());
+		managed.setGender(insured.getGender());
+		managed.setfName(insured.getfName());
+		managed.setlName(insured.getlName());
+		managed.setSpecies(insured.getSpecies());
+		managed.setOccupation(insured.getOccupation());
+		managed.setMessages(insured.getMessages());
+		managed.setAddress(insured.getAddress());
+		managed.setPlans(insured.getPlans());
+		return managed;
+	}
+	
+	@Override
+	public Address getAddressByInsuredId(int id) {
+		Address address = new Address();
+		String query = "SELECT i FROM Insured i JOIN FETCH i.address where i.id = :id";
+		List<Insured> insured = em.createQuery(query, Insured.class)
+				.setParameter("id", id)
+				.getResultList();
+		if (insured.size() > 0) {
+			address = insured.get(0).getAddress();
+		}
+ 		return address;
 	}
 	
 	@Override

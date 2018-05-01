@@ -17,6 +17,7 @@ import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.kingdomcoverage.entities.InsuredAddressDTO;
 import com.skilldistillery.kingdomcoverage.entities.Message;
 import com.skilldistillery.kingdomcoverage.entities.Occupation;
 import com.skilldistillery.kingdomcoverage.entities.Species;
@@ -174,28 +175,18 @@ public class UserController {
 		mv.addObject("address", address);
 		mv.addObject("jobs", jobs);
 		mv.addObject("insured", insured);
-		mv.setViewName("views/updateInsured.jsp");
-		
-//		if (udao.getUserByName(dto.getUserName()) == null) {
-//			Insured insured = idao.createUserAndInsuredAndAddress(dto);
-//			mv.setViewName("views/index.jsp");
-//		} else {
-//			// put in a method to pass the dto object back to the form later, take this out
-//			// when that is done
-//			mv.setViewName("views/createUser.jsp");
-//		}
-		
+		mv.setViewName("views/updateInsured.jsp");		
 		return mv;
 	}
 
-	@RequestMapping(path = "submitRequest.do", method = RequestMethod.POST)
-	public ModelAndView submitRequest(HttpSession session, int id, Insured insured) {
+	@RequestMapping(path = "insuredUpdated.do", method = RequestMethod.POST)
+	public ModelAndView submitRequest(HttpSession session, InsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
-		session.getAttribute("insuredSession");
-		Insured updated = idao.update(id, insured);
-
-		session.setAttribute("insuredSession", updated);
-
+		Insured insured = (Insured) session.getAttribute("insuredSession");
+		Address address = idao.getAddressByInsuredId(insured.getId());
+		insured.setAddress(idao.getAddressByInsuredId(insured.getId()));
+		idao.updateInsured(dto, address, insured);
+		session.setAttribute("insuredSession", insured);
 		String updateMessage = "Request successfully submitted";
 		mv.addObject("updateMessage", updateMessage);
 		mv.setViewName("views/insured.jsp");

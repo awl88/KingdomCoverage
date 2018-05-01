@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	<h1>Update your information</h1>
-	<form action="created.do" method="POST">
+	<form action="insuredUpdated.do" method="POST">
 		<div class="feedHost col">
 			<label for="insuredFirstName">Please update your first name:</label>
 			<input type="text" name="insuredFirstName" value="${insured.fName}" style="margin-top: 1.5px;" /> 

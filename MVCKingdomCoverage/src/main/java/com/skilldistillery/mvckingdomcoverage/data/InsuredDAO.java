@@ -2,17 +2,17 @@ package com.skilldistillery.mvckingdomcoverage.data;
 
 import java.util.List;
 
+import com.skilldistillery.kingdomcoverage.entities.Address;
 import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.kingdomcoverage.entities.InsuredAddressDTO;
 import com.skilldistillery.kingdomcoverage.entities.Message;
 import com.skilldistillery.kingdomcoverage.entities.UserInsuredAddressDTO;
 
 public interface InsuredDAO {
 	public Insured create(Insured insured);
-
-	public Insured update(int id, Insured insured);
 
 	public List<Message> inboxShow(int id);
 
@@ -29,5 +29,11 @@ public interface InsuredDAO {
 	Insured createUserAndInsuredAndAddress(UserInsuredAddressDTO dto);
 
 	List<CoverageType> getCoveragesByInsuredId(int id);
+
+	Insured updateInsured(InsuredAddressDTO dto, Address address, Insured insured);
+
+	Insured update(int id, Insured insured);
+
+	Address getAddressByInsuredId(int id);
 	
 }

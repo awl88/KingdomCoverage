@@ -29,7 +29,7 @@ body {
 }
 
 .leftColumn {
-	background-color: rgba(0,0,0,.45);
+	background-color: rgba(0,0,0,.65);
 	float: left;
 	clear: none;
 	height: auto;
@@ -58,7 +58,7 @@ body {
 }
 
 .rightColumn {
-	background-color: rgba(0,0,0,.45);
+	background-color: rgba(0,0,0,.65);
 	float: right;
 	clear: none;
 	height: auto;
@@ -107,3 +107,7 @@ body {
 	border: solid .5px black;
 	background-color: rgba(0,0,0,.45);
 }
+thead {
+	border-bottom: solid 1.5px black;
+}
+

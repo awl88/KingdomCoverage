@@ -19,7 +19,7 @@
 			<div class="formTextLight leftColumn col-md-3">
 				<form action="login.do" method="POST">
 					Username: <input type="text" name="name"> <br>
-					Password: <input type="text" name="password"> <br> <input
+					Password: <input type="password" name="password"> <br> <input
 						type="submit" class="gimmeRoom btn btn-primary"
 						value="Login As User">
 				</form>
@@ -46,7 +46,7 @@
 			<div class="formTextLight rightColumn col-md-3">
 				<form action="loginAgent.do" method="POST">
 					Username: <input type="text" name="name"> <br>
-					Password: <input type="text" name="password"> <br> <input
+					Password: <input type="password" name="password"> <br> <input
 						type="submit" class="gimmeRoom btn btn-primary"
 						value="Login As Agent">
 				</form>

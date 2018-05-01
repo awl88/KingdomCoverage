@@ -49,6 +49,7 @@
 			<ul>
 		<c:forEach var="p" items="${Insured.plans}">
 				<li>${p.name}</li>
+				<li>${totalCostOfPlan}</li>
 		</c:forEach>
 			</ul>
 		<form action="update.do" method="get">

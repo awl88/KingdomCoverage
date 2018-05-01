@@ -59,8 +59,11 @@ public class AgentController {
 		
 		insured.setAgents(idao.getAgentsByInsuredId(id));
 		insured.setPlans(idao.listPlans(id));
+		List<InsurancePlan> plans = insured.getPlans();
 		insured.setMessages(idao.getMessagesByInsuredId(id));
-		
+		for (InsurancePlan plan : plans) {
+			plan.setCoverages(plan.getCoverages());
+		}
 		mv.addObject("insured", insured);
 
 		

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.kingdomcoverage.entities.Agent;
+import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
+import com.skilldistillery.mvckingdomcoverage.data.CoverageTypeDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
 
@@ -31,6 +33,9 @@ public class AgentController {
 	
 	@Autowired
 	InsurancePlanDAO ipdao;
+	
+	@Autowired
+	CoverageTypeDAO ctdao;
 	
 	@RequestMapping(path= "loginAgent.do", method = RequestMethod.POST)
 	public ModelAndView loginAgent(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password){
@@ -72,13 +77,13 @@ public class AgentController {
 	}
 	
 	@RequestMapping(path= "clientChanges.do", method = RequestMethod.POST)
-	public ModelAndView postClientChanges(HttpSession session, @RequestParam("plan") List<InsurancePlan> plans) {
+	public ModelAndView postClientChanges(HttpSession session, @RequestParam("plan") List<CoverageType> coverages) {
 		
 		Agent agent= (Agent) session.getAttribute("agentSession");
 		ModelAndView mv = new ModelAndView();
 		
-		for (InsurancePlan plan : plans) {
-			ipdao.deactivate(plan.getId());
+		for (CoverageType coverage : coverages) {
+			ctdao.deactivate(coverage.getId());
 		}
 		
 		mv.setViewName("views/agent.jsp");

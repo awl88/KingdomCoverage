@@ -51,7 +51,7 @@ public class InsurancePlan {
 	private List<CoverageType> coverages;
 	
 	@Transient
-	private double totalCostOfPlan;
+	private int totalCostOfPlan;
 
 //	End of fields
 
@@ -72,11 +72,11 @@ public class InsurancePlan {
 	
 //	End of constructors
 
-	public double getTotalCostOfPlan() {
+	public int getTotalCostOfPlan() {
 		return totalCostOfPlan;
 	}
 
-	public void setTotalCostOfPlan(double totalCostOfPlan) {
+	public void setTotalCostOfPlan(int totalCostOfPlan) {
 		this.totalCostOfPlan = totalCostOfPlan;
 	}
 

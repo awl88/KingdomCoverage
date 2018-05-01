@@ -128,6 +128,17 @@ public class UserController {
 		session.setAttribute("insuredSession", insured);
 		return mv;
 	}
+	
+	@RequestMapping(path = "logoutInsured.do", method = RequestMethod.GET)
+	public ModelAndView logoutAgent(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		session.removeAttribute("insuredSession");
+		
+		mv.setViewName("views/index.jsp");
+		
+		return mv;
+	}
 
 	@RequestMapping(path = "insuredWithMessage.do", method = RequestMethod.POST)
 	public ModelAndView requestNewCoverage(HttpSession session, @RequestParam("message") String messageBody) {

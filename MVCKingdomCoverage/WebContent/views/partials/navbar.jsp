@@ -4,7 +4,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark" style="position: fixed; width: 100%; margin-bottom: 15px; text-align: center; background-color: rgba(0,0,0,.45);">
 	
-	<a class="companyNameSmall navbar-brand" href="index.do">Kingdom Coverage</a>
+	<a class="companyNameSmall navbar-brand" href="#">Kingdom Coverage</a>
 	
 	
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -28,10 +28,7 @@
 					<span class="sr-only">(current)</span>
 			</a>
 			</c:if>
-<<<<<<< HEAD
-			
-=======
->>>>>>> d1080feadb3144829fbc91fabdd17a92c6a01cb7
+
 			<c:if test="${sessionScope.insuredSession != null}">
 			<a class="nav-link nav-item active" href="logoutInsured.do" style="float:right;">Logout
 					<span class="sr-only">(current)</span>

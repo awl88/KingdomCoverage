@@ -70,7 +70,9 @@ public class AgentController {
 			plan.setCoverages(idao.getCoveragesByInsuredId(id));
 		}
 		
+		
 		mv.addObject("insured", insured);
+		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
 		
 		mv.setViewName("views/insuredInfo.jsp");
 		return mv;
@@ -78,16 +80,15 @@ public class AgentController {
 	
 	@RequestMapping(path= "clientChanges.do", method = RequestMethod.POST)
 	public ModelAndView postClientChanges(HttpSession session, 
-				@RequestParam("plan") List<CoverageType> coverages,
+				@RequestParam("plan") List<Integer> coverageIds,
 				@RequestParam("iid") int id) {
 		
 		Agent agent= (Agent) session.getAttribute("agentSession");
 		ModelAndView mv = new ModelAndView();
 		Insured insured = idao.show(id);
 		
-		
-		for (CoverageType coverage : coverages) {
-			ipdao.deleteCoverageTypeBytId(insured.getPlans().get(0).getId(), coverages.get(0).getId());
+		for (Integer coverageId : coverageIds) {
+			ipdao.deleteCoverageTypeBytId(insured.getPlans().get(0).getId(), coverageId);
 		}
 		
 		mv.setViewName("views/agent.jsp");

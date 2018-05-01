@@ -40,6 +40,7 @@
 					${c.name}<br>
 				</c:forEach>
 			</c:forEach>
+			<input type="hidden" name="iid" value="${insured.id}">
 			<!-- a more detailed view of a single insured will go here, including all 
 		their plans and info, there will be options to edit the plans, add a new one
 		or delete the plan -->

@@ -329,6 +329,7 @@ INSERT INTO `user` (`id`, `name`, `password`) VALUES (62, 'verestag', 'wombat1')
 INSERT INTO `user` (`id`, `name`, `password`) VALUES (63, 'clobor', 'wombat1');
 INSERT INTO `user` (`id`, `name`, `password`) VALUES (64, 'larry', 'wombat1');
 INSERT INTO `user` (`id`, `name`, `password`) VALUES (65, 'asteria', 'wombat1');
+INSERT INTO `user` (`id`, `name`, `password`) VALUES (66, 'charlietheunicorn', 'wombat1');
 
 COMMIT;
 
@@ -461,6 +462,7 @@ INSERT INTO `address` (`id`, `street`, `city`, `realm`) VALUES (62, '63 Silent P
 INSERT INTO `address` (`id`, `street`, `city`, `realm`) VALUES (63, '84 Lava Flow Path\n', 'Crowhand', 'The Obscure Vales');
 INSERT INTO `address` (`id`, `street`, `city`, `realm`) VALUES (64, '99 Lava Flow Alley\n', 'Rockkeep', 'The Barbarian World');
 INSERT INTO `address` (`id`, `street`, `city`, `realm`) VALUES (65, '102 Blue Comet Track\n', 'Fearwood', 'The Barbarian World');
+INSERT INTO `address` (`id`, `street`, `city`, `realm`) VALUES (66, '101 Gumdrop Way', 'Candy Mountain', 'The Barbarian World');
 
 COMMIT;
 
@@ -530,6 +532,7 @@ INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `ad
 INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (58, 29, 'm', 13, 18, 63, 63, 'Clobor', 'Uribates');
 INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (59, 39, 'm', 14, 19, 64, 64, 'Larry', 'Longsnout');
 INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (60, 107, 'm', 15, 20, 65, 65, 'Asteria', 'Sanguinea');
+INSERT INTO `insured` (`id`, `age`, `gender`, `species_id`, `occupation_id`, `address_id`, `user_id`, `first_name`, `last_name`) VALUES (61, 13, 'm', 18, 1, 66, 66, 'Charlie', 'The Unicorn');
 
 COMMIT;
 
@@ -573,6 +576,7 @@ INSERT INTO `insurance_plan` (`id`, `name`, `create_date`, `end_date`, `active`,
 INSERT INTO `insurance_plan` (`id`, `name`, `create_date`, `end_date`, `active`, `insured_id`, `agent_id`) VALUES (18, NULL, '2007-01-08', NULL, 'y', 48, 4);
 INSERT INTO `insurance_plan` (`id`, `name`, `create_date`, `end_date`, `active`, `insured_id`, `agent_id`) VALUES (19, NULL, '2011-03-05', '2014-03-05', 'n', 49, 4);
 INSERT INTO `insurance_plan` (`id`, `name`, `create_date`, `end_date`, `active`, `insured_id`, `agent_id`) VALUES (20, NULL, '2008-08-18', NULL, 'y', 50, 4);
+INSERT INTO `insurance_plan` (`id`, `name`, `create_date`, `end_date`, `active`, `insured_id`, `agent_id`) VALUES (21, NULL, '2001-01-01', NULL, 'y', 61, 5);
 
 COMMIT;
 
@@ -648,6 +652,26 @@ INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (19, 14)
 INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (20, 15);
 INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (20, 16);
 INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (20, 17);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 1);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 2);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 3);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 4);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 5);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 6);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 7);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 8);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 9);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 10);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 11);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 12);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 13);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 14);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 15);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 16);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 17);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 18);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 19);
+INSERT INTO `plan_coverage` (`insurance_plan_id`, `coverage_id`) VALUES (21, 20);
 
 COMMIT;
 

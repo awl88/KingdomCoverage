@@ -98,7 +98,8 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 			Double speciesCostMultiplier = speciesMultiplier.get(0);
 			Double totalMultiplier = (speciesCostMultiplier + occupationCostMultiplier)/2;
 			Double totalCostOfPlan = totalCoverageCost * totalMultiplier;
-			plans.get(0).setTotalCostOfPlan(totalCostOfPlan);
+			Integer roundedTotal = (int) (Math.round(totalCostOfPlan));
+			plans.get(0).setTotalCostOfPlan(roundedTotal);
 		}
 	}
 	

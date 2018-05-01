@@ -32,28 +32,28 @@ import com.skilldistillery.mvckingdomcoverage.data.UserDAO;
 @Transactional
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	AgentDAO adao;
-	
+
 	@Autowired
 	InsuredDAO idao;
-	
+
 	@Autowired
 	UserDAO udao;
-	
+
 	@Autowired
 	OccupationDAO odao;
-	
+
 	@Autowired
 	SpeciesDAO sdao;
-	
+
 	@Autowired
 	CoverageTypeDAO ctdao;
-	
+
 	@Autowired
 	MessageDAO mdao;
-	
+
 	@Autowired
 	InsurancePlanDAO ipdao;
 
@@ -64,7 +64,7 @@ public class UserController {
 
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "create.do", method = RequestMethod.GET)
 	public ModelAndView createUser() {
 		ModelAndView mv = new ModelAndView();
@@ -75,8 +75,8 @@ public class UserController {
 		mv.setViewName("views/createUser.jsp");
 		return mv;
 	}
-	
-	@RequestMapping(path= "createPlan.do", method = RequestMethod.GET)
+
+	@RequestMapping(path = "createPlan.do", method = RequestMethod.GET)
 	public ModelAndView createPlan(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		session.getAttribute("insuredSession");
@@ -85,96 +85,105 @@ public class UserController {
 		mv.setViewName("views/createPlan.jsp");
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "created.do", method = RequestMethod.POST)
 	public ModelAndView createdInsured(UserInsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
-		if(udao.getUserByName(dto.getUserName()) == null) {
+		if (udao.getUserByName(dto.getUserName()) == null) {
 			Insured insured = idao.createUserAndInsuredAndAddress(dto);
 			mv.setViewName("views/index.jsp");
 		} else {
-			//put in a method to pass the dto object back to the form later, take this out when that is done
+			// put in a method to pass the dto object back to the form later, take this out
+			// when that is done
 			mv.setViewName("views/createUser.jsp");
 		}
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public ModelAndView login(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password) {
+	public ModelAndView login(HttpSession session, @RequestParam("name") String name,
+			@RequestParam("password") String password) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		Insured insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));
 		insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
 		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
-//		insured.setPlans(idao.);
+		insured.setPlans(idao.listPlans(insured.getId()));
+		List<InsurancePlan> plans = insured.getPlans();
+		if (plans.size() > 0) {
+			for (InsurancePlan insurancePlan : plans) {
+				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
+			}
+		}
 		ipdao.getTotalCostOfPlanAndMultiplier(insured);
 		List<Agent> agents = insured.getAgents();
 		if (agents.size() > 0) {
 			Agent agent = adao.show(agents.get(0).getId());
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
+		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);
 		mv.setViewName("views/insured.jsp");
-		
+		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
 		session.setAttribute("insuredSession", insured);
-		
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "insuredWithMessage.do", method = RequestMethod.POST)
 	public ModelAndView requestNewCoverage(HttpSession session, @RequestParam("message") String messageBody) {
-		
+
 		Insured insured = (Insured) session.getAttribute("insuredSession");
 		ModelAndView mv = new ModelAndView();
-		String fullMessage = "Hey, " + insured.getAgents().get(0).getfName() + "! " + insured.getfName() + " " + insured.getlName() + " would like a new " + messageBody + " plan.";
+		String fullMessage = "Hey, " + insured.getAgents().get(0).getfName() + "! " + insured.getfName() + " "
+				+ insured.getlName() + " would like a new " + messageBody + " plan.";
 		Message message = new Message();
 		message.setMessageBody(fullMessage);
 		message.setInsured(insured);
 		message.setAgent(((Insured) session.getAttribute("insuredSession")).getAgents().get(0));
-		((Insured)session.getAttribute("insuredSession")).getAgents().get(0).addMessageToMessages(message);
+		((Insured) session.getAttribute("insuredSession")).getAgents().get(0).addMessageToMessages(message);
 		mdao.create(message);
 		mv.setViewName("views/insured.jsp");
 		mv.addObject("insured", session.getAttribute("insuredSession"));
 		mv.addObject("updateMessage", "Your request has been submitted!");
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "updateInsured.do", method = RequestMethod.GET)
 	public ModelAndView update(HttpSession session) {
 		session.getAttribute("insuredSession");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("views/updateInsured.jsp");
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "submitRequest.do", method = RequestMethod.POST)
 	public ModelAndView submitRequest(HttpSession session, int id, Insured insured) {
 		ModelAndView mv = new ModelAndView();
 		session.getAttribute("insuredSession");
 		Insured updated = idao.update(id, insured);
-		
+
 		session.setAttribute("insuredSession", updated);
-		
+
 		String updateMessage = "Request successfully submitted";
 		mv.addObject("updateMessage", updateMessage);
 		mv.setViewName("views/insured.jsp");
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "deactivate.do", method = RequestMethod.POST)
 	public ModelAndView deactivate(HttpSession session, Insured insured, int id) {
 		session.getAttribute("insuredSession");
 		ipdao.deactivate(id);
 
 		insured = idao.update(insured.getId(), insured);
-		
+
 		session.setAttribute("insuredSession", insured);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("views/index.jsp");
-		
+
 		return mv;
 	}
 }

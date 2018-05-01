@@ -74,14 +74,49 @@
 								<td>Plans:</td>
 								<td>-------------------------------</td>
 								<td>
-									<ul>
-										<c:forEach var ="c" items="${plans.coverages}">
-											<li>${c.name}</li>
-										</c:forEach>
+								<c:choose>
+									<c:when test="${empty coverages}">
+										<h3>No plans to display at this time. Contact your agent</h3>
+									</c:when>
+									<c:otherwise>
 										<c:forEach var="p" items="${insured.plans}">
-											<li>${p.totalCostOfPlan}</li>
+											${p.totalCostOfPlan}
+											<c:forEach items="${p.coverages}" var="c">
+												<input type="checkbox" name="plan" value="${c.id}">
+											${c.name}<br>
+												<input type="hidden" name="iid" value="${insured.id}">
+											</c:forEach>
 										</c:forEach>
-									</ul>
+										<!-- Trigger the modal with a button -->
+										<button type="button" class="btn btn-info btn-lg"
+											data-toggle="modal" data-target="#myModal">Remove
+											Policies</button>
+					
+										<!-- Modal -->
+										<div id="myModal" class="modal fade" role="dialog">
+											<div class="modal-dialog">
+					
+												<!-- Modal content-->
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title">Remove Policies</h4>
+													</div>
+													<div class="modal-body">
+														<p>Are you sure you would like to delete this policy from
+															the plan?</p>
+														<input type="submit" class="btn btn-warning" value="Yes">
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default"
+															data-dismiss="modal">Back</button>
+													</div>
+												</div>
+					
+											</div>
+										</div>
+										<!-- closing body container div -->
+									</c:otherwise>
+								</c:choose>
 								</td>
 							</tr>
 						</tbody>

@@ -1,54 +1,107 @@
-*{
-padding : 0;
-margin : 0;
-border : 0;
-}
-body{
-background-image : url(' bi-background-hexagon.png ');
-background-attachment : fixed;
-background-size : 100% auto;
-}
-.blended_grid{
-display : block;
-width : 1200px;
-overflow : auto;
-margin : 60px auto 0 auto;
-text-align: center;
-}
-.topBanner{
-background-color : rgba(0,0,255, 0.5);
-float : left;
-clear : none;
-height : 200px;
-width : 1200px;
-}
-.leftColumn{
-background-color : rgba(0,0,255, 0.5);
-float : left;
-clear : none;
-height : 600px;
-width : 200px;
-}
-.feedHost{
-float : left;
-clear : none;
-min-width : 80px;
-min-height : 80px;
-}
-.feed {
-background-color : rgba(255,0,0, 0.5);
-float : none;
-clear : both;
-height : 100px;
-width : 800px;
-text-align: center;
-color: red;
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
-.rightColumn{
-background-color : rgba(0,0,255, 0.5);
-float : right;
-clear : none;
-height : 600px;
-width : 200px;
+body {
+	background-image:
+		url("https://i.pinimg.com/originals/1f/9c/76/1f9c766d23f125e9fcb591eaef703aa9.jpg");
+	background-attachment: fixed;
+	background-size: auto auto;
+}
+
+.blended_grid {
+	display: block;
+	width: auto;
+	overflow: hidden;
+	margin: 0px auto 0 auto;
+	padding-top: 5%;
+	text-align: center;
+}
+
+.topBanner {
+	ground-color: #191A18;
+	float: center;
+	clear: none;
+	height: 200px;
+	width: 100%;
+}
+
+.leftColumn {
+	background-color: rgba(0,0,0,.45);
+	float: left;
+	clear: none;
+	height: auto;
+	width: 200px;
+	border: solid .5px black;
+}
+
+.feedHost {
+	float: center;
+	clear: none;
+	min-width: 80px;
+	min-height: 80px;
+}
+
+.feed {
+	border: solid .5px black;
+	background-color: rgba(0,0,0,.45);
+	float: none;
+	clear: both;
+	height: 100px;
+	width: auto;
+	color: red;
+	margin-bottom: 4px;
+}
+
+.rightColumn {
+	background-color: rgba(0,0,0,.45);
+	float: right;
+	clear: none;
+	height: auto;
+	width: 200px;
+	border: solid .5px black;
+}
+
+.script {
+	font-family: cursive;
+	color: #D4D8AC;
+}
+
+.companyName {
+	font-family: fantasy;
+	font-size: 3em;
+	font-weight: bolder;
+	color: #D4D8AC;
+}
+
+.companyNameSmall {
+	font-family: fantasy;
+	font-size: 1.3em;
+	font-weight: bolder;
+	color: #D4D8AC;
+}
+
+.companyNameSmaller {
+	font-family: fantasy;
+	font-size: .85em;
+	font-weight: bolder;
+	color: #D4D8AC;
+}
+
+.formTextLight {
+	color: #D4D8AC;
+}
+
+.gimmeRoom {
+	margin-top: 3px;
+}
+
+.fancyBox {
+	padding: 30px 30px 3px 30px;
+	margin-right: 150px;
+	margin-left: 150px;
+	border: solid .5px black;
+	background-color: rgba(0,0,0,.45);
 }

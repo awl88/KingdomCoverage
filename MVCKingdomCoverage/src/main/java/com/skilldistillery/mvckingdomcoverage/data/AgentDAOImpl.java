@@ -71,9 +71,10 @@ public class AgentDAOImpl implements AgentDAO {
 		insured = em.createQuery(query, Insured.class)
 				.setParameter("id",	id)
 				.getResultList();
-		
 		return insured.get(0);
 		
 	}
+	
+
 		
 }

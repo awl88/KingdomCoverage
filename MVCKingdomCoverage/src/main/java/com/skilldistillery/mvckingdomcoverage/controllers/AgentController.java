@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.kingdomcoverage.entities.Agent;
+import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
+import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
 
 @Transactional
@@ -27,7 +29,14 @@ public class AgentController {
 	@Autowired
 	InsuredDAO idao;
 	
+<<<<<<< HEAD
 	@RequestMapping(path= "loginAgent.do", method = RequestMethod.POST)
+=======
+	@Autowired
+	InsurancePlanDAO ipdao;
+	
+	@RequestMapping(path= "loginAgent.do", method = RequestMethod.GET)
+>>>>>>> b8049abb6eae463b35851321bd207d34036ca5cc
 	public ModelAndView loginAgent(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password){
 		ModelAndView mv = new ModelAndView();
 		
@@ -48,11 +57,35 @@ public class AgentController {
 
 	@RequestMapping(path = "getClient.do", method = RequestMethod.GET)
 	public ModelAndView getClient(HttpSession session, @RequestParam("id") int id) {
+		session.getAttribute("agentSession");
 		ModelAndView mv = new ModelAndView();
 		Insured insured = adao.getClientById(id);
+		
+		insured.setAgents(idao.getAgentsByInsuredId(id));
+		insured.setPlans(idao.listPlans(id));
+		insured.setMessages(idao.getMessagesByInsuredId(id));
+		
 		mv.addObject("insured", insured);
 
+		
 		mv.setViewName("views/insuredInfo.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path= "clientChanges.do", method = RequestMethod.POST)
+	public ModelAndView postClientChanges(HttpSession session, @RequestParam("plan") List<InsurancePlan> plans) {
+		
+		Agent agent= (Agent) session.getAttribute("agentSession");
+		ModelAndView mv = new ModelAndView();
+		
+		for (InsurancePlan plan : plans) {
+			ipdao.deactivate(plan.getId());
+		}
+		
+		mv.setViewName("views/agent.jsp");
+		mv.addObject("agent", session.getAttribute("agentSession"));
+		mv.addObject("updateMessage", "The insured has been updated!");
+		
 		return mv;
 	}
 

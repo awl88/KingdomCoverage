@@ -14,28 +14,28 @@
 	</div>
 
 	<div class="container">
-		<form action="agent.jsp" method="POST">
+		<form action="clientChanges.do" method="POST">
 			Name: ${insured.fName} ${insured.lName} <br> Age: ${insured.age}
 			<br> Gender: ${insured.gender} <br> Address:
 			${insured.address.street}, ${insured.address.city},
 			${insured.address.realm} <br> Agent:
 			<c:if test="${!empty insured.agents}">
-				<c:forEach var="a" items="${insured.agents}">
-			${a.fName} ${a.lName}
-		</c:forEach>
-			</c:if>
+		        <c:forEach var="a" items="${insured.agents}">
+		            ${a.fName} ${a.lName}
+		        </c:forEach>
+		    </c:if>
 			<br> Messages:<br>
-			<c:if test="${!empty insured.messages}">
+			<c:if test="${! empty insured.messages}">
 				<c:forEach var="m" items="${insured.messages}">
-			Message Id: ${m.id}<br>
-			From: ${m.insured.fName} ${m.insured.lName}<br>
-			To: ${m.agent.fName} ${m.agent.lName}<br>
-			Message: ${m.messageBody}<br>
+					Message Id: ${m.id}<br>
+					From: ${m.insured.fName} ${m.insured.lName}<br>
+					To: ${m.agent.fName} ${m.agent.lName}<br>
+					Message: ${m.messageBody}<br>
 				</c:forEach>
 			</c:if>
 			Plans:
 			<ul>
-				<c:forEach var="p" items="${Insured.plans}">
+				<c:forEach var="p" items="${insured.plans}">
 					<input type="checkbox" name="plan" value="${p.name}">
 					<li>${p.name}</li>
 				</c:forEach>

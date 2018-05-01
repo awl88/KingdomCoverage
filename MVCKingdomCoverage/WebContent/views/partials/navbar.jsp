@@ -16,6 +16,14 @@
 	<div class="companyNameSmaller collapse navbar-collapse" id="navbarColor02">
 		<ul class="navbar-nav mr-auto">
 		
+<<<<<<< HEAD
+			<c:if test="${sessionScope.agentSession != null}">
+			<li class="nav-item active"><a class="nav-link" href="logoutAgent.do">Logout
+					<span class="sr-only">(current)</span>
+			</a></li>
+			</c:if>
+=======
+>>>>>>> 3d14a67251b957f28d90730cb8329856c734eb41
 			
 			<li class="nav-item">
 				<c:if test="${sessionScope.insuredSession != null}">

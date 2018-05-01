@@ -3,7 +3,6 @@
 <jsp:include page="partials/head.jsp"></jsp:include>
 
 <body>
-		<!-- navbar, page headers will go here -->
 	<jsp:include page="partials/navbar.jsp"></jsp:include>
 	<div class="blended_grid">
 		<div class="topBanner">
@@ -16,7 +15,6 @@
 			</div>
 		</div>
 	</div>
-<!-- action will need to be changed to actual route, remove this comment once that has been done -->
 	<form action="created.do" method="POST">
 		<div class="feedHost col">
 			<div class="feed">

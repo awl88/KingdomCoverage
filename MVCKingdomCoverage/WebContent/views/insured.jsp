@@ -3,18 +3,39 @@
 <jsp:include page="partials/head.jsp"></jsp:include>
 
 <body>
+		<!-- navbar, page headers will go here -->
+	<jsp:include page="partials/navbar.jsp"></jsp:include>
+	<div class="blended_grid">
+		<div class="topBanner">
+			<br>
+			<div class="fancyBox">
+				<h1 class="companyName">Kingdom Coverage</h1>
+				<h4 class="script">
+					<em>Kingdom has the coverage if you have the coin..</em>
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="feedHost col">
+		<!-- Verification of request for coverage being submitted -->
+		<c:if test="${! empty updateMessage}">
+			<div class="feed">
+				<h3>${updateMessage}</h3>
+			</div>
+		</c:if>
+		<div class="feed">
+			<h1>Your Profile</h1>
+		</div>
+	</div>
+
+
+
+
 
 	<!-- opening header div -->
 	<div>
 	
-		<h1>Your Profile</h1>
-		<!-- navbar, page headers will go here -->
-		<jsp:include page="partials/navbar.jsp"></jsp:include>
 		
-	<!-- Verification of request for coverage being submitted -->
-	<c:if test="${! empty updateMessage}">
-		<h3>${updateMessage}</h3>
-	</c:if>
 		
 	<!-- closing header div -->
 	</div>
@@ -49,7 +70,7 @@
 			<ul>
 		<c:forEach var="p" items="${Insured.plans}">
 				<li>${p.name}</li>
-				<%-- <li>${totalCostOfPlan}</li> --%>
+				<li>${p.totalCostOfPlan}</li>
 		</c:forEach>
 			</ul>
 		<form action="update.do" method="get">

@@ -14,7 +14,7 @@
 		<ul class="navbar-nav mr-auto">
 		
 			<c:if test="${sessionScope.agentSession != null}">
-			<li class="nav-item active"><a class="nav-link" href="logoutAgent.do" style="position:fixed;">Logout
+			<li class="nav-item active"><a class="nav-link" href="logoutAgent.do">Logout
 					<span class="sr-only">(current)</span>
 			</a></li>
 			</c:if>

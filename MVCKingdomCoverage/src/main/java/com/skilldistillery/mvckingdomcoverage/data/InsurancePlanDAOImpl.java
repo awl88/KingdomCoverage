@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 
@@ -93,6 +94,16 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 			double totalMultiplier = (speciesCostMultiplier + occupationCostMultiplier)/2;
 			double totalCostOfPlan = totalCoverageCost * totalMultiplier;
 			plans.get(0).setTotalCostOfPlan(totalCostOfPlan);
+		}
+	}
+	
+	@Override
+	public void deleteCoverageTypeBytId(int planId, int coverageId) {
+		InsurancePlan managed = em.find(InsurancePlan.class, planId);
+		List<CoverageType> coverages = managed.getCoverages();
+		CoverageType coverageToDelete = em.find(CoverageType.class, coverageId);
+		if(coverages.contains(coverageToDelete)) {
+			coverages.remove(coverages.indexOf(coverageToDelete));
 		}
 	}
 }

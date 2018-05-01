@@ -138,7 +138,6 @@ public class InsuredDAOImpl implements InsuredDAO {
 		
 		em.persist(insured);
 		em.flush();
-		
 		return insured;
 	}
 	

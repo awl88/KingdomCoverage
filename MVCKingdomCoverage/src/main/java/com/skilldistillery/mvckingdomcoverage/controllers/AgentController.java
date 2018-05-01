@@ -32,7 +32,7 @@ public class AgentController {
 	@Autowired
 	InsurancePlanDAO ipdao;
 	
-	@RequestMapping(path= "loginAgent.do", method = RequestMethod.GET)
+	@RequestMapping(path= "loginAgent.do", method = RequestMethod.POST)
 	public ModelAndView loginAgent(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password){
 		ModelAndView mv = new ModelAndView();
 		

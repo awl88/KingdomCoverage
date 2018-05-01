@@ -34,12 +34,13 @@
 				</c:forEach>
 			</c:if>
 			Plans:
-			<ul>
-				<c:forEach var="p" items="${insured.plans}">
-					<input type="checkbox" name="plan" value="${p.name}">
-					<li>${p.name}</li>
+			<c:forEach var="p" items="${insured.plans}">
+				<c:forEach items="${p.coverages}" var="c">
+					<input type="checkbox" name="plan" value="${c.id}">
+					${c.name}
+					<br>
 				</c:forEach>
-			</ul>
+			</c:forEach>
 			<!-- a more detailed view of a single insured will go here, including all 
 		their plans and info, there will be options to edit the plans, add a new one
 		or delete the plan -->

@@ -14,4 +14,6 @@ public interface CoverageTypeDAO {
 
 	List<CoverageType> getAllTypes();
 
+	CoverageType getTypeByName(String name);
+
 }

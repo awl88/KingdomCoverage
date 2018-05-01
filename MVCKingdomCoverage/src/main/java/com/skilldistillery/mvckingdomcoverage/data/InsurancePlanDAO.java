@@ -21,6 +21,8 @@ public interface InsurancePlanDAO {
 
 	void getTotalCostOfPlanAndMultiplier(Insured insured);
 
-	void deleteCoverageTypeBytId(int planId, int coverageId);
+	void addCoverageTypeById(int planId, int coverageId);
+
+	void deleteCoverageTypeById(int planId, int coverageId);
 
 }

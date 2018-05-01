@@ -46,4 +46,15 @@ public class CoverageTypeDAOImpl implements CoverageTypeDAO {
 				.getResultList();
 		return types;
 	}
+	
+	@Override
+	public CoverageType getTypeByName(String name) {
+		CoverageType coverage = new CoverageType();
+		String query = "SELECT c from CoverageType c where c.name = :name";
+		coverage = em.createQuery(query,CoverageType.class)
+				.setParameter("name", name)
+				.getResultList().get(0);
+		
+		return coverage;
+	}
 }

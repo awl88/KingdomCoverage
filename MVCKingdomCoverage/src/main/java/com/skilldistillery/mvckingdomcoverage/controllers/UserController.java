@@ -59,8 +59,10 @@ public class UserController {
 	InsurancePlanDAO ipdao;
 
 	@RequestMapping(path = "index.do", method = RequestMethod.GET)
-	public ModelAndView index() {
+	public ModelAndView index(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
+		session.removeAttribute("insuredSession");
+		session.removeAttribute("agentSession");
 		mv.setViewName("views/index.jsp");
 
 		return mv;

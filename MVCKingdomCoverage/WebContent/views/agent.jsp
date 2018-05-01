@@ -29,81 +29,20 @@
 					<h1>Agent ${agent.lName}'s Profile</h1>
 				</div>
 				<div class="feed">
-					<table>
-						<tbody>
-							<tr>
-								<td>Name:</td>
-								<td>-------------------------------</td>
-								<td>${insured.fName} ${insured.lName}</td>
-							</tr>
-							<tr>
-								<td>Age:</td>
-								<td>-------------------------------</td>
-								<td>${insured.age}</td>
-							</tr>
-							<tr>
-								<td>Gender:</td>
-								<td>-------------------------------</td>
-								<td>${insured.gender}</td>
-							</tr>
-							<tr>
-								<td>Address:</td>
-								<td>-------------------------------</td>
-								<td>${insured.address.street}, ${insured.address.city},
-									${insured.address.realm}</td>
-							</tr>
-							<tr>
-								<td>Agent:</td>
-								<td>-------------------------------</td>
-								<td><c:if test="${!empty insured.agents}">
-										<c:forEach var="a" items="${insured.agents}">
-									${a.fName} ${a.lName}
+					<br>
+					<h3>Clients: </h3>
+						<c:choose>
+							<c:when test="${empty agent.clients}">
+								<h3>No clients to display at this time. Get selling!!</h3>
+							</c:when>
+							<c:otherwise>
+								<c:forEach var="c" items="${agent.clients}">
+									<a href="getClient.do?id=${c.id}">${c.fName} ${c.lName}</a>
+									<br>
 								</c:forEach>
-									</c:if></td>
-							</tr>
-							<tr>
-								<td>Total Premiums: </td>
-								<td>-------------------------------</td>
-								<td>
-									<c:forEach var="p" items="${insured.plans}">
-										${p.totalCostOfPlan} Pieces of Silver
-									</c:forEach>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<form action="updateInsured.do" method="GET">
-								<input type="hidden" value="${insured.id}"> <input
-									type="submit" class="btn btn-default" value="Update Profile">
-					</form>
-				</div>
-				<div class="feed">
-				<br>
-					<h3>Plans: </h3>
-					
-								<c:choose>
-									<c:when test="${empty coverages}">
-										<h3>No plans to display at this time. Contact your agent</h3>
-									</c:when>
-									<c:otherwise>
-										<c:forEach var="p" items="${insured.plans}">
-											<c:forEach items="${p.coverages}" var="c">
-												<h5>${c.name}</h5>
-											</c:forEach>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
-							
-					<div class="row">
-						<div class="col-md-3"></div>
-						<div class="col-md-6">
-							<form action="createPlan.do" method="get">
-								<input type="hidden" value="${insured.id}"> <input
-									type="submit" class="btn btn-default" value="Add a Plan">
-							</form>
-						</div>
-						<div class="col-md-3"></div>
-					</div>
+							</c:otherwise>
+						</c:choose>
+						<br>
 				</div>
 			</div>
 
@@ -121,7 +60,7 @@
 										Message Id: ${m.id}<br>
 										From: ${m.insured.fName} ${m.insured.lName}<br>
 										To: ${m.agent.fName} ${m.agent.lName}<br>
-										Message: ${m.messageBody}<br>
+										Message: ${m.messageBody}<br><br><p style="color:black;">======================================</p><br>
 									</c:forEach>
 								</c:if>
 							</td>
@@ -138,10 +77,7 @@
 	<!-- opening body container div -->
 	<div class="container">
 	Clients:<br>
-		<c:forEach var="c" items="${agent.clients}">
-			<a href="getClient.do?id=${c.id}">${c.fName} ${c.lName}</a>
-			<br>
-		</c:forEach>
+		
 		<br>
 	Messages:
 		

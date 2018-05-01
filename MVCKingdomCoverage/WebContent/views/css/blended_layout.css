@@ -46,13 +46,14 @@ body {
 
 .feed {
 	border: solid .5px black;
-	background-color: rgba(0,0,0,.45);
+	background-color: rgba(0,0,0,.65);
 	float: none;
 	clear: both;
-	height: 100px;
-	width: auto;
-	color: red;
+	height: auto;
+	width: 100%;
+	color: #D4D8AC;
 	margin-bottom: 4px;
+	text-align: center;
 }
 
 .rightColumn {

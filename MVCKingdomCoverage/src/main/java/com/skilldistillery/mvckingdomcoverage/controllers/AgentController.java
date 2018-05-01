@@ -110,7 +110,7 @@ public class AgentController {
 	}
 
 	@RequestMapping(path = "approved.do", method = RequestMethod.POST)
-	public ModelAndView approbed(HttpSession session) {
+	public ModelAndView approved(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("views/agent.jsp");
 

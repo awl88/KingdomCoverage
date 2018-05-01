@@ -62,25 +62,28 @@
 								</c:forEach>
 									</c:if></td>
 							</tr>
-
+							<tr>
+								<td>Total Premiums: </td>
+								<td>-------------------------------</td>
+								<td>
+									<c:forEach var="p" items="${insured.plans}">
+										${p.totalCostOfPlan} Pieces of Silver
+									</c:forEach>
+								</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
 				<div class="feed">
-
-					<table>
-						<tbody>
-							<tr>
-								<td>Plans:</td>
-								<td>-------------------------------</td>
-								<td>
+				<br>
+					<h3>Plans: </h3>
+					
 								<c:choose>
 									<c:when test="${empty coverages}">
 										<h3>No plans to display at this time. Contact your agent</h3>
 									</c:when>
 									<c:otherwise>
 										<c:forEach var="p" items="${insured.plans}">
-											${p.totalCostOfPlan}
 											<c:forEach items="${p.coverages}" var="c">
 												<input type="checkbox" name="plan" value="${c.id}">
 											${c.name}<br>
@@ -93,10 +96,7 @@
 										<!-- closing body container div -->
 									</c:otherwise>
 								</c:choose>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+							
 					<div class="row">
 						<div class="col-md-6">
 							<form action="update.do" method="get">

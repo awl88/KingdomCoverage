@@ -47,10 +47,10 @@ public class AgentController {
 	}
 
 	@RequestMapping(path = "getClient.do", method = RequestMethod.GET)
-	public ModelAndView getClient(HttpSession session, int id) {
+	public ModelAndView getClient(HttpSession session, @RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView();
-		List<Insured> clients = adao.getClients(id);
-		mv.addObject("listOfInsured", clients);
+		Insured insured = adao.getClientById(id);
+		mv.addObject("insured", insured);
 
 		mv.setViewName("views/insuredInfo.jsp");
 		return mv;

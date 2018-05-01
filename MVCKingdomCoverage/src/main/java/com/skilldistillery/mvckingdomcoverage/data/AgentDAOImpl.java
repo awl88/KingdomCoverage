@@ -1,5 +1,6 @@
 package com.skilldistillery.mvckingdomcoverage.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -60,6 +61,19 @@ public class AgentDAOImpl implements AgentDAO {
 				.setParameter("password", password)
 				.getSingleResult();
 		return user.getId();
+	}
+	
+	@Override
+	public Insured getClientById(int id) {
+		List<Insured> insured = new ArrayList<>();
+		String query = "SELECT i FROM Insured i WHERE id = :id";
+		
+		insured = em.createQuery(query, Insured.class)
+				.setParameter("id",	id)
+				.getResultList();
+		
+		return insured.get(0);
+		
 	}
 		
 }

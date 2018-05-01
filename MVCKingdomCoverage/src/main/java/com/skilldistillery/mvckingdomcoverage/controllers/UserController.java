@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
-import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
 import com.skilldistillery.kingdomcoverage.entities.Occupation;
@@ -132,12 +131,6 @@ public class UserController {
 		message.setAgent(((Insured) session.getAttribute("insuredSession")).getAgents().get(0));
 		((Insured)session.getAttribute("insuredSession")).getAgents().get(0).addMessageToMessages(message);
 		mdao.create(message);
-		List<InsurancePlan> plans = insured.getPlans();
-		if(plans.size() > 0 ) {
-			for (InsurancePlan plan : plans) {
-				
-			}
-		}
 		mv.setViewName("views/insured.jsp");
 		mv.addObject("insured", session.getAttribute("insuredSession"));
 		mv.addObject("updateMessage", "Your request has been submitted!");

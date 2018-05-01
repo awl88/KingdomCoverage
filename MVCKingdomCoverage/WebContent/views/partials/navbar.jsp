@@ -28,5 +28,11 @@
 					<span class="sr-only">(current)</span>
 			</a>
 			</c:if>
+			
+			<c:if test="${sessionScope.insuredSession != null}">
+			<a class="nav-link nav-item active" href="logoutInsured.do" style="float:right;">Logout
+					<span class="sr-only">(current)</span>
+			</a>
+			</c:if>
 	</div>
 </nav>

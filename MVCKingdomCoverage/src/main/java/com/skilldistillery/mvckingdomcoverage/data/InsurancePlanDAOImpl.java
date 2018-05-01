@@ -103,12 +103,22 @@ public class InsurancePlanDAOImpl implements InsurancePlanDAO {
 	}
 	
 	@Override
-	public void deleteCoverageTypeBytId(int planId, int coverageId) {
+	public void deleteCoverageTypeById(int planId, int coverageId) {
 		InsurancePlan managed = em.find(InsurancePlan.class, planId);
 		List<CoverageType> coverages = managed.getCoverages();
 		CoverageType coverageToDelete = em.find(CoverageType.class, coverageId);
 		if(coverages.contains(coverageToDelete)) {
 			coverages.remove(coverages.indexOf(coverageToDelete));
+		}
+	}
+	
+	@Override
+	public void addCoverageTypeById(int planId, int coverageId) {
+		InsurancePlan managed = em.find(InsurancePlan.class, planId);
+		List<CoverageType> coverages = managed.getCoverages();
+		CoverageType coverageToAdd = em.find(CoverageType.class, coverageId);
+		if(! coverages.contains(coverageToAdd)) {
+			coverages.add(coverageToAdd);
 		}
 	}
 }

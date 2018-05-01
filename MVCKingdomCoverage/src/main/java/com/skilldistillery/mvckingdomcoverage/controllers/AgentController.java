@@ -16,10 +16,12 @@ import com.skilldistillery.kingdomcoverage.entities.Agent;
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
+import com.skilldistillery.kingdomcoverage.entities.Message;
 import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
 import com.skilldistillery.mvckingdomcoverage.data.CoverageTypeDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
+import com.skilldistillery.mvckingdomcoverage.data.MessageDAO;
 
 @Transactional
 @Controller
@@ -36,6 +38,9 @@ public class AgentController {
 	
 	@Autowired
 	CoverageTypeDAO ctdao;
+	
+	@Autowired
+	MessageDAO mdao;
 	
 	@RequestMapping(path= "loginAgent.do", method = RequestMethod.POST)
 	public ModelAndView loginAgent(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password){
@@ -84,6 +89,7 @@ public class AgentController {
 		
 		mv.addObject("insured", insured);
 		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
+		mv.addObject("allCoverages", ctdao.getAllTypes());
 		
 		mv.setViewName("views/insuredInfo.jsp");
 		return mv;
@@ -99,12 +105,41 @@ public class AgentController {
 		Insured insured = idao.show(id);
 		
 		for (Integer coverageId : coverageIds) {
-			ipdao.deleteCoverageTypeBytId(insured.getPlans().get(0).getId(), coverageId);
+			ipdao.deleteCoverageTypeById(insured.getPlans().get(0).getId(), coverageId);
 		}
 		
 		mv.setViewName("views/agent.jsp");
 		mv.addObject("agent", session.getAttribute("agentSession"));
-		mv.addObject("updateMessage", "The insured has been updated!");
+		mv.addObject("updateMessage", "The coverage has been removed!");
+		
+		return mv;
+	}
+	
+	@RequestMapping(path= "addPolicies.do", method = RequestMethod.POST)
+	public ModelAndView postAddedPolicies(HttpSession session, 
+			@RequestParam("coverage") String coverageString,
+			@RequestParam("iid") int id) {
+		
+		CoverageType coverage = ctdao.getTypeByName(coverageString);
+		Agent agent= (Agent) session.getAttribute("agentSession");
+		ModelAndView mv = new ModelAndView();
+		Insured insured = idao.show(id);
+		
+		String fullMessage = "Hey, " + insured.getfName() + "! Agent "+ agent.getlName() +
+				" has approved your request for a(n) " + coverage.getName() + " plan.";
+		Message message = new Message();
+		message.setMessageBody(fullMessage);
+		message.setInsured(insured);
+		message.setAgent(agent);
+		agent.addMessageToMessages(message);
+		mdao.create(message);
+		
+		
+		ipdao.addCoverageTypeById(insured.getPlans().get(0).getId(), coverage.getId());
+		
+		mv.setViewName("views/agent.jsp");
+		mv.addObject("agent", session.getAttribute("agentSession"));
+		mv.addObject("updateMessage", "The coverage has been added!");
 		
 		return mv;
 	}

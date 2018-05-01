@@ -141,6 +141,7 @@ public class UserController {
 		
 		mv.setViewName("views/insured.jsp");
 		mv.addObject("insured", session.getAttribute("insuredSession"));
+		mv.addObject("updateMessage", "Your request has been submitted!");
 		
 		return mv;
 	}

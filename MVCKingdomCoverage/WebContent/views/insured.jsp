@@ -69,15 +69,10 @@
 								<c:if test="${empty plans}">
 									Zero Pieces of Silver
 								</c:if>
-<<<<<<< HEAD
 								<c:if test="${!empty plans})">
 									<c:forEach var="p" items="${plans}">
 										${p.totalCostOfPlan} Pieces of Silver
 									</c:forEach>
-=======
-								<c:if test="${! empty plans}">
-									${premium}
->>>>>>> 0a67288e1e80c855689bd1e387ecab9f27e7321f
 								</c:if>
 								</td>
 							</tr>

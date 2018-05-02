@@ -682,15 +682,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `kingdom_coverage_db`;
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (1, 1, 1, 'Hey Jake. It\'s me Bilbo. What are you wearing?', 'n');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (2, 2, 1, 'Hey Jake. It\'s me Gandalf. What are you wearing?', 'n');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (3, 28, 2, 'Hey Rebecca. I was hoping you\'d be able to get me a new Dragon Fire coverage plan. Thanks!', 'n');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (4, 29, 2, 'Rebecca - I just got bit by a vampire, can you please contact me asap.', 'n');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (5, 38, 3, 'Hey Eli. I am planning on buying a new schooner. Can we get together at ye olde tavern to talk about boat insurance?', 'n');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (6, 39, 3, 'Eli - I am planning on going on a vacation to Morodor. I think I need to get a new plan.', 'n');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (7, 46, 4, 'Drew - A wizard just shot a fireball at my cottage and the thatch roof is on fire. HELP!', 'n');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (8, 47, 4, 'Hello Drew. I wanted to get together to talk about some unicorn insurance. I see one outside and I am going to go try to catch him.', 'n');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (9, 54, 5, 'Andrew- New York sucks.', 'n');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (10, 55, 5, 'Hey Andrew. Can we please get together soon to talk about a castle policy at ye olde tavern? Thanks.', NULL);
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (1, 1, 1, 'Hey Jake. It\'s me Bilbo. What are you wearing?', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (2, 2, 1, 'Hey Jake. It\'s me Gandalf. What are you wearing?', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (3, 28, 2, 'Hey Rebecca. I was hoping you\'d be able to get me a new Dragon Fire coverage plan. Thanks!', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (4, 29, 2, 'Rebecca - I just got bit by a vampire, can you please contact me asap.', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (5, 38, 3, 'Hey Eli. I am planning on buying a new schooner. Can we get together at ye olde tavern to talk about boat insurance?', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (6, 39, 3, 'Eli - I am planning on going on a vacation to Morodor. I think I need to get a new plan.', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (7, 46, 4, 'Drew - A wizard just shot a fireball at my cottage and the thatch roof is on fire. HELP!', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (8, 47, 4, 'Hello Drew. I wanted to get together to talk about some unicorn insurance. I see one outside and I am going to go try to catch him.', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (9, 54, 5, 'Andrew- New York sucks.', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (10, 55, 5, 'Hey Andrew. Can we please get together soon to talk about a castle policy at ye olde tavern? Thanks.', 'y');
 
 COMMIT;

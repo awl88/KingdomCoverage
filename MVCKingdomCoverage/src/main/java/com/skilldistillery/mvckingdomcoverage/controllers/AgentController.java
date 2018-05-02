@@ -42,6 +42,15 @@ public class AgentController {
 	@Autowired
 	MessageDAO mdao;
 	
+	@RequestMapping(path="loginAgentPage.do", method = RequestMethod.GET)
+	public ModelAndView loginAgentPage() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("views/agentLogin.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping(path= "loginAgent.do", method = RequestMethod.POST)
 	public ModelAndView loginAgent(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password){
 		ModelAndView mv = new ModelAndView();

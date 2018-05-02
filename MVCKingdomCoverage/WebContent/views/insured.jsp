@@ -35,7 +35,7 @@
 							<tr>
 								<td>Name:</td>
 								<td>-------------------------------</td>
-								<td>${insured.fName} ${insured.lName}</td>
+								<td>${insured.fName}${insured.lName}</td>
 							</tr>
 							<tr>
 								<td>Age:</td>
@@ -50,7 +50,7 @@
 							<tr>
 								<td>Address:</td>
 								<td>-------------------------------</td>
-								<td>${insured.address.street}, ${insured.address.city},
+								<td>${insured.address.street},${insured.address.city},
 									${insured.address.realm}</td>
 							</tr>
 							<tr>
@@ -63,38 +63,36 @@
 									</c:if></td>
 							</tr>
 							<tr>
-								<td>Total Premiums: </td>
+								<td>Total Premiums:</td>
 								<td>-------------------------------</td>
-								<td>
-								<c:if test="${empty plans}">
+								<td><c:if test="${empty plans}">
 									Zero Pieces of Silver
-								</c:if>
-								<c:if test="${! empty plans}">
-									${premium}
-								</c:if>
-								</td>
+								</c:if> <c:if test="${!empty plans})">
+										<c:forEach var="p" items="${plans}">
+										${p.totalCostOfPlan} Pieces of Silver
+									</c:forEach>
+									</c:if></td>
 							</tr>
 						</tbody>
 					</table>
 					<form action="updateInsured.do" method="GET">
-								<input type="hidden" value="${insured.id}"> <input
-									type="submit" class="btn btn-default" value="Update Profile">
+						<input type="hidden" value="${insured.id}"> <input
+							type="submit" class="btn btn-default" value="Update Profile">
 					</form>
 				</div>
 				<div class="feed">
-				<br>
-					<h3>Plans: </h3>
-							<c:choose>
-								<c:when test="${empty coverages}">
-									<h3>No plans to display at this time. Contact your agent</h3>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="${coverages}" var="c">
-										<h5>${c.name}</h5>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-							
+					<br>
+					<h3>Plans:</h3>
+					<c:choose>
+						<c:when test="${empty coverages}">
+							<h3>No plans to display at this time. Contact your agent</h3>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${coverages}" var="c">
+								<h5>${c.name}</h5>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 					<div class="row">
 						<div class="col-md-3"></div>
 						<div class="col-md-6">
@@ -117,27 +115,27 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>
-							<c:choose>
-								<c:when test="${!empty messages}">
-									<c:forEach var="m" items="${messages}">
+							<td><c:choose>
+									<c:when test="${!empty messages}">
+										<c:forEach var="m" items="${messages}">
+									
 									Message Id: ${m.id}<br>
-									<c:choose>
-										<c:when test= "${m.isSender}">
+											<c:choose>
+												<c:when test="${m.toString() == 'y'}">
 											To: ${m.insured.fName} ${m.insured.lName}<br>
 											From: ${m.agent.fName} ${m.agent.lName}<br>
-										</c:when>
-										<c:otherwise>
+												</c:when>
+												<c:otherwise>
 											To: ${m.agent.fName} ${m.agent.lName}<br>
 											From: ${m.insured.fName} ${m.insured.lName}<br>
-										</c:otherwise>
-									</c:choose>
+												</c:otherwise>
+											</c:choose>
 									Message: ${m.messageBody}<br>
-										<br>
-									</c:forEach>
-								</c:when>
-							</c:choose>
-								</td>
+											<br>
+
+										</c:forEach>
+									</c:when>
+								</c:choose></td>
 						</tr>
 					</tbody>
 				</table>

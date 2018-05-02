@@ -8,7 +8,7 @@
 
 	<!-- navbar, page headers will go here -->
 	<jsp:include page="partials/navbar.jsp"></jsp:include>
-	<div class="blended_grid">
+	<div class="blended_grid url">
 		<div class="topBanner">
 			<br>
 			<div class="fancyBox">

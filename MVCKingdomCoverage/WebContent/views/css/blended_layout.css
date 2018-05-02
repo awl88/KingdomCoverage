@@ -10,12 +10,12 @@ body {
 		url("https://i.pinimg.com/originals/1f/9c/76/1f9c766d23f125e9fcb591eaef703aa9.jpg");
 	background-attachment: fixed;
 	background-size: auto auto;
-	cursor: url('https://userstyles.org/style_screenshot_thumbnails/152186_after.png'), auto;
 }
 
-/* body, html {
-	 cursor: cursor: url(myBall.cur),auto;
-} */
+html {
+	cursor: url('images/Sword.cur'), auto !important;
+}
+
 
 .blended_grid {
 	display: block;

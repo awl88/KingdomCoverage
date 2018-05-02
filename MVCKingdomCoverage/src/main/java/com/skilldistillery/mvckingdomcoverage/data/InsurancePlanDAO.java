@@ -19,7 +19,7 @@ public interface InsurancePlanDAO {
 
 	List<InsurancePlan> getAllPlans();
 
-	void getTotalCostOfPlanAndMultiplier(Insured insured);
+	int getTotalCostOfPlanAndMultiplier(Insured insured);
 
 	void addCoverageTypeById(int planId, int coverageId);
 

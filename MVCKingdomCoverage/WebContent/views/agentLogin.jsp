@@ -35,7 +35,7 @@
 					Password: <input type="password" name="password"
 						style="border-radius: 5px; margin-bottom: 2px;"> <br>
 					<input type="submit" class="gimmeRoom btn btn-primary"
-						value="Login As User">
+						value="Login As Agent">
 				</form>
 				<p></p>
 				</div>

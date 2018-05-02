@@ -185,5 +185,13 @@ public class AgentController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(path = "about.do", method = RequestMethod.GET)
+	public ModelAndView getAbout(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("views/about.jsp");
+		
+		return mv;
+	}
 
 }

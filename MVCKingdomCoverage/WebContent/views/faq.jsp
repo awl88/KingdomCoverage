@@ -20,11 +20,11 @@
 			<div class="formTextLight leftColumn col-md-3" id="invisible"></div>
 			<div class="feedHost col-md-6">
 				<div class="feed">
-					<h1>Billing & Payment FAQs</h1>
+					<h1 class="faqName">Billing & Payment FAQs</h1>
 					<button class="accordion">How do I make a payment?</button>
 					<div class="panel">
-						<p></p><p>Bring us the gold in a government certified pouch. You can
-							drop it off at a designated Kingdom Coverage location.</p><p></p>
+						<p>Bring us the gold in a government certified pouch. You can
+							drop it off at a designated Kingdom Coverage location.</p>
 					</div>
 
 					<button class="accordion">Are there alternative ways to
@@ -46,7 +46,7 @@
 					</div>
 				</div>
 				<div class="feed">
-					<h1>Claims FAQs</h1>
+					<h1 class="faqName">Claims FAQs</h1>
 					<button class="accordion">How to place a claim?</button>
 					<div class="panel">
 						<p>Well as of right now you don't. We just take your money.
@@ -60,7 +60,7 @@
 					</div>
 				</div>
 				<div class="feed">
-					<h1>General FAQs</h1>
+					<h1 class="faqName">General FAQs</h1>
 					<button class="accordion">I forgot my user name/password.</button>
 					<div class="panel">
 						<p>Man, that really sucks. We legally cannot change, update,

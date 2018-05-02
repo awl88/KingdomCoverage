@@ -39,6 +39,14 @@ public class Message {
 	
 //	End of fields
 	
+	public String getSenderString() {
+		return senderString;
+	}
+
+	public void setSenderString(String senderString) {
+		this.senderString = senderString;
+	}
+
 	public Message() {
 		
 	}
@@ -87,14 +95,6 @@ public class Message {
 		}
 		
 		return sender;
-	}
-
-	public String getSenderString() {
-		return senderString;
-	}
-
-	public void setSenderString(String senderString) {
-		this.senderString = senderString;
 	}
 
 	public void setSender(boolean sender) {

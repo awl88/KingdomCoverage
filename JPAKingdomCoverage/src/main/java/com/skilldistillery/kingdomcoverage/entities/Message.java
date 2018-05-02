@@ -25,6 +25,9 @@ public class Message {
 	
 	@Column(name="message_body")
 	private String messageBody;
+	
+	@Column(name="admin")
+	private Character sender;
 
 //	End of fields
 	
@@ -59,6 +62,14 @@ public class Message {
 
 	public int getId() {
 		return id;
+	}
+
+	public Character getSender() {
+		return sender;
+	}
+
+	public void setSender(Character sender) {
+		this.sender = sender;
 	}
 
 	public String getMessageBody() {

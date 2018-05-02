@@ -26,13 +26,13 @@
 			</li>
 		</ul>
 			<c:if test="${sessionScope.agentSession != null}">
-			<a class="nav-link nav-item active" href="logoutAgent.do" style="float:right;">Logout
+			<a class="nav-link nav-item active" href="logoutAgent.do" style="background-color: rgba(0, 0, 0, 0); float:right;">Logout
 					<span class="sr-only">(current)</span>
 			</a>
 			</c:if>
 
 			<c:if test="${sessionScope.insuredSession != null}">
-			<a class="nav-link nav-item active" href="logoutInsured.do" style="float:right;">Logout
+			<a class="nav-link nav-item active" href="logoutInsured.do" style="background-color: rgba(0, 0, 0, 0); float:right;">Logout
 					<span class="sr-only">(current)</span>
 			</a>
 			</c:if>

@@ -110,6 +110,7 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		Insured insured = new Insured();
 		List<String> unsuccessfulLogin = new ArrayList<>();
+		int premium = 0;
 		
 		if (udao.getUserIdByNameAndPass(name, password) > 5) {
 			insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));			
@@ -129,7 +130,7 @@ public class UserController {
 				insured.setPlans(idao.listPlans(insured.getId()));
 				coverages = idao.getCoveragesByInsuredId(insured.getId());
 				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
-				ipdao.getTotalCostOfPlanAndMultiplier(insured);
+				premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
 		
@@ -142,6 +143,7 @@ public class UserController {
 		}
 		
 		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		mv.addObject("premium", premium);
 		mv.addObject("unsuccessfulLogin", unsuccessfulLogin);
 		mv.addObject("messages", messages);
 		mv.addObject("agents", agents);
@@ -234,10 +236,11 @@ public class UserController {
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
 		if (plans.size() > 0) {
 			for (InsurancePlan insurancePlan : plans) {
+				Integer costOfPlan = ipdao.getTotalCostOfPlanAndMultiplier(insured);
+				insurancePlan.setTotalCostOfPlan(costOfPlan);
 				insured.setPlans(idao.listPlans(insured.getId()));
 				coverages = idao.getCoveragesByInsuredId(insured.getId());
 				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
-				ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
@@ -247,7 +250,6 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
-		
 		insured = idao.updateInsured(dto, address, insured);
 		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
 		

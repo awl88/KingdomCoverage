@@ -141,7 +141,7 @@ public class AgentController {
 				" has approved your request for " + coverage.getName() + " coverage.";
 		Message message = new Message();
 		
-		message.setSenderString("y");
+		message.setSenderString("n");
 		message.setMessageBody(fullMessage);
 		message.setInsured(insured);
 		message.setAgent(agent);

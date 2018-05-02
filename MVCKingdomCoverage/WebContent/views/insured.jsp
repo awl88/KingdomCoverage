@@ -122,12 +122,12 @@
 									Message Id: ${m.id}<br>
 											<c:choose>
 												<c:when test="${m.toString() == 'y'}">
-											To: ${m.insured.fName} ${m.insured.lName}<br>
-											From: ${m.agent.fName} ${m.agent.lName}<br>
-												</c:when>
-												<c:otherwise>
 											To: ${m.agent.fName} ${m.agent.lName}<br>
 											From: ${m.insured.fName} ${m.insured.lName}<br>
+												</c:when>
+												<c:otherwise>
+											To: ${m.insured.fName} ${m.insured.lName}<br>
+											From: ${m.agent.fName} ${m.agent.lName}<br>
 												</c:otherwise>
 											</c:choose>
 									Message: ${m.messageBody}<br>

@@ -56,25 +56,27 @@
 					<tbody>
 						<tr>
 						<td>
-						<c:choose>
-								<c:when test="${!empty messages}">
-									<c:forEach var="m" items="${messages}">
+							<c:choose>
+									<c:when test="${!empty messages}">
+										<c:forEach var="m" items="${messages}">
+									
 									Message Id: ${m.id}<br>
-									<c:choose>
-										<c:when test= "${message.isSender}">
-											To: ${m.insured.fName} ${m.insured.lName}<br>
-											From: ${m.agent.fName} ${m.agent.lName}<br>
-										</c:when>
-										<c:otherwise>
-											To: ${m.agent.fName} ${m.agent.lName}<br>
-											From: ${m.insured.fName} ${m.insured.lName}<br>
-										</c:otherwise>
-									</c:choose>
+											<c:choose>
+												<c:when test="${m.toString() == 'y'}">
+													To: ${m.agent.fName} ${m.agent.lName}<br>
+													From: ${m.insured.fName} ${m.insured.lName}<br>
+												</c:when>
+												<c:otherwise>
+													To: ${m.insured.fName} ${m.insured.lName}<br>
+													From: ${m.agent.fName} ${m.agent.lName}<br>
+												</c:otherwise>
+											</c:choose>
 									Message: ${m.messageBody}<br>
-										<br>
-									</c:forEach>
-								</c:when>
-							</c:choose>
+											<br>
+
+										</c:forEach>
+									</c:when>
+								</c:choose>
 							</td>
 						</tr>
 					</tbody>

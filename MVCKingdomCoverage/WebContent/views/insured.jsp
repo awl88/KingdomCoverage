@@ -63,8 +63,8 @@
 									</c:if></td>
 							</tr>
 							<tr>
-								<td>Total Premiums:</td>
-								<td>               </td>
+								<td>Premium:</td>
+								<td>&emsp;&emsp;</td>
 								<td><c:if test="${empty plans}">
 									Zero Pieces of Silver
 								</c:if> <c:if test="${!empty plans}">
@@ -75,6 +75,7 @@
 							</tr>
 						</tbody>
 					</table>
+				
 					<form action="updateInsured.do" method="GET">
 						<input type="hidden" value="${insured.id}"> <input
 							type="submit" class="btn btn-default" value="Update Profile">

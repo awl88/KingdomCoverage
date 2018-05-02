@@ -107,7 +107,17 @@ public class UserController {
 	public ModelAndView login(HttpSession session, @RequestParam("name") String name,
 			@RequestParam("password") String password) {
 		ModelAndView mv = new ModelAndView();
-		Insured insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));
+		Insured insured = new Insured();
+		String tryAgain = "Invalid username/password combination. Please try again.";
+		if (udao.getUserIdByNameAndPass(name, password) > 0) {
+			insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));			
+		}
+		else {
+			mv.setViewName("views/index.jsp");
+			mv.addObject(tryAgain);
+			return mv;
+		}
+		
 		session.setAttribute("insuredSession", insured);
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());

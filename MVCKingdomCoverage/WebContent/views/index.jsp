@@ -18,6 +18,15 @@
 		</div>
 		<div class="row">
 			<div class="formTextLight leftColumn col-md-3">
+				<c:choose>
+					<c:when test="${mv.contains(tryAgain)}">
+						<div class="formTextLight leftColumn col-md-3">
+							${tryAgain}
+						</div>
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose>
 				<form action="login.do" method="POST">
 					Username: <input type="text" name="name" style="border-radius: 5px; margin-bottom: 2px;"> <br>
 					Password: <input type="password" name="password" style="border-radius: 5px; margin-bottom: 2px;"> <br> <input

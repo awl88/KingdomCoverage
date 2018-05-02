@@ -28,6 +28,19 @@
 				<input type="number" min="0" max="100000" name="insuredAge" style="margin-top: 1.5px;" value="${insured.age}"/>
 			</div>
 			<div class="feed">
+				<label for="insuredGender">Please enter your gender:</label>
+				<select name="insuredGender" style="margin-top: 1.5px;">
+					<c:if test="${insured.gender.toString() == 'm'}">
+						<option selected name="male" value='m'>Male</option>
+						<option name="female" value='f'>Female</option>
+					</c:if>
+					<c:if test="${insured.gender.toString() == 'f'}">
+						<option name="male" value='m'>Male</option>
+						<option selected name="female" value='f'>Female</option>
+					</c:if>
+				</select>
+			</div>
+			<div class="feed">
 				<label for="insuredSpeciesId">Please select your species:</label> 
 				<select name="insuredSpeciesId" style="margin-top: 1.5px;">
 					<c:forEach var="species" items="${allSpecies}">

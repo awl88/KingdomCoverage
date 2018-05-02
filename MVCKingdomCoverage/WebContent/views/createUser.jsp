@@ -39,6 +39,13 @@
 					type="number" min="0" max="100000" name="insuredAge" style="margin-top: 1.5px;" />
 			</div>
 			<div class="feed">
+				<label for="insuredGender">Please enter your gender:</label>
+				<select name="insuredGender" style="margin-top: 1.5px;">
+					<option name="male" value='m'>Male</option>
+					<option name="female" value='f'>Female</option>
+				</select>
+			</div>
+			<div class="feed">
 				<label for="insuredSpeciesId">Please select your species:</label> <select
 					name="insuredSpeciesId" style="margin-top: 1.5px;">
 					<c:forEach var="species" items="${allSpecies}">

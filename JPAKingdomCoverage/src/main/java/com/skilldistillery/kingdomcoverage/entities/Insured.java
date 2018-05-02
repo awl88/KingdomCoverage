@@ -210,6 +210,12 @@ public class Insured {
 //		builder.append("]");
 //		return builder.toString();
 //	}
+	
+	@Override
+	public String toString() {
+		String insuredGender = gender + "";
+		return insuredGender;
+	}
 
 	@Override
 	public int hashCode() {

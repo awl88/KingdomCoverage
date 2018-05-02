@@ -194,8 +194,8 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
 //		mv.addObject("totalCostOfPlan", totalCostOfPlan);
+		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
 		mv.addObject("messages", messages);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);
@@ -227,6 +227,7 @@ public class UserController {
 	public ModelAndView submitRequest(HttpSession session, InsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
 		Insured insured = (Insured) session.getAttribute("insuredSession");
+		insured = idao.show(insured.getId());
 		session.setAttribute("insuredSession", insured);		
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
@@ -245,6 +246,8 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
+		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		mv.addObject("messages", messages);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);

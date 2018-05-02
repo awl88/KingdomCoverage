@@ -69,8 +69,10 @@
 								<c:if test="${empty plans}">
 									Zero Pieces of Silver
 								</c:if>
-								<c:if test="${! empty plans}">
-									${premium}
+								<c:if test="${!empty plans})">
+									<c:forEach var="p" items="${plans}">
+										${p.totalCostOfPlan} Pieces of Silver
+									</c:forEach>
 								</c:if>
 								</td>
 							</tr>
@@ -83,7 +85,7 @@
 				</div>
 				<div class="feed">
 				<br>
-					<h3>Plans: </h3>
+					<h3>Plans: </h3>								
 							<c:choose>
 								<c:when test="${empty coverages}">
 									<h3>No plans to display at this time. Contact your agent</h3>
@@ -94,7 +96,6 @@
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
-							
 					<div class="row">
 						<div class="col-md-3"></div>
 						<div class="col-md-6">
@@ -117,8 +118,11 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><c:if test="${!empty messages}">
+							<td>
+							
+							<c:if test="${!empty messages}">
 									<c:forEach var="m" items="${messages}">
+									
 									Message Id: ${m.id}<br>
 									<c:choose>
 										<c:if test= "${message.sender}">
@@ -132,8 +136,11 @@
 									</c:choose>
 									Message: ${m.messageBody}<br>
 										<br>
+										
 									</c:forEach>
-								</c:if></td>
+								</c:if>
+								
+								</td>
 						</tr>
 					</tbody>
 				</table>

@@ -117,23 +117,27 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><c:if test="${!empty messages}">
+							<td>
+							<c:choose>
+								<c:when test="${!empty messages}">
 									<c:forEach var="m" items="${messages}">
 									Message Id: ${m.id}<br>
 									<c:choose>
-										<c:if test= "${message.sender}">
-											From: ${m.insured.fName} ${m.insured.lName}<br>
-											To: ${m.agent.fName} ${m.agent.lName}<br>
-										</c:if>
-										<c:otherwise>
-											From: ${m.agent.fName} ${m.agent.lName}<br>
+										<c:when test= "${m.isSender}">
 											To: ${m.insured.fName} ${m.insured.lName}<br>
+											From: ${m.agent.fName} ${m.agent.lName}<br>
+										</c:when>
+										<c:otherwise>
+											To: ${m.agent.fName} ${m.agent.lName}<br>
+											From: ${m.insured.fName} ${m.insured.lName}<br>
 										</c:otherwise>
 									</c:choose>
 									Message: ${m.messageBody}<br>
 										<br>
 									</c:forEach>
-								</c:if></td>
+								</c:when>
+							</c:choose>
+								</td>
 						</tr>
 					</tbody>
 				</table>

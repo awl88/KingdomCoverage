@@ -26,7 +26,7 @@
 				</c:if>
 				<div class="feed">
 					<br>
-					<h1>Agent ${agent.lName}'s Profile</h1>
+					<h1>Agent ${agent.fName}'s Profile</h1>
 				</div>
 				<div class="feed">
 					<br>
@@ -55,14 +55,26 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><c:if test="${!empty agent.messages}">
-									<c:forEach var="m" items="${agent.messages}">
-										Message Id: ${m.id}<br>
-										From: ${m.insured.fName} ${m.insured.lName}<br>
-										To: ${m.agent.fName} ${m.agent.lName}<br>
-										Message: ${m.messageBody}<br><br><p style="color:black;">======================================</p><br>
+						<td>
+						<c:choose>
+								<c:when test="${!empty messages}">
+									<c:forEach var="m" items="${messages}">
+									Message Id: ${m.id}<br>
+									<c:choose>
+										<c:when test= "${message.isSender}">
+											To: ${m.insured.fName} ${m.insured.lName}<br>
+											From: ${m.agent.fName} ${m.agent.lName}<br>
+										</c:when>
+										<c:otherwise>
+											To: ${m.agent.fName} ${m.agent.lName}<br>
+											From: ${m.insured.fName} ${m.insured.lName}<br>
+										</c:otherwise>
+									</c:choose>
+									Message: ${m.messageBody}<br>
+										<br>
 									</c:forEach>
-								</c:if>
+								</c:when>
+							</c:choose>
 							</td>
 						</tr>
 					</tbody>
@@ -72,20 +84,6 @@
 		<div class="row"></div>
 	</div>
 
-
-
-	<!-- opening body container div -->
-	<div class="container">
-	Clients:<br>
-		
-		<br>
-	Messages:
-		
-		<!--a list of all of the insured that the agent has as clients will be here, 
-		each being a clickable link to a more detailed view of them-->
-	
-	<!-- closing body container div -->
-	</div>
 <jsp:include page="partials/foot.jsp"></jsp:include>
 </body>
 </html>

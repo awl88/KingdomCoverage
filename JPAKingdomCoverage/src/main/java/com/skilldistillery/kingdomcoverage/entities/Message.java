@@ -1,5 +1,6 @@
 package com.skilldistillery.kingdomcoverage.entities;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Message {
@@ -27,8 +29,14 @@ public class Message {
 	private String messageBody;
 	
 	@Column(name="admin")
-	private Character sender;
+	private Character senderChar;
+	
+	@Transient
+	private boolean sender;
 
+	@Transient
+	String senderString;
+	
 //	End of fields
 	
 	public Message() {
@@ -64,11 +72,24 @@ public class Message {
 		return id;
 	}
 
-	public Character getSender() {
+	public Character getSenderChar() {
+		return senderChar;
+	}
+
+	public void setSenderChar(Character senderChar) {
+		this.senderChar = senderChar;
+	}
+
+	public boolean isSender() {
+		
+		if(senderString == "Y") {
+			sender = true;
+		}
+		
 		return sender;
 	}
 
-	public void setSender(Character sender) {
+	public void setSender(boolean sender) {
 		this.sender = sender;
 	}
 
@@ -79,21 +100,12 @@ public class Message {
 	public void setMessageBody(String messageBody) {
 		this.messageBody = messageBody;
 	}
-
-//	@Override
-//	public String toString() {
-//		StringBuilder builder = new StringBuilder();
-//		builder.append("Message [id=");
-//		builder.append(id);
-//		builder.append(", agent=");
-//		builder.append(agent);
-//		builder.append(", insured=");
-//		builder.append(insured);
-//		builder.append(", messageBody=");
-//		builder.append(messageBody);
-//		builder.append("]");
-//		return builder.toString();
-//	}
+	
+	@Override
+	public String toString() {
+		senderString = senderChar + "";
+		return senderString;
+	}
 
 	@Override
 	public int hashCode() {

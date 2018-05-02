@@ -52,12 +52,14 @@ public class AgentController {
 		
 		Insured insured = idao.show(agent.getClients().get(0).getId());
 		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
-		
-		mv.addObject("agent", agent);
-		mv.setViewName("views/agent.jsp");
-		
+
 		session.setAttribute("agentSession", agent);
 		
+		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		mv.addObject("messages", messages);
+		mv.addObject("agent", agent);
+		mv.setViewName("views/agent.jsp");
+
 		return mv;
 	}
 	

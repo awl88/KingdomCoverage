@@ -44,7 +44,7 @@
 				<form action="loginAgentPage.do", method="GET">
 					<input type="submit" class="gimmeRoom btn btn-primary" value = "Login As Agent">
 				</form><br>
-				<form action="create.do method="GET">
+				<form action="create.do" method="GET">
 					<input type="submit" class="gimmeRoom btn btn-primary" value="Create an Account">
 				</form>
 				<p></p>

@@ -12,7 +12,7 @@ body {
 	background-size: auto auto;
 }
 
-html {
+html[Attributes Style] {
 	cursor: url('images/Sword.cur'), auto !important;
 }
 

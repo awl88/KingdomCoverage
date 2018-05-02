@@ -17,13 +17,14 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="feedHost col-md-8">
+			<div class="formTextLight leftColumn col-md-3" id="invisible"></div>
+			<div class="feedHost col-md-6">
 				<div class="feed">
 					<h1>Billing & Payment FAQs</h1>
 					<button class="accordion">How do I make a payment?</button>
 					<div class="panel">
-						<p>Bring us the gold in a government certified pouch. You can
-							drop it off at a designated Kingdom Coverage location.</p>
+						<p></p><p>Bring us the gold in a government certified pouch. You can
+							drop it off at a designated Kingdom Coverage location.</p><p></p>
 					</div>
 
 					<button class="accordion">Are there alternative ways to
@@ -99,6 +100,7 @@
 					</div>
 				</div>
 			</div>
+			<div class="formTextLight rightColumn col-md-3" id="invisible"></div>
 		</div>
 	</div>
 	<script>

@@ -71,7 +71,7 @@
 								</c:if>
 								<c:if test="${!empty plans})">
 									<c:forEach var="p" items="${plans}">
-										${totalCostOfPlan} Pieces of Silver
+										${p.totalCostOfPlan} Pieces of Silver
 									</c:forEach>
 								</c:if>
 								</td>
@@ -92,7 +92,7 @@
 										<h3>No plans to display at this time. Contact your agent</h3>
 									</c:when>
 									<c:otherwise>
-										<c:forEach var="p" items="${plans}">
+										<c:forEach var="p" items="${insured.plans}">
 											<c:forEach items="${p.coverages}" var="c">
 												<h5>${c.name}</h5>
 											</c:forEach>
@@ -122,15 +122,21 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><c:if test="${!empty messages}">
+							<td>
+							
+							<c:if test="${!empty messages}">
 									<c:forEach var="m" items="${messages}">
+									
 									Message Id: ${m.id}<br>
 									From: ${m.insured.fName} ${m.insured.lName}<br>
 									To: ${m.agent.fName} ${m.agent.lName}<br>
 									Message: ${m.messageBody}<br>
 										<br>
+										
 									</c:forEach>
-								</c:if></td>
+								</c:if>
+								
+								</td>
 						</tr>
 					</tbody>
 				</table>

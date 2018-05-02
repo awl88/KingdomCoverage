@@ -19,15 +19,18 @@
 		<div class="row">
 			<form action="INSERT PATH HERE" method="POST">
 				<div class="feed">
+					<label for="message">Select your desired coverage:</label>
+					<select name="message" style="margin-top: 1.5px;">
+					<c:forEach var = "coverage" items="${allPlans}">
+						<option value="${coverage.name}">${coverage.name}</option>
+					</c:forEach>			
+					</select> 
+				</div>
+				<div class="feed">
 					<label for="insuredSpeciesId">Please select your species:</label> 
 					<select name="insuredSpeciesId" style="margin-top: 1.5px;">
 						<c:forEach var="species" items="${allSpecies}">
-							<c:if test="${species == insured.species}">
-								<option selected name="${species.name}" value="${species.id}">${species.name}</option>
-							</c:if>
-							<c:if test="${species != insured.species}">
-								<option name="${species.name}" value="${species.id}">${species.name}</option>
-							</c:if>
+							<option name="${species.name}" value="${species.id}">${species.name}</option>
 						</c:forEach>
 					</select>
 				</div>
@@ -35,12 +38,7 @@
 					<label for="insuredOccupationId">Please select your occupation:</label> 
 					<select name="insuredOccupationId" style="margin-top: 1.5px;">
 						<c:forEach var="job" items="${jobs}">
-							<c:if test="${job == insured.occupation}">
-								<option selected name="${job.name}" value="${job.id}">${job.name}</option>
-							</c:if>
-							<c:if test="${job != insured.occupation}">
-								<option name="${job.name}" value="${job.id}">${job.name}</option>
-							</c:if>
+							<option name="${job.name}" value="${job.id}">${job.name}</option>
 						</c:forEach>
 					</select>
 				</div> type="submit" class="gimmeRoom btn btn-primary" value="Get Quote">

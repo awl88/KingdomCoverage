@@ -167,7 +167,8 @@ public class InsuredDAOImpl implements InsuredDAO {
 		insured.setGender(dto.getInsuredGender());
 		insured.setSpecies(sdao.showSpecies(dto.getInsuredSpeciesId()));
 		insured.setOccupation(odao.show(dto.getInsuredOccupationId()));
-//		
+		
+//		unimplemented method to assign an agent to an insured
 //		String query = "SELECT a FROM Agent a JOIN FETCH a.address WHERE a.address.realm = :realm";
 //		List<Agent> agents = em.createQuery(query, Agent.class)
 //				.setParameter("realm", dto.getAddressRealm())

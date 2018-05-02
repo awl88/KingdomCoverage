@@ -107,28 +107,30 @@ public class UserController {
 	public ModelAndView login(HttpSession session, @RequestParam("name") String name,
 			@RequestParam("password") String password) {
 		ModelAndView mv = new ModelAndView();
-
 		Insured insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));
-		insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
-		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
-		insured.setPlans(idao.listPlans(insured.getId()));
-		List<InsurancePlan> plans = insured.getPlans();
+		session.setAttribute("insuredSession", insured);
+		List<InsurancePlan> plans = idao.listPlans(insured.getId());
+		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
 		if (plans.size() > 0) {
 			for (InsurancePlan insurancePlan : plans) {
+				insured.setPlans(idao.listPlans(insured.getId()));
+				coverages = idao.getCoveragesByInsuredId(insured.getId());
 				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
+				ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
-		ipdao.getTotalCostOfPlanAndMultiplier(insured);
-		List<Agent> agents = insured.getAgents();
+		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
 		if (agents.size() > 0) {
 			Agent agent = adao.show(agents.get(0).getId());
+			insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
+			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
+		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);
+		mv.addObject("coverages", coverages);
 		mv.setViewName("views/insured.jsp");
-		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
-		session.setAttribute("insuredSession", insured);
 		return mv;
 	}
 	

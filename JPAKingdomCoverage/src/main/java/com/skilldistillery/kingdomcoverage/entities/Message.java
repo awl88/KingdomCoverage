@@ -89,6 +89,14 @@ public class Message {
 		return sender;
 	}
 
+	public String getSenderString() {
+		return senderString;
+	}
+
+	public void setSenderString(String senderString) {
+		this.senderString = senderString;
+	}
+
 	public void setSender(boolean sender) {
 		this.sender = sender;
 	}

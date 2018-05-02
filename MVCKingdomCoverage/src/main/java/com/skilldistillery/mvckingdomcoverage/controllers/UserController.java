@@ -175,6 +175,7 @@ public class UserController {
 				+ insured.getlName() + " would like a new " + messageBody + " plan.";
 		Message message = new Message();
 		message.setMessageBody(fullMessage);
+		message.setSenderString("y");
 		message.setInsured(insured);
 		message.setAgent(((Insured) session.getAttribute("insuredSession")).getAgents().get(0));
 		((Insured) session.getAttribute("insuredSession")).getAgents().get(0).addMessageToMessages(message);

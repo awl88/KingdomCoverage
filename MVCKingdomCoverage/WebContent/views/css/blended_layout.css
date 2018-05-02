@@ -150,6 +150,37 @@ thead {
 	overflow: hidden;
 }
 
+.insuredTable {
+	border: solid .5px black;
+	background-color: rgba(0,0,0,.65);
+	float: none;
+	clear: both;
+	height: auto;
+	width: 100%;
+	color: #D4D8AC;
+	margin-bottom: 4px;
+	text-align: left;
+	font-family: fantasy;
+}
+
+.footer {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+
 .faqName {
 	padding: 10px;
+}
+
+.foot {
+	
+	background-color: rgba(0,0,0,.35);
+	margin: auto;
+    width: 20%;
+    padding: 20px;
 }

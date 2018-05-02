@@ -19,26 +19,30 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="formTextLight leftColumn col-md-3"></div>
-			<div class="feedHost col-md-2">
-				<c:forEach var="s" items="${unsuccessfulLogin}">
-					<c:if
-						test="${fn:containsIgnoreCase(s, 'Invalid username/password combination. Please try again.')}">
+				<div class="formTextLight leftColumn col-md-4" id="invisible"></div>
+				<div class="feedHost col-md-4">
+					<c:forEach var="s" items="${unsuccessfulLogin}">
+						<c:if
+							test="${fn:containsIgnoreCase(s, 'Invalid username/password combination. Please try again.')}">
 									${s}
 								</c:if>
-				</c:forEach>
+					</c:forEach>
+			<div class="feed">
+				<h1>Login as Agent</h1>
+				<form action="loginAgent.do" method="POST">
+					Username: <input type="text" name="name"
+						style="border-radius: 5px; margin-bottom: 2px;"> <br>
+					Password: <input type="password" name="password"
+						style="border-radius: 5px; margin-bottom: 2px;"> <br>
+					<input type="submit" class="gimmeRoom btn btn-primary"
+						value="Login As User">
+				</form>
+				<p></p>
+				</div>
 			</div>
-			<form action="login.do" method="POST">
-				Username: <input type="text" name="name"
-					style="border-radius: 5px; margin-bottom: 2px;"> <br>
-				Password: <input type="password" name="password"
-					style="border-radius: 5px; margin-bottom: 2px;"> <br>
-				<input type="submit" class="gimmeRoom btn btn-primary"
-					value="Login As User">
-			</form>
 		</div>
-		<div class="formTextLight rightColumn col-md-3" id="invisible"></div>
-		
+		<div class="formTextLight rightColumn col-md-4" id="invisible"></div>
+
 	</div>
 	<jsp:include page="partials/foot.jsp"></jsp:include>
 </body>

@@ -18,47 +18,33 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="formTextLight leftColumn col-md-3">
-						<div class="formTextLight leftColumn col-md-3">
-							<c:forEach var = "s" items = "${unsuccessfulLogin}">
-								<c:if test="${fn:containsIgnoreCase(s, 'Invalid username/password combination. Please try again.')}">
-									${s}
-								</c:if>
-							</c:forEach>
-						</div>
+			<div class="formTextLight leftColumn col-md-1" id="invisible"></div>
+			<div class="feedHost col-md-8">
+				<div class="feed">
+					<h1>some stuff</h1>
+				</div>
+				<div class="feed">
+					<h1>some stuff</h1>
+				</div>
+				<div class="feed">
+					<h1>some stuff</h1>
+				</div>
+				<div class="feed">
+					<h1>some stuff</h1>
+				</div>
+			</div>
+			<div class="formTextLight rightColumn col-md-2">
+			<h1>Login</h1>
 				<form action="login.do" method="POST">
 					Username: <input type="text" name="name" style="border-radius: 5px; margin-bottom: 2px;"> <br>
 					Password: <input type="password" name="password" style="border-radius: 5px; margin-bottom: 2px;"> <br> <input
 						type="submit" class="gimmeRoom btn btn-primary"
-						value="Login As User">
+						value="Login">
+				</form><br>
+				<form action="loginAgentPage.do", method="GET">
+					<input type="submit" class="gimmeRoom btn btn-primary" value = "Login As Agent">
 				</form>
-				<br>
-				<form action="create.do" method="GET">
-					<input type="submit" class="gimmeRoom btn btn-info"
-						value="Create Account">
-				</form>
-			</div>
-			<div class="feedHost col-md-6">
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
-			</div>
-			<div class="formTextLight rightColumn col-md-3">
-				<form action="loginAgent.do" method="POST">
-					Username: <input type="text" name="name" style="border-radius: 5px; margin-bottom: 2px;"> <br>
-					Password: <input type="password" name="password" style="border-radius: 5px; margin-bottom: 2px;"> <br> <input
-						type="submit" class="gimmeRoom btn btn-primary"
-						value="Login As Agent">
-				</form>
+				<p></p>
 			</div>
 		</div>
 	</div>

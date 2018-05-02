@@ -28,7 +28,7 @@ public class Message {
 	@Column(name="message_body")
 	private String messageBody;
 	
-	@Column(name="admin")
+	@Column(name="sender")
 	private Character senderChar;
 
 	@Transient

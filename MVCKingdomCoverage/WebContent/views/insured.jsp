@@ -67,7 +67,7 @@
 								<td>-------------------------------</td>
 								<td><c:if test="${empty plans}">
 									Zero Pieces of Silver
-								</c:if> <c:if test="${!empty plans})">
+								</c:if> <c:if test="${!empty plans}">
 										<c:forEach var="p" items="${plans}">
 										${p.totalCostOfPlan} Pieces of Silver
 									</c:forEach>

@@ -165,22 +165,15 @@ thead {
 
 .footer {
     position: fixed;
-    left: 50%;
+    left: 0;
     bottom: 0;
+    padding: 10px;
+    padding-left: 45%;
     width: 100%;
-    background-color: red;
+    background-color: rgba(0,0,0, .75);
     color: white;
-    text-align: center;
 }
 
 .faqName {
 	padding: 10px;
-}
-
-.foot {
-	
-	background-color: rgba(0,0,0,.35);
-	margin: auto;
-    width: 20%;
-    padding: 20px;
 }

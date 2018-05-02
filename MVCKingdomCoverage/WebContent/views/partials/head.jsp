@@ -19,4 +19,5 @@
 <link rel="stylesheet" type="text/css" href="views/css/blended_layout.css">
 <link rel="shortcut icon" type="image/x-icon" href="views/favicon.ico" />
 <title>Kingdom Coverage</title>
+
 </head>

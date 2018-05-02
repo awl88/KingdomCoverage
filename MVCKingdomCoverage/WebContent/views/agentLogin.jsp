@@ -8,7 +8,7 @@
 
 	<!-- navbar, page headers will go here -->
 	<jsp:include page="partials/navbar.jsp"></jsp:include>
-	<div class="blended_grid">
+	<div class="blended_grid url">
 		<div class="topBanner">
 			<br>
 			<div class="fancyBox">
@@ -35,7 +35,7 @@
 					Password: <input type="password" name="password"
 						style="border-radius: 5px; margin-bottom: 2px;"> <br>
 					<input type="submit" class="gimmeRoom btn btn-primary"
-						value="Login As User">
+						value="Login As Agent">
 				</form>
 				<p></p>
 				</div>

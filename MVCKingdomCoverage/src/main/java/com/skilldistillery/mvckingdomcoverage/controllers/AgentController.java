@@ -56,6 +56,7 @@ public class AgentController {
 		ModelAndView mv = new ModelAndView();
 		
 		Agent agent = adao.show(adao.getUserIdByNameAndPass(name, password));
+		System.out.println("********" + agent);
 		agent.setClients(adao.getClients(agent.getId()));
 		agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		

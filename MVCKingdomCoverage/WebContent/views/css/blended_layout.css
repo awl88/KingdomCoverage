@@ -172,6 +172,11 @@ thead {
     width: 100%;
     background-color: rgba(0,0,0, .75);
     color: white;
+    border-top: 50px;
+}
+
+.about {
+	padding: 10px;
 }
 
 .faqName {

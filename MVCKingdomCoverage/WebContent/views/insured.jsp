@@ -71,7 +71,7 @@
 								</c:if>
 								<c:if test="${!empty plans})">
 									<c:forEach var="p" items="${plans}">
-										${totalCostOfPlan} Pieces of Silver
+										${p.totalCostOfPlan} Pieces of Silver
 									</c:forEach>
 								</c:if>
 								</td>

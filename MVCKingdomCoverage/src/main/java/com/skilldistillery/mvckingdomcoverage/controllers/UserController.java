@@ -151,7 +151,6 @@ public class UserController {
 
 	@RequestMapping(path = "insuredWithMessage.do", method = RequestMethod.POST)
 	public ModelAndView requestNewCoverage(HttpSession session, @RequestParam("message") String messageBody) {
-
 		Insured insured = (Insured) session.getAttribute("insuredSession");
 		ipdao.getTotalCostOfPlanAndMultiplier(insured);
 		ModelAndView mv = new ModelAndView();
@@ -163,10 +162,32 @@ public class UserController {
 		message.setAgent(((Insured) session.getAttribute("insuredSession")).getAgents().get(0));
 		((Insured) session.getAttribute("insuredSession")).getAgents().get(0).addMessageToMessages(message);
 		mdao.create(message);
-		mv.setViewName("views/insured.jsp");
-		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
-		mv.addObject("plans", insured.getPlans().get(0));
+		List<InsurancePlan> plans = idao.listPlans(insured.getId());
+		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
+		if (plans.size() > 0) {
+			for (InsurancePlan insurancePlan : plans) {
+				insured.setPlans(idao.listPlans(insured.getId()));
+				coverages = idao.getCoveragesByInsuredId(insured.getId());
+				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
+				Integer totalCostOfPlan = ipdao.getTotalCostOfPlanAndMultiplier(insured);
+				insurancePlan.setTotalCostOfPlan(totalCostOfPlan);
+			}
+		}
+		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
+		if (agents.size() > 0) {
+			Agent agent = adao.show(agents.get(0).getId());
+			insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
+			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
+			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
+		}
+		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+//		mv.addObject("totalCostOfPlan", totalCostOfPlan);
+		mv.addObject("messages", messages);
+		mv.addObject("agents", agents);
+		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);
+		mv.addObject("coverages", coverages);
+		mv.setViewName("views/insured.jsp");
 		mv.addObject("insured", session.getAttribute("insuredSession"));
 		mv.addObject("updateMessage", "Your request has been submitted!");
 

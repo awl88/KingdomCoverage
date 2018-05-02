@@ -142,12 +142,14 @@ public class AgentController {
 				" has approved your request for " + coverage.getName() + " coverage.";
 		Message message = new Message();
 		
+		message.setSenderString("n");
 		message.setSenderChar('n');
 		message.setMessageBody(fullMessage);
 		message.setInsured(insured);
 		message.setAgent(agent);
 		agent.addMessageToMessages(message);
 		mdao.create(message);
+		mdao.persistSender(message);
 		
 		
 		ipdao.addCoverageTypeById(insured.getPlans().get(0).getId(), coverage.getId());

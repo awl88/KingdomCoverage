@@ -30,9 +30,6 @@ public class Message {
 	
 	@Column(name="admin")
 	private Character senderChar;
-	
-	@Transient
-	private boolean sender;
 
 	@Transient
 	String senderString;
@@ -86,19 +83,6 @@ public class Message {
 
 	public void setSenderChar(Character senderChar) {
 		this.senderChar = senderChar;
-	}
-
-	public boolean isSender() {
-		
-		if(senderString == "Y") {
-			sender = true;
-		}
-		
-		return sender;
-	}
-
-	public void setSender(boolean sender) {
-		this.sender = sender;
 	}
 
 	public String getMessageBody() {

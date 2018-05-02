@@ -3,9 +3,7 @@
 <jsp:include page="partials/head.jsp"></jsp:include>
 
 <body>
-	<audio autoplay loop>
-		<source src="views/The Shire theme(from the extended edition).mp3">
-	</audio>
+	
 		<!-- navbar, page headers will go here -->
 	<jsp:include page="partials/navbar.jsp"></jsp:include>
 	<div class="blended_grid">

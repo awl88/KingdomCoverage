@@ -116,8 +116,7 @@ public class UserController {
 				insured.setPlans(idao.listPlans(insured.getId()));
 				coverages = idao.getCoveragesByInsuredId(insured.getId());
 				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
-				Integer totalCostOfPlan = ipdao.getTotalCostOfPlanAndMultiplier(insured);
-				insurancePlan.setTotalCostOfPlan(totalCostOfPlan);
+				ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
@@ -127,9 +126,6 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
-//		mv.addObject("totalCostOfPlan", totalCostOfPlan);
-		mv.addObject("messages", messages);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);
@@ -213,7 +209,19 @@ public class UserController {
 	public ModelAndView submitRequest(HttpSession session, InsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
 		Insured insured = (Insured) session.getAttribute("insuredSession");
-		session.setAttribute("insuredSession", insured);	
+		session.setAttribute("insuredSession", insured);
+//		insured.setPlans(idao.listPlans(insured.getId()));
+//		Address address = idao.getAddressByInsuredId(insured.getId());
+//		insured.setAddress(idao.getAddressByInsuredId(insured.getId()));
+//		idao.updateInsured(dto, address, insured);
+//		ipdao.getTotalCostOfPlanAndMultiplier(insured);
+//		String updateMessage = "Profile successfully updated";
+//		mv.addObject("updateMessage", updateMessage);
+//		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
+//		mv.addObject("plans", insured.getPlans().get(0));
+//		mv.addObject("insured", insured);
+//		mv.setViewName("views/insured.jsp");
+//		mv.setViewName("views/updateInsured.jsp");		
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
 		if (plans.size() > 0) {
@@ -221,9 +229,9 @@ public class UserController {
 				insured.setPlans(idao.listPlans(insured.getId()));
 				coverages = idao.getCoveragesByInsuredId(insured.getId());
 				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
+				ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
-		ipdao.getTotalCostOfPlanAndMultiplier(insured);
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
 		if (agents.size() > 0) {
 			Agent agent = adao.show(agents.get(0).getId());

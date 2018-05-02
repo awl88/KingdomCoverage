@@ -120,8 +120,16 @@
 							<td><c:if test="${!empty messages}">
 									<c:forEach var="m" items="${messages}">
 									Message Id: ${m.id}<br>
-									From: ${m.insured.fName} ${m.insured.lName}<br>
-									To: ${m.agent.fName} ${m.agent.lName}<br>
+									<c:choose>
+										<c:if test= "${message.sender}">
+											From: ${m.insured.fName} ${m.insured.lName}<br>
+											To: ${m.agent.fName} ${m.agent.lName}<br>
+										</c:if>
+										<c:otherwise>
+											From: ${m.agent.fName} ${m.agent.lName}<br>
+											To: ${m.insured.fName} ${m.insured.lName}<br>
+										</c:otherwise>
+									</c:choose>
 									Message: ${m.messageBody}<br>
 										<br>
 									</c:forEach>

@@ -19,7 +19,7 @@
 		<div class="row">
 			<form action="INSERT PATH HERE" method="POST">
 				<div class="feed">
-					<label for="message">Select your desired coverage:</label>
+					<label for="message">Please select your desired coverage:</label>
 					<select name="message" style="margin-top: 1.5px;">
 					<c:forEach var = "coverage" items="${allPlans}">
 						<option value="${coverage.name}">${coverage.name}</option>

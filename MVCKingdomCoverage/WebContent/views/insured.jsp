@@ -34,28 +34,28 @@
 						<tbody>
 							<tr>
 								<td>Name:</td>
-								<td>-------------------------------</td>
-								<td>${insured.fName}${insured.lName}</td>
+								<td>               </td>
+								<td>${insured.fName} ${insured.lName}</td>
 							</tr>
 							<tr>
 								<td>Age:</td>
-								<td>-------------------------------</td>
+								<td>               </td>
 								<td>${insured.age}</td>
 							</tr>
 							<tr>
 								<td>Gender:</td>
-								<td>-------------------------------</td>
+								<td>               </td>
 								<td>${insured.gender}</td>
 							</tr>
 							<tr>
 								<td>Address:</td>
-								<td>-------------------------------</td>
+								<td>               </td>
 								<td>${insured.address.street},${insured.address.city},
 									${insured.address.realm}</td>
 							</tr>
 							<tr>
 								<td>Agent:</td>
-								<td>-------------------------------</td>
+								<td>               </td>
 								<td><c:if test="${!empty agents}">
 										<c:forEach var="a" items="${insured.agents}">
 									${a.fName} ${a.lName}
@@ -64,7 +64,7 @@
 							</tr>
 							<tr>
 								<td>Total Premiums:</td>
-								<td>-------------------------------</td>
+								<td>               </td>
 								<td><c:if test="${empty plans}">
 									Zero Pieces of Silver
 								</c:if> <c:if test="${!empty plans}">

@@ -170,6 +170,7 @@ public class UserController {
 		Insured insured = (Insured) session.getAttribute("insuredSession");
 		ipdao.getTotalCostOfPlanAndMultiplier(insured);
 		ModelAndView mv = new ModelAndView();
+		int premium = 0;
 		String fullMessage = "Hey, " + insured.getAgents().get(0).getfName() + "! " + insured.getfName() + " "
 				+ insured.getlName() + " would like a new " + messageBody + " plan.";
 		Message message = new Message();
@@ -185,8 +186,7 @@ public class UserController {
 				insured.setPlans(idao.listPlans(insured.getId()));
 				coverages = idao.getCoveragesByInsuredId(insured.getId());
 				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
-				Integer totalCostOfPlan = ipdao.getTotalCostOfPlanAndMultiplier(insured);
-				insurancePlan.setTotalCostOfPlan(totalCostOfPlan);
+				premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
@@ -199,6 +199,7 @@ public class UserController {
 //		mv.addObject("totalCostOfPlan", totalCostOfPlan);
 		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
 		mv.addObject("messages", messages);
+		mv.addObject("premium", premium);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);
@@ -228,6 +229,7 @@ public class UserController {
 	@RequestMapping(path = "insuredUpdated.do", method = RequestMethod.POST)
 	public ModelAndView submitRequest(HttpSession session, InsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
+		int premium = 0;
 		Insured insured = (Insured) session.getAttribute("insuredSession");
 		session.setAttribute("insuredSession", insured);		
 		Address address = idao.getAddressByInsuredId(insured.getId());
@@ -239,8 +241,7 @@ public class UserController {
 				Integer costOfPlan = ipdao.getTotalCostOfPlanAndMultiplier(insured);
 				insurancePlan.setTotalCostOfPlan(costOfPlan);
 				insured.setPlans(idao.listPlans(insured.getId()));
-				coverages = idao.getCoveragesByInsuredId(insured.getId());
-				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
+				premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
@@ -256,6 +257,7 @@ public class UserController {
 		String updateMessage = "Profile successfully updated";
 		mv.addObject("updateMessage", updateMessage);
 		mv.addObject("messages", messages);
+		mv.addObject("premium", premium);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);

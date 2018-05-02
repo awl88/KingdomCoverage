@@ -126,6 +126,8 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
+		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		mv.addObject("messages", messages);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);

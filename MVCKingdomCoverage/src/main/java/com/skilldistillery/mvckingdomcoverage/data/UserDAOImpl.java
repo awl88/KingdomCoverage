@@ -1,5 +1,6 @@
 package com.skilldistillery.mvckingdomcoverage.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -31,14 +32,23 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public Integer getUserIdByNameAndPass(String name, String password) {
-		User user = new User();
+		List<User> users = new ArrayList<>();
 		String query = "SELECT u from User u where u.name = :name and u.password = :password";
 	
-		user = em.createQuery(query, User.class)
+		users = em.createQuery(query, User.class)
 				.setParameter("name", name)
 				.setParameter("password", password)
-				.getSingleResult();
-		return user.getId();
+				.getResultList();
+		
+		if (users.size() > 0) {
+			User user = users.get(0);
+			return user.getId();
+		}
+		
+		else {
+			return 0;
+		}
+		
 	}
 	
 	@Override

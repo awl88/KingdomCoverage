@@ -1,5 +1,6 @@
 package com.skilldistillery.mvckingdomcoverage.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -107,7 +108,19 @@ public class UserController {
 	public ModelAndView login(HttpSession session, @RequestParam("name") String name,
 			@RequestParam("password") String password) {
 		ModelAndView mv = new ModelAndView();
-		Insured insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));
+		Insured insured = new Insured();
+		List<String> unsuccessfulLogin = new ArrayList<>();
+		
+		if (udao.getUserIdByNameAndPass(name, password) > 5) {
+			insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));			
+		}
+		else {
+			unsuccessfulLogin.add("Invalid username/password combination. Please try again.");
+			mv.addObject("unsuccessfulLogin", unsuccessfulLogin);
+			mv.setViewName("views/index.jsp");
+			return mv;
+		}
+		
 		session.setAttribute("insuredSession", insured);
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
@@ -119,6 +132,7 @@ public class UserController {
 				ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
+		
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
 		if (agents.size() > 0) {
 			Agent agent = adao.show(agents.get(0).getId());
@@ -126,6 +140,10 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
+		
+		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		mv.addObject("unsuccessfulLogin", unsuccessfulLogin);
+		mv.addObject("messages", messages);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);

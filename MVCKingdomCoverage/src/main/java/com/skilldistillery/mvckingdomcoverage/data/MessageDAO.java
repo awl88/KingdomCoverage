@@ -10,4 +10,6 @@ public interface MessageDAO {
 
 	Message show(int id);
 
+	void persistSender(Message message);
+
 }

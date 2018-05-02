@@ -29,6 +29,13 @@ public class MessageDAOImpl implements MessageDAO {
 	}
 	
 	@Override
+	public void persistSender(Message message) {
+		Message managed = em.find(Message.class, message.getId());
+		managed.setSenderString(message.getSenderString());
+		managed.setSenderChar(message.getSenderChar());
+	}
+	
+	@Override
 	public boolean destroy(int id) {
 		if (em.find(Message.class, id) == null) {
 			return false;

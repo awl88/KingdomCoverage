@@ -90,22 +90,7 @@
 				</div>
 				<div class="feed">
 				<br>
-					<h3>Plans: </h3>
-<<<<<<< HEAD
-					
-								<c:choose>
-									<c:when test="${empty coverages}">
-										<h3>No plans to display at this time. Contact your agent</h3>
-									</c:when>
-									<c:otherwise>
-										<c:forEach var="p" items="${insured.plans}">
-											<c:forEach items="${p.coverages}" var="c">
-												<h5>${c.name}</h5>
-											</c:forEach>
-										</c:forEach>
-									</c:otherwise>
-								</c:choose>
-=======
+					<h3>Plans: </h3>								
 							<c:choose>
 								<c:when test="${empty coverages}">
 									<h3>No plans to display at this time. Contact your agent</h3>
@@ -116,8 +101,6 @@
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
->>>>>>> 0a67288e1e80c855689bd1e387ecab9f27e7321f
-							
 					<div class="row">
 						<div class="col-md-3"></div>
 						<div class="col-md-6">

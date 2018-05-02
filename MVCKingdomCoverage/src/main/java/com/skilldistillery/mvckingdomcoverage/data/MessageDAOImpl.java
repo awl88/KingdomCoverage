@@ -17,6 +17,12 @@ public class MessageDAOImpl implements MessageDAO {
 	
 	@Override
 	public Message create(Message message) {
+//		unimplemented and unfinished method to assign an agent to an insured, you will also need to create a new empty plan with no coverages when you implement this
+//		String query = "SELECT a FROM Agent a JOIN FETCH a.address WHERE a.address.realm = :realm";
+//		List<Agent> agents = em.createQuery(query, Agent.class)
+//				.setParameter("realm", dto.getAddressRealm())
+//				.getResultList();
+//		insured.setAgents(agents);
 		em.persist(message);
 		em.flush();
 		return message;

@@ -56,7 +56,7 @@
 							<tr>
 								<td>Agent:</td>
 								<td>-------------------------------</td>
-								<td><c:if test="${!empty insured.agents}">
+								<td><c:if test="${!empty agents}">
 										<c:forEach var="a" items="${insured.agents}">
 									${a.fName} ${a.lName}
 								</c:forEach>
@@ -66,9 +66,14 @@
 								<td>Total Premiums: </td>
 								<td>-------------------------------</td>
 								<td>
-									<c:forEach var="p" items="${insured.plans}">
+								<c:if test="${empty plans}">
+									Zero Pieces of Silver
+								</c:if>
+								<c:if test="${!empty plans})">
+									<c:forEach var="p" items="${plans}">
 										${p.totalCostOfPlan} Pieces of Silver
 									</c:forEach>
+								</c:if>
 								</td>
 							</tr>
 						</tbody>
@@ -87,7 +92,7 @@
 										<h3>No plans to display at this time. Contact your agent</h3>
 									</c:when>
 									<c:otherwise>
-										<c:forEach var="p" items="${insured.plans}">
+										<c:forEach var="p" items="${plans}">
 											<c:forEach items="${p.coverages}" var="c">
 												<h5>${c.name}</h5>
 											</c:forEach>
@@ -117,8 +122,8 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><c:if test="${!empty insured.messages}">
-									<c:forEach var="m" items="${insured.messages}">
+							<td><c:if test="${!empty messages}">
+									<c:forEach var="m" items="${messages}">
 									Message Id: ${m.id}<br>
 									From: ${m.insured.fName} ${m.insured.lName}<br>
 									To: ${m.agent.fName} ${m.agent.lName}<br>

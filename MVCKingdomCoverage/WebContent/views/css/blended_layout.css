@@ -165,7 +165,7 @@ thead {
 
 .footer {
     position: fixed;
-    left: 0;
+    left: 50%;
     bottom: 0;
     width: 100%;
     background-color: red;
@@ -178,6 +178,7 @@ thead {
 }
 
 .foot {
+	
 	background-color: rgba(0,0,0,.35);
 	margin: auto;
     width: 20%;

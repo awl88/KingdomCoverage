@@ -209,19 +209,7 @@ public class UserController {
 	public ModelAndView submitRequest(HttpSession session, InsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
 		Insured insured = (Insured) session.getAttribute("insuredSession");
-		session.setAttribute("insuredSession", insured);
-//		insured.setPlans(idao.listPlans(insured.getId()));
-//		Address address = idao.getAddressByInsuredId(insured.getId());
-//		insured.setAddress(idao.getAddressByInsuredId(insured.getId()));
-//		idao.updateInsured(dto, address, insured);
-//		ipdao.getTotalCostOfPlanAndMultiplier(insured);
-//		String updateMessage = "Profile successfully updated";
-//		mv.addObject("updateMessage", updateMessage);
-//		mv.addObject("coverages", insured.getPlans().get(0).getCoverages());
-//		mv.addObject("plans", insured.getPlans().get(0));
-//		mv.addObject("insured", insured);
-//		mv.setViewName("views/insured.jsp");
-//		mv.setViewName("views/updateInsured.jsp");		
+		session.setAttribute("insuredSession", insured);		
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
 		if (plans.size() > 0) {

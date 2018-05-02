@@ -159,5 +159,13 @@ public class AgentController {
 
 		return mv;
 	}
+	
+	@RequestMapping(path = "faq.do", method = RequestMethod.GET)
+	public ModelAndView getFAQ(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("views/faq.jsp");
+		
+		return mv;
+	}
 
 }

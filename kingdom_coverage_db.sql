@@ -224,6 +224,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `insured_id` INT NOT NULL,
   `agent_id` INT NOT NULL,
   `message_body` VARCHAR(500) NOT NULL,
+  `admin` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_message_insured_id_to_agent__idx` (`insured_id` ASC),
   INDEX `fk_message_agent_id_to_agent_id_idx` (`agent_id` ASC),
@@ -681,15 +682,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `kingdom_coverage_db`;
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (1, 1, 1, 'Hey Jake. It\'s me Bilbo. What are you wearing?');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (2, 2, 1, 'Hey Jake. It\'s me Gandalf. What are you wearing?');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (3, 28, 2, 'Hey Rebecca. I was hoping you\'d be able to get me a new Dragon Fire coverage plan. Thanks!');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (4, 29, 2, 'Rebecca - I just got bit by a vampire, can you please contact me asap.');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (5, 38, 3, 'Hey Eli. I am planning on buying a new schooner. Can we get together at ye olde tavern to talk about boat insurance?');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (6, 39, 3, 'Eli - I am planning on going on a vacation to Morodor. I think I need to get a new plan.');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (7, 46, 4, 'Drew - A wizard just shot a fireball at my cottage and the thatch roof is on fire. HELP!');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (8, 47, 4, 'Hello Drew. I wanted to get together to talk about some unicorn insurance. I see one outside and I am going to go try to catch him.');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (9, 54, 5, 'Andrew- New York sucks.');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`) VALUES (10, 55, 5, 'Hey Andrew. Can we please get together soon to talk about a castle policy at ye olde tavern? Thanks.');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (1, 1, 1, 'Hey Jake. It\'s me Bilbo. What are you wearing?', 'n');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (2, 2, 1, 'Hey Jake. It\'s me Gandalf. What are you wearing?', 'n');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (3, 28, 2, 'Hey Rebecca. I was hoping you\'d be able to get me a new Dragon Fire coverage plan. Thanks!', 'n');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (4, 29, 2, 'Rebecca - I just got bit by a vampire, can you please contact me asap.', 'n');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (5, 38, 3, 'Hey Eli. I am planning on buying a new schooner. Can we get together at ye olde tavern to talk about boat insurance?', 'n');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (6, 39, 3, 'Eli - I am planning on going on a vacation to Morodor. I think I need to get a new plan.', 'n');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (7, 46, 4, 'Drew - A wizard just shot a fireball at my cottage and the thatch roof is on fire. HELP!', 'n');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (8, 47, 4, 'Hello Drew. I wanted to get together to talk about some unicorn insurance. I see one outside and I am going to go try to catch him.', 'n');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (9, 54, 5, 'Andrew- New York sucks.', 'n');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `admin`) VALUES (10, 55, 5, 'Hey Andrew. Can we please get together soon to talk about a castle policy at ye olde tavern? Thanks.', NULL);
 
 COMMIT;

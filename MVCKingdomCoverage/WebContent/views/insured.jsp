@@ -69,10 +69,15 @@
 								<c:if test="${empty plans}">
 									Zero Pieces of Silver
 								</c:if>
+<<<<<<< HEAD
 								<c:if test="${!empty plans})">
 									<c:forEach var="p" items="${plans}">
 										${p.totalCostOfPlan} Pieces of Silver
 									</c:forEach>
+=======
+								<c:if test="${! empty plans}">
+									${premium}
+>>>>>>> 0a67288e1e80c855689bd1e387ecab9f27e7321f
 								</c:if>
 								</td>
 							</tr>
@@ -86,6 +91,7 @@
 				<div class="feed">
 				<br>
 					<h3>Plans: </h3>
+<<<<<<< HEAD
 					
 								<c:choose>
 									<c:when test="${empty coverages}">
@@ -99,6 +105,18 @@
 										</c:forEach>
 									</c:otherwise>
 								</c:choose>
+=======
+							<c:choose>
+								<c:when test="${empty coverages}">
+									<h3>No plans to display at this time. Contact your agent</h3>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${coverages}" var="c">
+										<h5>${c.name}</h5>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+>>>>>>> 0a67288e1e80c855689bd1e387ecab9f27e7321f
 							
 					<div class="row">
 						<div class="col-md-3"></div>
@@ -128,8 +146,16 @@
 									<c:forEach var="m" items="${messages}">
 									
 									Message Id: ${m.id}<br>
-									From: ${m.insured.fName} ${m.insured.lName}<br>
-									To: ${m.agent.fName} ${m.agent.lName}<br>
+									<c:choose>
+										<c:if test= "${message.sender}">
+											From: ${m.insured.fName} ${m.insured.lName}<br>
+											To: ${m.agent.fName} ${m.agent.lName}<br>
+										</c:if>
+										<c:otherwise>
+											From: ${m.agent.fName} ${m.agent.lName}<br>
+											To: ${m.insured.fName} ${m.insured.lName}<br>
+										</c:otherwise>
+									</c:choose>
 									Message: ${m.messageBody}<br>
 										<br>
 										

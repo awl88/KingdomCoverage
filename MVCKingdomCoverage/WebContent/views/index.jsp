@@ -21,17 +21,37 @@
 			<div class="formTextLight leftColumn col-md-1" id="invisible"></div>
 			<div class="feedHost col-md-8">
 				<div class="feed">
-					<h1>some stuff</h1>
+					<h1>Get a Quote</h1>
 				</div>
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
+				<form action="INSERT PATH HERE" method="POST">
+					<div class="feed">
+						<label for="message">Please select your desired coverage:</label>
+						<select name="message" style="margin-top: 1.5px;">
+							<c:forEach var = "coverage" items="${allPlans}">
+								<option value="${coverage.name}">${coverage.name}</option>
+							</c:forEach>
+						</select>			
+					</div>
+					<div class="feed">
+						<label for="insuredSpeciesId">Please select your species:</label> 
+						<select name="insuredSpeciesId" style="margin-top: 1.5px;">
+							<c:forEach var="species" items="${allSpecies}">
+								<option name="${species.name}" value="${species.id}">${species.name}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="feed">
+						<label for="insuredOccupationId">Please select your occupation:</label> 
+						<select name="insuredOccupationId" style="margin-top: 1.5px;">
+							<c:forEach var="job" items="${jobs}">
+								<option name="${job.name}" value="${job.id}">${job.name}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="feed">
+						<input type="submit" class="gimmeRoom btn btn-primary" style="margin-top: 1.5px; value="Get Quote"/>
+					</div>
+				</form>
 			</div>
 			<div class="formTextLight rightColumn col-md-2">
 			<h1>Login</h1>

@@ -6,7 +6,9 @@
 	
 	<a class="companyNameSmall navbar-brand" href="#">Kingdom Coverage</a>
 	
-	
+	<audio autoplay loop>
+		<source src="views/The Shire theme(from the extended edition).mp3">
+	</audio>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarColor02" aria-controls="navbarColor02"
 		aria-expanded="false" aria-label="Toggle navigation">

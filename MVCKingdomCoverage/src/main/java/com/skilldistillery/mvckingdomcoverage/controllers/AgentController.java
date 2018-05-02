@@ -126,8 +126,8 @@ public class AgentController {
 		ModelAndView mv = new ModelAndView();
 		Insured insured = idao.show(id);
 		
-		String fullMessage = "Hey, " + insured.getfName() + "! Agent "+ agent.getlName() +
-				" has approved your request for a(n) " + coverage.getName() + " plan.";
+		String fullMessage = "Hey, " + insured.getfName() + "! Agent "+ agent.getfName() +
+				" has approved your request for " + coverage.getName() + " coverage.";
 		Message message = new Message();
 		message.setMessageBody(fullMessage);
 		message.setInsured(insured);
@@ -137,7 +137,6 @@ public class AgentController {
 		
 		
 		ipdao.addCoverageTypeById(insured.getPlans().get(0).getId(), coverage.getId());
-		
 		mv.setViewName("views/agent.jsp");
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "The coverage has been added!");

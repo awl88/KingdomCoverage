@@ -63,8 +63,8 @@
 									</c:if></td>
 							</tr>
 							<tr>
-								<td>Total Premiums:</td>
-								<td>               </td>
+								<td>Premium:</td>
+								<td>                </td>
 								<td><c:if test="${empty plans}">
 									Zero Pieces of Silver
 								</c:if> <c:if test="${!empty plans}">

@@ -29,7 +29,7 @@
 					<br>
 					<h1>Your Profile</h1>
 				</div>
-				<div class="feed">
+				<div class="insuredTable">
 					<table>
 						<tbody>
 							<tr>
@@ -50,7 +50,7 @@
 							<tr>
 								<td>Address:</td>
 								<td>               </td>
-								<td>${insured.address.street},${insured.address.city},
+								<td>${insured.address.street}, ${insured.address.city}, 
 									${insured.address.realm}</td>
 							</tr>
 							<tr>

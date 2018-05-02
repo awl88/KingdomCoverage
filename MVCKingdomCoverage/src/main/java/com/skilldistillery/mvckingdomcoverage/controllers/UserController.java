@@ -176,11 +176,18 @@ public class UserController {
 		Message message = new Message();
 		message.setMessageBody(fullMessage);
 		message.setSenderString("y");
+		message.setSenderChar('y');
 		message.setInsured(insured);
 		message.setAgent(((Insured) session.getAttribute("insuredSession")).getAgents().get(0));
+		
+		mdao.create(message);
+		mdao.persistSender(message);
+		
 		((Insured) session.getAttribute("insuredSession")).getAgents().get(0).addMessageToMessages(message);
 		mdao.create(message);
+		
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
+		
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
 		if (plans.size() > 0) {
 			for (InsurancePlan insurancePlan : plans) {
@@ -190,6 +197,7 @@ public class UserController {
 				premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
+		
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
 		if (agents.size() > 0) {
 			Agent agent = adao.show(agents.get(0).getId());

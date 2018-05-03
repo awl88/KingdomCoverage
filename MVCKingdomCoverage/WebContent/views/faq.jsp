@@ -20,7 +20,7 @@
 			<div class="formTextLight leftColumn col-md-3" id="invisible"></div>
 			<div class="feedHost col-md-6">
 				<div class="feed">
-					<h1 class="faqName">Billing & Payment FAQs</h1>
+					<h1 class="padding">Billing & Payment FAQs</h1>
 					<button class="accordion">How do I make a payment?</button>
 					<div class="panel">
 						<p>Bring us the gold in a government certified pouch. You can

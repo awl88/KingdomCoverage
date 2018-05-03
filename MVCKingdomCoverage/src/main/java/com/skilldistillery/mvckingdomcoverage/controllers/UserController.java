@@ -114,6 +114,12 @@ public class UserController {
 		ModelAndView mv = new ModelAndView();
 		if (udao.getUserByName(dto.getUserName()) == null) {
 			idao.createUserAndInsuredAndAddress(dto);
+			List<Occupation> jobs = odao.getAllOccupations();
+			List<Species> allSpecies = sdao.getAllSpecies();
+			List<CoverageType> coverages = ctdao.getAllTypes();
+			mv.addObject("jobs", jobs);
+			mv.addObject("allSpecies", allSpecies);
+			mv.addObject("coveragesList", coverages);
 			mv.setViewName("views/index.jsp");
 		} else {
 			// put in a method to pass the dto object back to the form later, take this out

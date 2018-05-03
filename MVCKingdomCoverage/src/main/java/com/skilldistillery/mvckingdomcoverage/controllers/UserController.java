@@ -74,7 +74,7 @@ public class UserController {
 		List<CoverageType> coverages = ctdao.getAllTypes();
 		mv.addObject("jobs", jobs);
 		mv.addObject("allSpecies", allSpecies);
-		mv.addObject("coverages", coverages);
+		mv.addObject("coveragesList", coverages);
 		mv.setViewName("views/index.jsp");
 		return mv;
 	}
@@ -127,10 +127,15 @@ public class UserController {
 	public ModelAndView login(HttpSession session, @RequestParam("name") String name,
 			@RequestParam("password") String password) {
 		ModelAndView mv = new ModelAndView();
+		List<Occupation> jobs = odao.getAllOccupations();
+		List<Species> allSpecies = sdao.getAllSpecies();
+		List<CoverageType> coveragesList = ctdao.getAllTypes();
+		mv.addObject("coveragesList", coveragesList);
+		mv.addObject("jobs", jobs);
+		mv.addObject("allSpecies", allSpecies);
 		Insured insured = new Insured();
 		List<String> unsuccessfulLogin = new ArrayList<>();
 		int premium = 0;
-		
 		if (udao.getUserIdByNameAndPass(name, password) > 5) {
 			insured = idao.show(idao.getInsuredIdByUserId(udao.getUserIdByNameAndPass(name, password)));			
 		}
@@ -140,7 +145,6 @@ public class UserController {
 			mv.setViewName("views/index.jsp");
 			return mv;
 		}
-		
 		session.setAttribute("insuredSession", insured);
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
@@ -152,7 +156,6 @@ public class UserController {
 				premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
-		
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
 		if (agents.size() > 0) {
 			Agent agent = adao.show(agents.get(0).getId());
@@ -160,7 +163,6 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
-		
 		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
 		mv.addObject("premium", premium);
 		mv.addObject("unsuccessfulLogin", unsuccessfulLogin);
@@ -176,11 +178,14 @@ public class UserController {
 	@RequestMapping(path = "logoutInsured.do", method = RequestMethod.GET)
 	public ModelAndView logoutAgent(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		
+		List<Occupation> jobs = odao.getAllOccupations();
+		List<Species> allSpecies = sdao.getAllSpecies();
+		List<CoverageType> coveragesList = ctdao.getAllTypes();
+		mv.addObject("jobs", jobs);
+		mv.addObject("allSpecies", allSpecies);
+		mv.addObject("coveragesList", coveragesList);
 		session.removeAttribute("insuredSession");
-		
 		mv.setViewName("views/index.jsp");
-		
 		return mv;
 	}
 
@@ -198,15 +203,11 @@ public class UserController {
 		message.setSenderChar('y');
 		message.setInsured(insured);
 		message.setAgent(((Insured) session.getAttribute("insuredSession")).getAgents().get(0));
-		
 		mdao.create(message);
 		mdao.persistSender(message);
-		
 		((Insured) session.getAttribute("insuredSession")).getAgents().get(0).addMessageToMessages(message);
 		mdao.create(message);
-		
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
-		
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
 		if (plans.size() > 0) {
 			for (InsurancePlan insurancePlan : plans) {
@@ -216,7 +217,6 @@ public class UserController {
 				premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
 			}
 		}
-		
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
 		if (agents.size() > 0) {
 			Agent agent = adao.show(agents.get(0).getId());
@@ -234,7 +234,6 @@ public class UserController {
 		mv.setViewName("views/insured.jsp");
 		mv.addObject("insured", session.getAttribute("insuredSession"));
 		mv.addObject("updateMessage", "Your request has been submitted!");
-
 		return mv;
 	}
 
@@ -280,7 +279,6 @@ public class UserController {
 		}
 		insured = idao.updateInsured(dto, address, insured);
 		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
-		
 		String updateMessage = "Profile successfully updated";
 		mv.addObject("updateMessage", updateMessage);
 		mv.addObject("messages", messages);
@@ -290,21 +288,23 @@ public class UserController {
 		mv.addObject("insured", insured);
 		mv.addObject("coverages", coverages);
 		mv.setViewName("views/insured.jsp");
-
 		return mv;
 	}
 
 	@RequestMapping(path = "deactivate.do", method = RequestMethod.POST)
 	public ModelAndView deactivate(HttpSession session, Insured insured, int id) {
+		ModelAndView mv = new ModelAndView();
+		List<Occupation> jobs = odao.getAllOccupations();
+		List<Species> allSpecies = sdao.getAllSpecies();
+		List<CoverageType> coveragesList = ctdao.getAllTypes();
+		mv.addObject("jobs", jobs);
+		mv.addObject("allSpecies", allSpecies);
+		mv.addObject("coveragesList", coveragesList);
 		session.getAttribute("insuredSession");
 		ipdao.deactivate(id);
-
 		insured = idao.update(insured.getId(), insured);
-
 		session.setAttribute("insuredSession", insured);
-		ModelAndView mv = new ModelAndView();
 		mv.setViewName("views/index.jsp");
-
 		return mv;
 	}
 }

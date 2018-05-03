@@ -141,6 +141,36 @@
 									</c:when>
 								</c:choose></td>
 						</tr>
+						<tr>
+							<td>
+							<!-- Trigger the modal with a button -->
+								<button type="button" class="btn btn-info btn-lg"
+									data-toggle="modal" data-target="#myModalCompose" style="margin: 1em 1em 1em 1em;">&#9998  Compose Message</button>
+
+								<!-- Modal -->
+								<div id="myModalCompose" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title">Share a message with your agent:</h4>
+											</div>
+											<div class="modal-body">
+												
+												<textarea rows = "4" cols = "50" placeholder = "Type your message here..."></textarea>
+												<input type="submit" class="btn btn-warning" value="Send &#x00A; &#x2709">
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Back</button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<!-- closing body container div -->
+							</td>
 					</tbody>
 				</table>
 			</div>

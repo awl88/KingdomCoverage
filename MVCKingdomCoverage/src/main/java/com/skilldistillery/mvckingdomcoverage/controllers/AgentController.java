@@ -75,9 +75,11 @@ public class AgentController {
 
 		session.setAttribute("agentSession", agent);
 		
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
 		mv.addObject("clients", clients);
-		mv.addObject("messages", messages);
 		mv.addObject("agent", agent);
 		mv.setViewName("views/agent.jsp");
 
@@ -248,6 +250,18 @@ public class AgentController {
 	public ModelAndView getPrivacy(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("views/privacy.jsp");
+		
+		return mv;
+	}
+	
+	@RequestMapping(path = "messages.do", method = RequestMethod.GET)
+	public ModelAndView getMessages(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Agent agent = (Agent)session.getAttribute("agentSession");
+		List<Message> messages = idao.getMessagesByInsuredId(agent.getId());
+		
+		mv.addObject("messages", messages);
+		mv.setViewName("views/messages.jsp");
 		
 		return mv;
 	}

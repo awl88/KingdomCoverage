@@ -14,5 +14,7 @@ public interface AgentDAO {
 	List<Message> getMessagesByAgentId(Integer id);
 	Integer getUserIdByNameAndPass(String name, String password);
 	Insured getClientById(int id);
+	Message getNewestInboxMessagesByAgentId(Integer id);
+	Message getNewestSentMessagesByAgentId(Integer id);
 	
 }

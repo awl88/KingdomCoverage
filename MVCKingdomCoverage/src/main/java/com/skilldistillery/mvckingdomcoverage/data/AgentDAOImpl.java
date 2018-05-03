@@ -75,6 +75,47 @@ public class AgentDAOImpl implements AgentDAO {
 		
 	}
 	
-
-		
+	@Override
+	public Message getNewestInboxMessagesByAgentId(Integer id) {
+		List<Message> messages = new ArrayList<>();
+		Message newestInbox = new Message();
+		newestInbox.setId(-1);
+		Agent agent = em.find(Agent.class, id);
+		if(agent.getMessages().size() > 0) {
+			messages = agent.getMessages();
+		}
+		if (messages.size() != 0) {
+			for (int i = 0; i < messages.size(); i++) {
+				if (messages.get(i).toString().equals("n") && messages.get(i).getId() > newestInbox.getId()) {
+					newestInbox = messages.get(i);
+				}
+			}
+		}
+		else {
+			newestInbox = null;
+		}
+		return newestInbox;
+	}
+	
+	@Override
+	public Message getNewestSentMessagesByAgentId(Integer id) {
+		List<Message> messages = new ArrayList<>();
+		Message newestInbox = new Message();
+		newestInbox.setId(-1);
+		Agent agent = em.find(Agent.class, id);
+		if(agent.getMessages().size() > 0) {
+			messages = agent.getMessages();
+		}
+		if (messages.size() != 0) {
+			for (int i = 0; i < messages.size(); i++) {
+				if (messages.get(i).toString().equals("y") && messages.get(i).getId() > newestInbox.getId()) {
+					newestInbox = messages.get(i);
+				}
+			}
+		}
+		else {
+			newestInbox = null;
+		}
+		return newestInbox;
+	}
 }

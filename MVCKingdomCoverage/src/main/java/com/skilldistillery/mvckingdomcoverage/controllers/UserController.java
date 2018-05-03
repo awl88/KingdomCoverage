@@ -250,7 +250,7 @@ public class UserController {
 	@RequestMapping(path = "composedMessageFromInsured.do", method = RequestMethod.POST)
 	public ModelAndView sendComposedMessage(HttpSession session, @RequestParam("messageBody") String messageBody) {
 		ModelAndView mv = new ModelAndView();
-		
+		int premium = 0;
 		Insured insured = (Insured) session.getAttribute("insuredSession");
 		Message message = new Message();
 		
@@ -263,7 +263,7 @@ public class UserController {
 		mdao.create(message);
 		mdao.persistSender(message);
 		
-		int premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
+		premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
 		
@@ -271,14 +271,13 @@ public class UserController {
 		Message sent = idao.getNewestSentMessagesByInsuredId(insured.getId()); 
 		mv.addObject("inbox", inbox);
 		mv.addObject("sent", sent);
-		
 		mv.addObject("premium", premium);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);
 		mv.addObject("coverages", coverages);
-		mv.setViewName("views/insured.jsp");
-		mv.addObject("agent", session.getAttribute("agentSession"));
+		mv.addObject("agents", insured.getAgents());
 		mv.addObject("updateMessage", "Your message has been sent!");
+		mv.setViewName("views/insured.jsp");
 		
 		return mv;
 	}

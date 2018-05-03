@@ -22,7 +22,7 @@
 						<h3>${userQuote} gold pieces / month</h3>
 					</div>
 				</div>
-				<div class="formTextLight rightColumn col-md-2">
+				<div class="feed formTextLight rightColumn col-md-2">
 				<h1>Login</h1>
 					<form action="login.do" method="POST">
 						Username: <input type="text" name="name" style="border-radius: 5px; margin-bottom: 2px;"> 

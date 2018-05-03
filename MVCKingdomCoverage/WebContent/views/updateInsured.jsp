@@ -82,7 +82,7 @@
 				<input type="text" name="addressRealm" style="margin-top: 1.5px;" value="${address.realm}"/>
 			</div>
 			<div class="feed">
-				<input type="submit" value="Submit" class="gimmeRoom btn btn-primary" />
+				<input type="submit" value="Submit" class="pressed gimmeRoom btn btn-primary" />
 			</div>
 		</div>
 	</form>

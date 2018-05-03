@@ -115,33 +115,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><c:choose>
-									<c:when test="${!empty messages}">
-										<c:forEach var="m" items="${messages}">
-
-											<c:choose>
-												<c:when test="${m.toString() == 'y'}">
-													<!-- Can put this part into another div box for "sent" -->
-
-													<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
-											From: ${m.insured.fName} ${m.insured.lName}<br> --%>
-												</c:when>
-												<c:otherwise>
-													Message Id: ${m.id}<br>
-													To: ${m.insured.fName} ${m.insured.lName}<br>
-													From: ${m.agent.fName} ${m.agent.lName}<br>
-													Message: ${m.messageBody}<br>
-												</c:otherwise>
-											</c:choose>
-											<br>
-
-										</c:forEach>
-									</c:when>
-								</c:choose></td>
-						</tr>
-						<tr>
-							<td>
+					<tr>
+						<td>
 								<form action="composedMessageFromInsured.do" method="POST">
 									<button type="button" class="btn btn-info btn-lg"
 										data-toggle="modal" data-target="#myModalCompose"
@@ -175,6 +150,32 @@
 									</div>
 								</form>
 							</td>
+						</tr>
+						<tr>
+							<td><c:choose>
+									<c:when test="${!empty messages}">
+										<c:forEach var="m" items="${messages}">
+
+											<c:choose>
+												<c:when test="${m.toString() == 'y'}">
+													<!-- Can put this part into another div box for "sent" -->
+
+													<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
+											From: ${m.insured.fName} ${m.insured.lName}<br> --%>
+												</c:when>
+												<c:otherwise>
+													Message Id: ${m.id}<br>
+													To: ${m.insured.fName} ${m.insured.lName}<br>
+													From: ${m.agent.fName} ${m.agent.lName}<br>
+													Message: ${m.messageBody}<br>
+												</c:otherwise>
+											</c:choose>
+											<br>
+
+										</c:forEach>
+									</c:when>
+								</c:choose></td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

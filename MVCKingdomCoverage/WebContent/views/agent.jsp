@@ -55,27 +55,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><c:choose>
-									<c:when test="${!empty messages}">
-										<c:forEach var="m" items="${messages}">
-											<c:choose>
-												<c:when test="${m.toString() == 'y'}">
-											Message Id: ${m.id}<br>
-											To: ${m.agent.fName} ${m.agent.lName}<br>
-											From: ${m.insured.fName} ${m.insured.lName}<br>
-											Message: ${m.messageBody}<br>
-												</c:when>
-
-												<c:otherwise>
-												</c:otherwise>
-											</c:choose>
-											<br>
-
-										</c:forEach>
-									</c:when>
-								</c:choose></td>
-						</tr>
+					<tr>
 						<td>
 						<form action = "composedMessage.do" method = "POST">
 							<button type="button" class="btn btn-info btn-lg"
@@ -112,6 +92,28 @@
 							</div>
 						</form>
 						</td>
+						</tr>
+						<tr>
+							<td><c:choose>
+									<c:when test="${!empty messages}">
+										<c:forEach var="m" items="${messages}">
+											<c:choose>
+												<c:when test="${m.toString() == 'y'}">
+											Message Id: ${m.id}<br>
+											To: ${m.agent.fName} ${m.agent.lName}<br>
+											From: ${m.insured.fName} ${m.insured.lName}<br>
+											Message: ${m.messageBody}<br>
+												</c:when>
+
+												<c:otherwise>
+												</c:otherwise>
+											</c:choose>
+											<br>
+
+										</c:forEach>
+									</c:when>
+								</c:choose></td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

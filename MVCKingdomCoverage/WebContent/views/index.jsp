@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="partials/head.jsp"></jsp:include>
-<body>
-	<div id="pleaseWork" class="container-fluid">
+<body id="pleaseWork">
+	<div class="container-fluid">
 		<jsp:include page="partials/navbar.jsp"></jsp:include>
 		<div class="blended_grid">
 			<div class="topBanner">

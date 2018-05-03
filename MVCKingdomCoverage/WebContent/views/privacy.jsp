@@ -26,13 +26,18 @@
 					will gladly give up your password for a pretty silver piece. Furthermore, we do sell your data to third-parties. We make a lot of money off of your 
 					information, and frankly, we do not want to give up that income. 
 					</p>
-					<p>
-					<h3>
-					Founded in 984 AD by Jake From State Farm, Kingdom Coverage quickly became the fastest growing corporation of all time. In 1052 AD we announced our
-					monopoly over the insurance industry. 1058 AD was the year that we bribed the governments of the Five Realms to force all living beings to register
-					with us. Starting in 1243 Kingdom Coverage helped squash the rebellion of the orcs by charging them extra for their coverage. Today, in 1323 AD
-					Kingdom Coverage offers insurance to everyone, in fact, it is now law that we provide you with your insurance. What lies ahead is a mystery, but
-					whatever it may be, we know that it will just make us more and more money, and we are fine with that.
+					<h3>What information Kingdom Coverage collects and why</h3>
+					<h5>Browser information</h5>
+					<p>We like to know which browser you are using. Which language you prefer, referring sites, and dates and times you accessed our site. We need this so
+					that we can make the user experience worse for you.
+					</p>
+					<h5>User information</h5>
+					<p>We collect all the information that you input when creating your profile. This includes, but is not limited to, your species, occupation, and name.
+					If you have any issue with us collecting this information, well then too bad. For some reason, some people pay a lot for this information, and we cannot 
+					just give up such a huge amount of our income.
+					</p>
+					<h5>What information Kingdom Coverage does not collect</h5>
+					<p>There is no information that we do not collect. We literally know everything about you, even if you didn't input it on this site. We are all knowing
 					</p>
 					
 				</div>

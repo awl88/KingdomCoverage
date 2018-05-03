@@ -82,12 +82,12 @@
 
 														<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
 													From: ${m.insured.fName} ${m.insured.lName}<br> --%>
-													</c:when>
-													<c:otherwise>
 															Message Id: ${message.id}<br>
 															To: ${message.agent.fName} ${message.agent.lName}<br>
 															From: ${message.insured.fName} ${message.insured.lName}<br>
 															Message: ${message.messageBody}<br><br>
+													</c:when>
+													<c:otherwise>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -113,12 +113,12 @@
 													<c:choose>
 														<c:when test="${message.toString() == 'y'}">
 													
+														</c:when>
+														<c:otherwise>
 													Message Id: ${message.id}<br>
 													To: ${message.insured.fName} ${message.insured.lName}<br>
 													From: ${message.agent.fName} ${message.agent.lName}<br>
 													Message: ${message.messageBody}<br><br>
-														</c:when>
-														<c:otherwise>
 	
 															<%-- To: ${m.insured.fName} ${m.insured.lName}<br>
 													From: ${m.agent.fName} ${m.agent.lName}<br> --%>

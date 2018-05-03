@@ -61,10 +61,12 @@ public class AgentController {
 		
 		Insured insured = idao.show(agent.getClients().get(0).getId());
 		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
+		List<Insured> clients = adao.getClients(agent.getId());
 
 		session.setAttribute("agentSession", agent);
 		
 		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		mv.addObject("clients", clients);
 		mv.addObject("messages", messages);
 		mv.addObject("agent", agent);
 		mv.setViewName("views/agent.jsp");
@@ -136,6 +138,7 @@ public class AgentController {
 		Agent agent= (Agent) session.getAttribute("agentSession");
 		ModelAndView mv = new ModelAndView();
 		Insured insured = idao.show(id);
+		List<Insured> clients = adao.getClients(agent.getId());
 		
 		String fullMessage = "Hey, " + insured.getfName() + "! Agent "+ agent.getfName() +
 				" has approved your request for " + coverage.getName() + " coverage.";
@@ -147,6 +150,7 @@ public class AgentController {
 		message.setInsured(insured);
 		message.setAgent(agent);
 		agent.addMessageToMessages(message);
+		agent.setClients(clients);
 		mdao.create(message);
 		mdao.persistSender(message);
 		
@@ -157,6 +161,37 @@ public class AgentController {
 		mv.setViewName("views/agent.jsp");
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "The coverage has been added!");
+		
+		return mv;
+	}
+	
+	@RequestMapping(path = "composedMessage.do", method = RequestMethod.POST)
+	public ModelAndView sendComposedMessage(HttpSession session, @RequestParam("messageBody") String messageBody,
+			@RequestParam("client") int insuredId) {
+		ModelAndView mv = new ModelAndView();
+		
+		Insured insured = idao.show(insuredId);
+		
+		Agent agent = (Agent) session.getAttribute("agentSession");
+		List<Insured> clients = adao.getClients(agent.getId());
+		Message message = new Message();
+		
+		message.setSenderString("n");
+		message.setSenderChar('n');
+		message.setMessageBody(messageBody);
+		message.setInsured(insured);
+		message.setAgent(agent);
+		agent.addMessageToMessages(message);
+		agent.setClients(clients);
+		mdao.create(message);
+		mdao.persistSender(message);
+		
+		
+		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		mv.addObject("messages", messages);
+		mv.setViewName("views/agent.jsp");
+		mv.addObject("agent", session.getAttribute("agentSession"));
+		mv.addObject("updateMessage", "Your message has been sent!");
 		
 		return mv;
 	}

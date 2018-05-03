@@ -1,5 +1,6 @@
 package com.skilldistillery.kingdomcoverage.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -94,6 +95,13 @@ public class Insured {
 		this.messages = messages;
 		this.address = address;
 		this.plans = plans;
+	}
+	
+	public void addMessageToMessages(Message message) {
+		if(message == null) messages = new ArrayList<>();
+        if(!messages.contains(message)) {
+            messages.add(message);
+        }
 	}
 
 	public User getUser() {

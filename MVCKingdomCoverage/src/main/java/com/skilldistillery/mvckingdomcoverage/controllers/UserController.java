@@ -236,6 +236,40 @@ public class UserController {
 		mv.addObject("updateMessage", "Your request has been submitted!");
 		return mv;
 	}
+	
+	@RequestMapping(path = "composedMessageFromInsured.do", method = RequestMethod.POST)
+	public ModelAndView sendComposedMessage(HttpSession session, @RequestParam("messageBody") String messageBody) {
+		ModelAndView mv = new ModelAndView();
+		
+		Insured insured = (Insured) session.getAttribute("insuredSession");
+		Message message = new Message();
+		
+		message.setSenderString("y");
+		message.setSenderChar('y');
+		message.setMessageBody(messageBody);
+		message.setInsured(insured);
+		message.setAgent(insured.getAgents().get(0));
+		insured.addMessageToMessages(message);
+		mdao.create(message);
+		mdao.persistSender(message);
+		
+		int premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
+		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		List<InsurancePlan> plans = idao.listPlans(insured.getId());
+		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
+		
+		mv.addObject("messages", messages);
+		mv.addObject("premium", premium);
+		mv.addObject("plans", plans);
+		mv.addObject("insured", insured);
+		mv.addObject("coverages", coverages);
+		mv.setViewName("views/insured.jsp");
+		mv.addObject("agent", session.getAttribute("agentSession"));
+		mv.addObject("updateMessage", "Your message has been sent!");
+		
+		return mv;
+	}
+
 
 	@RequestMapping(path = "updateInsured.do", method = RequestMethod.GET)
 	public ModelAndView updateInsured(HttpSession session) {

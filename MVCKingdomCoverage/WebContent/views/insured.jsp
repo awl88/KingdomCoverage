@@ -34,28 +34,28 @@
 						<tbody>
 							<tr>
 								<td>Name:</td>
-								<td>               </td>
-								<td>${insured.fName} ${insured.lName}</td>
+								<td></td>
+								<td>${insured.fName}${insured.lName}</td>
 							</tr>
 							<tr>
 								<td>Age:</td>
-								<td>               </td>
+								<td></td>
 								<td>${insured.age}</td>
 							</tr>
 							<tr>
 								<td>Gender:</td>
-								<td>               </td>
+								<td></td>
 								<td>${insured.gender}</td>
 							</tr>
 							<tr>
 								<td>Address:</td>
-								<td>               </td>
-								<td>${insured.address.street}, ${insured.address.city}, 
+								<td></td>
+								<td>${insured.address.street},${insured.address.city},
 									${insured.address.realm}</td>
 							</tr>
 							<tr>
 								<td>Agent:</td>
-								<td>               </td>
+								<td></td>
 								<td><c:if test="${!empty agents}">
 										<c:forEach var="a" items="${insured.agents}">
 									${a.fName} ${a.lName}
@@ -75,7 +75,7 @@
 							</tr>
 						</tbody>
 					</table>
-				
+
 					<form action="updateInsured.do" method="GET">
 						<input type="hidden" value="${insured.id}"> <input
 							type="submit" class="btn btn-default" value="Update Profile">
@@ -119,20 +119,19 @@
 							<td><c:choose>
 									<c:when test="${!empty messages}">
 										<c:forEach var="m" items="${messages}">
-									
+
 											<c:choose>
 												<c:when test="${m.toString() == 'y'}">
-											<!-- Can put this part into another div box for "sent" -->
-											
-											<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
+													<!-- Can put this part into another div box for "sent" -->
+
+													<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
 											From: ${m.insured.fName} ${m.insured.lName}<br> --%>
 												</c:when>
 												<c:otherwise>
-												
-											Message Id: ${m.id}<br>
-											To: ${m.insured.fName} ${m.insured.lName}<br>
-											From: ${m.agent.fName} ${m.agent.lName}<br>
-											Message: ${m.messageBody}<br>
+													Message Id: ${m.id}<br>
+													To: ${m.insured.fName} ${m.insured.lName}<br>
+													From: ${m.agent.fName} ${m.agent.lName}<br>
+													Message: ${m.messageBody}<br>
 												</c:otherwise>
 											</c:choose>
 											<br>
@@ -143,33 +142,38 @@
 						</tr>
 						<tr>
 							<td>
-							<!-- Trigger the modal with a button -->
-								<button type="button" class="btn btn-info btn-lg"
-									data-toggle="modal" data-target="#myModalCompose" style="margin: 1em 1em 1em 1em;">&#9998  Compose Message</button>
+								<form action="composedMessageFromInsured.do" method="POST">
+									<button type="button" class="btn btn-info btn-lg"
+										data-toggle="modal" data-target="#myModalCompose"
+										style="margin: 1em 1em 1em 1em;">&#9998 Compose
+										Message</button>
 
-								<!-- Modal -->
-								<div id="myModalCompose" class="modal fade" role="dialog">
-									<div class="modal-dialog">
+									<!-- Modal -->
+									<div id="myModalCompose" class="modal fade" role="dialog">
+										<div class="modal-dialog">
 
-										<!-- Modal content-->
-										<div class="modal-content">
-											<div class="modal-header">
-												<h4 class="modal-title">Share a message with your agent:</h4>
+											<!-- Modal content-->
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title">Share a message with your
+														agent:</h4>
+												</div>
+												<div class="modal-body">
+
+													<textarea rows="4" cols="50" name="messageBody"
+														placeholder="Type your message here..."></textarea>
+													<input type="submit" class="btn btn-warning"
+														value="Send &#x00A; &#x2709">
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">Back</button>
+												</div>
 											</div>
-											<div class="modal-body">
-												
-												<textarea rows = "4" cols = "50" placeholder = "Type your message here..."></textarea>
-												<input type="submit" class="btn btn-warning" value="Send &#x00A; &#x2709">
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">Back</button>
-											</div>
+
 										</div>
-
 									</div>
-								</div>
-								<!-- closing body container div -->
+								</form>
 							</td>
 					</tbody>
 				</table>
@@ -186,7 +190,7 @@
 							<td><c:choose>
 									<c:when test="${!empty messages}">
 										<c:forEach var="m" items="${messages}">
-									
+
 											<c:choose>
 												<c:when test="${m.toString() == 'y'}">
 											
@@ -196,8 +200,8 @@
 											Message: ${m.messageBody}<br>
 												</c:when>
 												<c:otherwise>
-												
-											<%-- To: ${m.insured.fName} ${m.insured.lName}<br>
+
+													<%-- To: ${m.insured.fName} ${m.insured.lName}<br>
 											From: ${m.agent.fName} ${m.agent.lName}<br> --%>
 												</c:otherwise>
 											</c:choose>

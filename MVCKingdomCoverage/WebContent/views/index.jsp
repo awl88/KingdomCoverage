@@ -26,7 +26,7 @@
 						<label for="coverageIdForQuote">Please select your desired coverage:</label>
 						<select name="coverageIdForQuote" style="margin-top: 1.5px;">
 							<c:forEach var = "coverage" items="${coverages}">
-								<option value="${coverage.name}">${coverage.name}</option>
+								<option value="${coverage.id}">${coverage.name}</option>
 							</c:forEach>
 						</select>			
 					</div>

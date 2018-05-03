@@ -35,7 +35,7 @@
 							<tr>
 								<td>Name:</td>
 								<td></td>
-								<td>${insured.fName}${insured.lName}</td>
+								<td>${insured.fName} ${insured.lName}</td>
 							</tr>
 							<tr>
 								<td>Age:</td>
@@ -50,7 +50,7 @@
 							<tr>
 								<td>Address:</td>
 								<td></td>
-								<td>${insured.address.street},${insured.address.city},
+								<td>${insured.address.street}, ${insured.address.city}, 
 									${insured.address.realm}</td>
 							</tr>
 							<tr>

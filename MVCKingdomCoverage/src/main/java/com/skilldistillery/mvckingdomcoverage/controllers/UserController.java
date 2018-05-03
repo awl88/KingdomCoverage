@@ -262,11 +262,14 @@ public class UserController {
 		mdao.persistSender(message);
 		
 		int premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
 		List<InsurancePlan> plans = idao.listPlans(insured.getId());
 		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
 		
-		mv.addObject("messages", messages);
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(insured.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(insured.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
+		
 		mv.addObject("premium", premium);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);
@@ -320,10 +323,13 @@ public class UserController {
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
 		insured = idao.updateInsured(dto, address, insured);
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		
 		String updateMessage = "Profile successfully updated";
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(insured.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(insured.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
 		mv.addObject("updateMessage", updateMessage);
-		mv.addObject("messages", messages);
 		mv.addObject("premium", premium);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);

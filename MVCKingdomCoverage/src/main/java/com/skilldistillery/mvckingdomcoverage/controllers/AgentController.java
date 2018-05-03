@@ -135,9 +135,11 @@ public class AgentController {
 			ipdao.deleteCoverageTypeById(insured.getPlans().get(0).getId(), coverageId);
 		}
 		
-		mv.setViewName("views/agent.jsp");
+		List<Message> messages = adao.getMessagesByAgentId(agent.getId());
+		mv.addObject("messages", messages);
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "The coverage has been removed!");
+		mv.setViewName("views/agent.jsp");
 		
 		return mv;
 	}
@@ -169,7 +171,7 @@ public class AgentController {
 		
 		
 		ipdao.addCoverageTypeById(insured.getPlans().get(0).getId(), coverage.getId());
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		List<Message> messages = adao.getMessagesByAgentId(agent.getId());
 		mv.addObject("messages", messages);
 		mv.setViewName("views/agent.jsp");
 		mv.addObject("agent", session.getAttribute("agentSession"));

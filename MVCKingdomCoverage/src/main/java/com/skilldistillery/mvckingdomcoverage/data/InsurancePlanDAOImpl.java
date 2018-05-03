@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
-import com.skilldistillery.kingdomcoverage.entities.QuoteDTO;
 
 @Transactional
 @Component

@@ -10,7 +10,7 @@
 			<div class="fancyBox">
 				<h1 class="companyName">Kingdom Coverage</h1>
 				<h4 class="script">
-					<em>Kingdom has the coverage if you have the coin..</em>
+					<em>Kingdom has the coverage if you have the coin...</em>
 				</h4>
 			</div>
 		</div>

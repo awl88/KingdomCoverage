@@ -4,8 +4,6 @@
 <jsp:include page="partials/head.jsp"></jsp:include>
 <body>
 <div id="pleaseWork" class="container-fluid">
-	
-		<!-- navbar, page headers will go here -->
 	<jsp:include page="partials/navbar.jsp"></jsp:include>
 	<div class="blended_grid">
 		<div class="topBanner">
@@ -13,7 +11,7 @@
 			<div class="fancyBox">
 				<h1 class="companyName">Kingdom Coverage</h1>
 				<h4 class="script">
-					<em>Kingdom has you covered if you have the coin..</em>
+					<em>Kingdom has you covered if you have the coin...</em>
 				</h4>
 			</div>
 		</div>
@@ -23,37 +21,36 @@
 				<div class="feed">
 					<h1>Get a Quote</h1>
 				</div>
-				<form action="INSERT PATH HERE" method="POST">
+				<form action="getQuote.do" method="POST">
 					<div class="feed">
-						<label for="message">Please select your desired coverage:</label>
-						<select name="message" style="margin-top: 1.5px;">
-							<c:forEach var = "coverage" items="${allPlans}">
+						<label for="coverageIdForQuote">Please select your desired coverage:</label>
+						<select name="coverageIdForQuote" style="margin-top: 1.5px;">
+							<c:forEach var = "coverage" items="${coverages}">
 								<option value="${coverage.name}">${coverage.name}</option>
 							</c:forEach>
 						</select>			
 					</div>
 					<div class="feed">
-						<label for="insuredSpeciesId">Please select your species:</label> 
-						<select name="insuredSpeciesId" style="margin-top: 1.5px;">
+						<label for="speciesIdForQuote">Please select your species:</label> 
+						<select name="speciesIdForQuote" style="margin-top: 1.5px;">
 							<c:forEach var="species" items="${allSpecies}">
 								<option name="${species.name}" value="${species.id}">${species.name}</option>
 							</c:forEach>
 						</select>
 					</div>
 					<div class="feed">
-						<label for="insuredOccupationId">Please select your occupation:</label> 
-						<select name="insuredOccupationId" style="margin-top: 1.5px;">
+						<label for="occupationIdForQuote">Please select your occupation:</label> 
+						<select name="occupationIdForQuote" style="margin-top: 1.5px;">
 							<c:forEach var="job" items="${jobs}">
 								<option name="${job.name}" value="${job.id}">${job.name}</option>
 							</c:forEach>
 						</select>
 					</div>
 					<div class="feed">
-						<input type="submit" class="gimmeRoom btn btn-primary" style="margin-top: 1.5px; value="Get Quote"/>
-					</div>
+					<button type="submit" class="btn btn-info">Get Quote</button>					</div>
 				</form>
 			</div>
-			<div class="formTextLight rightColumn col-md-2">
+			<div class="feed formTextLight rightColumn col-md-2">
 			<h1>Login</h1>
 				<form action="login.do" method="POST">
 					Username: <input type="text" name="name" style="border-radius: 5px; margin-bottom: 2px;"> <br>

@@ -10,18 +10,21 @@
 			<div class="fancyBox">
 				<h1 class="companyName">Kingdom Coverage</h1>
 				<h4 class="script">
-					<em>Kingdom has the coverage if you have the coin..</em>
+					<em>Kingdom has the coverage if you have the coin...</em>
 				</h4>
 			</div>
 		</div>
 	</div>
-	<h1>Update your information</h1>
+	<div class="feed">
+		<h3>Update your information</h3>
+	</div>
 	<form action="insuredUpdated.do" method="POST">
 		<div class="feedHost col">
-			<label for="insuredFirstName">Please update your first name:</label>
-			<input type="text" name="insuredFirstName" value="${insured.fName}" style="margin-top: 1.5px;" /> 
-			<label for="insuredLastName">Please update your last name:</label> 
-			<input type="text" name="insuredLastName" value="${insured.lName}" style="margin-top: 1.5px;" />
+			<div class="feed">
+				<label for="insuredFirstName">Please update your first name:</label>
+				<input type="text" name="insuredFirstName" value="${insured.fName}" style="margin-top: 1.5px;" /> 
+				<label for="insuredLastName">Please update your last name:</label> 
+				<input type="text" name="insuredLastName" value="${insured.lName}" style="margin-top: 1.5px;" />
 			</div>
 			<div class="feed">
 				<label for="insuredAge">Please enter your age:</label> 

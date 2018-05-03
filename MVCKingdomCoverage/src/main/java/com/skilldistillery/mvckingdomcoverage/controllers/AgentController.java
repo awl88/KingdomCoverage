@@ -17,11 +17,15 @@ import com.skilldistillery.kingdomcoverage.entities.CoverageType;
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
 import com.skilldistillery.kingdomcoverage.entities.Message;
+import com.skilldistillery.kingdomcoverage.entities.Occupation;
+import com.skilldistillery.kingdomcoverage.entities.Species;
 import com.skilldistillery.mvckingdomcoverage.data.AgentDAO;
 import com.skilldistillery.mvckingdomcoverage.data.CoverageTypeDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
 import com.skilldistillery.mvckingdomcoverage.data.MessageDAO;
+import com.skilldistillery.mvckingdomcoverage.data.OccupationDAO;
+import com.skilldistillery.mvckingdomcoverage.data.SpeciesDAO;
 
 @Transactional
 @Controller
@@ -41,6 +45,12 @@ public class AgentController {
 	
 	@Autowired
 	MessageDAO mdao;
+	
+	@Autowired
+	OccupationDAO odao;
+
+	@Autowired
+	SpeciesDAO sdao;
 	
 	@RequestMapping(path="loginAgentPage.do", method = RequestMethod.GET)
 	public ModelAndView loginAgentPage() {
@@ -77,11 +87,14 @@ public class AgentController {
 	@RequestMapping(path = "logoutAgent.do", method = RequestMethod.GET)
 	public ModelAndView logoutAgent(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		
+		List<Occupation> jobs = odao.getAllOccupations();
+		List<Species> allSpecies = sdao.getAllSpecies();
+		List<CoverageType> coverages = ctdao.getAllTypes();
+		mv.addObject("jobs", jobs);
+		mv.addObject("allSpecies", allSpecies);
+		mv.addObject("coveragesList", coverages);
 		session.removeAttribute("agentSession");
-		
 		mv.setViewName("views/index.jsp");
-		
 		return mv;
 	}
 
@@ -187,8 +200,9 @@ public class AgentController {
 		mdao.persistSender(message);
 		
 		
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		List<Message> messages = adao.getMessagesByAgentId(agent.getId());
 		mv.addObject("messages", messages);
+		mv.addObject("clients", clients);
 		mv.setViewName("views/agent.jsp");
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "Your message has been sent!");

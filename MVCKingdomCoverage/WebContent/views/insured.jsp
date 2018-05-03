@@ -152,12 +152,14 @@
 							</td>
 						</tr>
 						<tr>
-							<td><c:choose>
-									<c:when test="${!empty messages}">
-										<c:forEach var="m" items="${messages}">
-
-											<c:choose>
-												<c:when test="${m.toString() == 'y'}">
+							<td>
+							<c:choose>
+									<c:when test="${inbox == 'null'}">
+											You have no messages in your inbox.
+									</c:when>
+									<c:otherwise>
+										<c:choose>
+												<c:when test="${inbox.toString() == 'y'}">
 													<!-- Can put this part into another div box for "sent" -->
 
 													<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
@@ -165,22 +167,16 @@
 												</c:when>
 												<c:otherwise>
 													Message Id: ${m.id}<br>
-													To: ${m.insured.fName} ${m.insured.lName}<br>
-													From: ${m.agent.fName} ${m.agent.lName}<br>
-													Message: ${m.messageBody}<br>
+													To: ${inbox.insured.fName} ${inbox.insured.lName}<br>
+													From: ${inbox.agent.fName} ${inbox.agent.lName}<br>
+													Message: ${inbox.messageBody}<br>
 												</c:otherwise>
 											</c:choose>
 											<br>
-
-										</c:forEach>
-									</c:when>
+									</c:otherwise>
 								</c:choose></td>
 						</tr>
 					</tbody>
-				</table>
-			</div>
-			<div class="formTextLight rightColumn col-md-4">
-				<table>
 					<thead>
 						<tr>
 							<td><h3 class="companyName">Sent Mail:</h3></td>
@@ -189,16 +185,17 @@
 					<tbody>
 						<tr>
 							<td><c:choose>
-									<c:when test="${!empty messages}">
-										<c:forEach var="m" items="${messages}">
-
+									<c:when test="${sent == 'null'}">
+										You have not sent any messages yet.
+									</c:when>
+									<c:otherwise>
 											<c:choose>
-												<c:when test="${m.toString() == 'y'}">
+												<c:when test="${sent.toString() == 'y'}">
 											
-											Message Id: ${m.id}<br>
-											To: ${m.agent.fName} ${m.agent.lName}<br>
-											From: ${m.insured.fName} ${m.insured.lName}<br>
-											Message: ${m.messageBody}<br>
+											Message Id: ${sent.id}<br>
+											To: ${sent.agent.fName} ${sent.agent.lName}<br>
+											From: ${sent.insured.fName} ${sent.insured.lName}<br>
+											Message: ${sent.messageBody}<br>
 												</c:when>
 												<c:otherwise>
 
@@ -207,12 +204,18 @@
 												</c:otherwise>
 											</c:choose>
 											<br>
-
-										</c:forEach>
-									</c:when>
+									</c:otherwise>
 								</c:choose></td>
 						</tr>
 					</tbody>
+						<form action="messages.do" , method="GET">
+						<input type="submit" class="gimmeRoom btn btn-link"
+							value="Messages">
+						</form>
+				</table>
+			</div>
+			<div class="formTextLight rightColumn col-md-4">
+				<table>
 				</table>
 			</div>
 		</div>

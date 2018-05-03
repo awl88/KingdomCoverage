@@ -35,5 +35,9 @@ public interface InsuredDAO {
 	Insured update(int id, Insured insured);
 
 	Address getAddressByInsuredId(int id);
+
+	Message getNewestInboxMessagesByInsuredId(Integer id);
+
+	Message getNewestSentMessagesByInsuredId(Integer id);
 	
 }

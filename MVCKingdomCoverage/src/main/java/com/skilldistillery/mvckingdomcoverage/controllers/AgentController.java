@@ -243,5 +243,13 @@ public class AgentController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(path = "privacy.do", method = RequestMethod.GET)
+	public ModelAndView getPrivacy(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("views/privacy.jsp");
+		
+		return mv;
+	}
 
 }

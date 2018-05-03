@@ -77,6 +77,10 @@ public class Message {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Character getSenderChar() {
 		return senderChar;
 	}

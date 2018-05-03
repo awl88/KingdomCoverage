@@ -169,10 +169,12 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(insured.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(insured.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
 		mv.addObject("premium", premium);
 		mv.addObject("unsuccessfulLogin", unsuccessfulLogin);
-		mv.addObject("messages", messages);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);
 		mv.addObject("insured", insured);
@@ -345,6 +347,18 @@ public class UserController {
 		insured = idao.update(insured.getId(), insured);
 		session.setAttribute("insuredSession", insured);
 		mv.setViewName("views/index.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path = "messages.do", method = RequestMethod.GET)
+	public ModelAndView getMessages(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Insured insured = (Insured)session.getAttribute("insuredSession");
+		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		
+		mv.addObject("messages", messages);
+		mv.setViewName("views/messages.jsp");
+		
 		return mv;
 	}
 }

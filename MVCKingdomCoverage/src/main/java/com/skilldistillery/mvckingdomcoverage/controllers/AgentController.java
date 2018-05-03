@@ -187,8 +187,9 @@ public class AgentController {
 		mdao.persistSender(message);
 		
 		
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
+		List<Message> messages = adao.getMessagesByAgentId(agent.getId());
 		mv.addObject("messages", messages);
+		mv.addObject("clients", clients);
 		mv.setViewName("views/agent.jsp");
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "Your message has been sent!");

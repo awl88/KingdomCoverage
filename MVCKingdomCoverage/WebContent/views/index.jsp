@@ -41,7 +41,8 @@
 									<option name="${job.name}" value="${job.id}">${job.name}</option>
 								</c:forEach>
 							</select> <br>
-							<button type="submit" class="btn btn-info">Get Quote</button>
+							
+							<button type="submit" class="btn btn-info pressed">Get Quote</button>
 						</form>
 					</div>
 				</div>
@@ -52,16 +53,16 @@
 							style="border-radius: 5px; margin-bottom: 2px;"> <br>
 						Password: <input type="password" name="password"
 							style="border-radius: 5px; margin-bottom: 2px;"> <br>
-						<input type="submit" class="gimmeRoom btn btn-info"
-							value="Login">
+						<input type="submit" class="pressed gimmeRoom btn btn-info"
+							value="Login" >
 					</form>
 					<br>
 					<form action="loginAgentPage.do" , method="GET">
-						<input type="submit" class="gimmeRoom btn btn-link"
+						<input type="submit" class="pressed gimmeRoom btn btn-info"
 							value="Login As Agent">
 					</form>
 					<form action="create.do" method="GET">
-						<input type="submit" class="gimmeRoom btn btn-link"
+						<input type="submit" class="pressed gimmeRoom btn btn-info"
 							value="Create an Account">
 					</form>
 					<p></p>

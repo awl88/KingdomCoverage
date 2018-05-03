@@ -29,7 +29,7 @@
 			</select> 
 			<br>
 			<br>
-			<input type="submit" class="btn btn-primary" value="Request Coverage" style="margin-bottom: 3px;">
+			<input type="submit" class="pressed btn btn-primary" value="Request Coverage" style="margin-bottom: 3px;">
 		</form>
 		</div>
 	</div>

@@ -58,7 +58,7 @@
 					<tr>
 						<td>
 						<form action = "composedMessage.do" method = "POST">
-							<button type="button" class="btn btn-info btn-lg"
+							<button type="button" class="pressed btn btn-info btn-lg"
 								data-toggle="modal" data-target="#myModalCompose"
 								style="margin: 1em 1em 1em 1em;">&#9998 Compose Message</button>
 

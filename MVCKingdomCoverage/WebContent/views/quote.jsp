@@ -29,13 +29,13 @@
 						<br>
 						Password: <input type="password" name="password" style="border-radius: 5px; margin-bottom: 2px;"> 
 						<br> 
-						<input type="submit" class="gimmeRoom btn btn-info" value="Login">
+						<input type="submit" class="pressed gimmeRoom btn btn-info" value="Login">
 					</form><br>
 					<form action="loginAgentPage.do", method="GET">
-						<input type="submit" class="gimmeRoom btn btn-link" value = "Login As Agent">
+						<input type="submit" class="pressed gimmeRoom btn btn-info" value = "Login As Agent">
 					</form>
 					<form action="create.do" method="GET">
-						<input type="submit" class="gimmeRoom btn btn-link" value="Create an Account">
+						<input type="submit" class="pressed gimmeRoom btn btn-info" value="Create an Account">
 					</form>
 					<p></p>
 				</div>

@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="formTextLight leftColumn col-md-2"></div>
+			<div class="col-md-2"></div>
 			<div class="feedHost col-md-8">
 				<form action="clientChanges.do" method="POST">
 					<div class="feed">
@@ -57,7 +57,7 @@
 									</c:forEach>
 								</c:forEach>
 								<!-- Trigger the modal with a button -->
-								<button type="button" class="btn btn-info btn-lg"
+								<button type="button" class="pressed btn btn-info btn-lg"
 									data-toggle="modal" data-target="#myModal" style="margin: 1em 1em 1em 1em;">Remove
 									Policies</button>
 
@@ -73,10 +73,10 @@
 											<div class="modal-body">
 												<p>Are you sure you would like to delete this policy
 													from the plan?</p>
-												<input type="submit" class="btn btn-warning" value="Yes">
+												<input type="submit" class="pressed btn btn-warning" value="Yes">
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-default"
+												<button type="button" class="pressed btn btn-default"
 													data-dismiss="modal">Back</button>
 											</div>
 										</div>
@@ -91,7 +91,7 @@
 				<div class="feed addPolicies">
 					<form action="addPolicies.do" method="POST">
 					<!-- Trigger the modal with a button -->
-					<button type="button" class="btn btn-info btn-lg"
+					<button type="button" class="pressed btn btn-info btn-lg"
 						data-toggle="modal" data-target="#addModal" style="margin: 2em 2em 2em 2em;">Add Policies</button>
 					<!-- Modal -->
 					<div id="addModal" class="modal fade" role="dialog">
@@ -109,10 +109,10 @@
 										</select>
 										<p>Are you sure you want to add this policy?</p>
 										<input type="hidden" name="iid" value="${insured.id}">
-										<input type="submit" class="btn btn-warning" value="Yes">
+										<input type="submit" class="pressed btn btn-warning" value="Yes">
 									</div>
 									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
+										<button type="button" class="pressed btn btn-default"
 											data-dismiss="modal">Back</button>
 									</div>
 								</div>
@@ -125,7 +125,7 @@
 
 		
 		
-		<div class="formTextLight rightColumn col-md-2"></div>
+		<div class="col-md-2"></div>
 		</div>
 	</div>
 	<div class="row"></div>

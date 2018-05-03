@@ -39,7 +39,7 @@
 							<tr>
 								<td>
 									<form action="composedMessageFromInsured.do" method="POST">
-										<button type="button" class="btn btn-info btn-lg"
+										<button type="button" class="pressed btn btn-info btn-lg"
 											data-toggle="modal" data-target="#myModalCompose"
 											style="margin: 1em 1em 1em 1em;">&#9998 Compose
 											Message</button>
@@ -58,11 +58,11 @@
 
 														<textarea rows="4" cols="50" name="messageBody"
 															placeholder="Type your message here..."></textarea>
-														<input type="submit" class="btn btn-warning"
+														<input type="submit" class="pressed btn btn-warning"
 															value="Send &#x00A; &#x2709">
 													</div>
 													<div class="modal-footer">
-														<button type="button" class="btn btn-default"
+														<button type="button" class="pressed btn btn-default"
 															data-dismiss="modal">Back</button>
 													</div>
 												</div>

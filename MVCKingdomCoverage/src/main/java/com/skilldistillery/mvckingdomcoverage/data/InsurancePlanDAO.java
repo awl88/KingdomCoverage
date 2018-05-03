@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.skilldistillery.kingdomcoverage.entities.InsurancePlan;
 import com.skilldistillery.kingdomcoverage.entities.Insured;
-import com.skilldistillery.kingdomcoverage.entities.QuoteDTO;
 
 public interface InsurancePlanDAO {
 

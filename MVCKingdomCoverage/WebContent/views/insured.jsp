@@ -107,11 +107,11 @@
 				</div>
 			</div>
 
-			<div class="formTextLight rightColumn col-md-4">
+			<div class="feed formTextLight rightColumn col-md-4">
 				<table>
 					<thead>
 						<tr>
-							<td><h3 class="companyName">Messages:</h3></td>
+							<td><h3 class="companyName">Inbox:</h3></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -120,18 +120,87 @@
 									<c:when test="${!empty messages}">
 										<c:forEach var="m" items="${messages}">
 									
-									Message Id: ${m.id}<br>
 											<c:choose>
 												<c:when test="${m.toString() == 'y'}">
-											To: ${m.agent.fName} ${m.agent.lName}<br>
-											From: ${m.insured.fName} ${m.insured.lName}<br>
+											<!-- Can put this part into another div box for "sent" -->
+											
+											<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
+											From: ${m.insured.fName} ${m.insured.lName}<br> --%>
 												</c:when>
 												<c:otherwise>
+												
+											Message Id: ${m.id}<br>
 											To: ${m.insured.fName} ${m.insured.lName}<br>
 											From: ${m.agent.fName} ${m.agent.lName}<br>
+											Message: ${m.messageBody}<br>
 												</c:otherwise>
 											</c:choose>
-									Message: ${m.messageBody}<br>
+											<br>
+
+										</c:forEach>
+									</c:when>
+								</c:choose></td>
+						</tr>
+						<tr>
+							<td>
+							<!-- Trigger the modal with a button -->
+								<button type="button" class="btn btn-info btn-lg"
+									data-toggle="modal" data-target="#myModalCompose" style="margin: 1em 1em 1em 1em;">&#9998  Compose Message</button>
+
+								<!-- Modal -->
+								<div id="myModalCompose" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title">Share a message with your agent:</h4>
+											</div>
+											<div class="modal-body">
+												
+												<textarea rows = "4" cols = "50" placeholder = "Type your message here..."></textarea>
+												<input type="submit" class="btn btn-warning" value="Send &#x00A; &#x2709">
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Back</button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<!-- closing body container div -->
+							</td>
+					</tbody>
+				</table>
+			</div>
+			<div class="formTextLight rightColumn col-md-4">
+				<table>
+					<thead>
+						<tr>
+							<td><h3 class="companyName">Sent Mail:</h3></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><c:choose>
+									<c:when test="${!empty messages}">
+										<c:forEach var="m" items="${messages}">
+									
+											<c:choose>
+												<c:when test="${m.toString() == 'y'}">
+											
+											Message Id: ${m.id}<br>
+											To: ${m.agent.fName} ${m.agent.lName}<br>
+											From: ${m.insured.fName} ${m.insured.lName}<br>
+											Message: ${m.messageBody}<br>
+												</c:when>
+												<c:otherwise>
+												
+											<%-- To: ${m.insured.fName} ${m.insured.lName}<br>
+											From: ${m.agent.fName} ${m.agent.lName}<br> --%>
+												</c:otherwise>
+											</c:choose>
 											<br>
 
 										</c:forEach>

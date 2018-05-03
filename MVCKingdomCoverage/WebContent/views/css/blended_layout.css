@@ -12,11 +12,6 @@ body {
 	padding-bottom: 4em;
 }
 
-#pleaseWork {
-	cursor: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHEUgBjfAm62hnvq07-7O5cgLIfdymmoyCt4jexVulGD1OLOeS"),  auto !important;
-}
-
-
 .blended_grid {
 	display: block;
 	width: auto;
@@ -122,6 +117,9 @@ thead {
 	background-color: rgba(0,0,0,0);
 }
 
+body,h1,h2,h3,h4,h5,h6,small,p,form, input, label, select, option, button, img, a {
+	cursor: url("https://raw.githubusercontent.com/awl88/KingdomCoverage/master/MVCKingdomCoverage/WebContent/views/images/favicon.png"),  auto !important;		
+}
 
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {

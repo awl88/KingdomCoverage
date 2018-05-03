@@ -10,6 +10,7 @@ body {
 		url("https://i.pinimg.com/originals/1f/9c/76/1f9c766d23f125e9fcb591eaef703aa9.jpg");
 	background-attachment: fixed;
 	background-size: auto auto;
+	padding-bottom: 4em;
 }
 
 #pleaseWork {
@@ -172,6 +173,10 @@ thead {
     width: 100%;
     background-color: rgba(0,0,0, .75);
     color: white;
+}
+
+.about {
+	padding: 10px;
 }
 
 .faqName {

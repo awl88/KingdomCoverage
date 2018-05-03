@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="formTextLight leftColumn col-md-3 about" id="invisible"></div>
+			<div class="formTextLight leftColumn col-md-3 padding" id="invisible"></div>
 			<div class="feedHost col-md-6">
 				<div class="feed">
 					<h1>About Kingdom Coverage</h1>

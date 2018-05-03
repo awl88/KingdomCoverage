@@ -19,9 +19,7 @@
 				<div class="feedHost col-md-8">
 					<div class="feed">
 						<h1>Your Quote:</h1>
-					</div>
-					<div class="feed">
-						<h3>${userQuote}</h3>
+						<h3>${userQuote} gold pieces / month</h3>
 					</div>
 				</div>
 				<div class="formTextLight rightColumn col-md-2">
@@ -31,13 +29,13 @@
 						<br>
 						Password: <input type="password" name="password" style="border-radius: 5px; margin-bottom: 2px;"> 
 						<br> 
-						<input type="submit" class="gimmeRoom btn btn-primary" value="Login">
+						<input type="submit" class="gimmeRoom btn btn-info" value="Login">
 					</form><br>
 					<form action="loginAgentPage.do", method="GET">
-						<input type="submit" class="gimmeRoom btn btn-primary" value = "Login As Agent">
-					</form><br>
+						<input type="submit" class="gimmeRoom btn btn-link" value = "Login As Agent">
+					</form>
 					<form action="create.do" method="GET">
-						<input type="submit" class="gimmeRoom btn btn-primary" value="Create an Account">
+						<input type="submit" class="gimmeRoom btn btn-link" value="Create an Account">
 					</form>
 					<p></p>
 				</div>

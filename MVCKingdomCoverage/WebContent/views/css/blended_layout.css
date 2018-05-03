@@ -1,4 +1,3 @@
-/*  j*/
 * {
 	padding: 0;
 	margin: 0;
@@ -167,7 +166,7 @@ thead {
 .footer {
     position: fixed;
     left: 0;
-    bottom: 0;
+    bottom: -10px;
     padding: 10px;
     padding-left: 45%;
     width: 100%;
@@ -175,10 +174,6 @@ thead {
     color: white;
 }
 
-.about {
-	padding: 10px;
-}
-
-.faqName {
+.padding{
 	padding: 10px;
 }

@@ -19,9 +19,7 @@
 				<div class="feedHost col-md-8">
 					<div class="feed">
 						<h1>Your Quote:</h1>
-					</div>
-					<div class="feed">
-						<h3>${userQuote}</h3>
+						<h3>${userQuote} gold pieces / month</h3>
 					</div>
 				</div>
 				<div class="formTextLight rightColumn col-md-2">

@@ -166,7 +166,7 @@ thead {
 .footer {
     position: fixed;
     left: 0;
-    bottom: 0;
+    bottom: -10px;
     padding: 10px;
     padding-left: 45%;
     width: 100%;

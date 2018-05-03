@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="formTextLight leftColumn col-md-2"></div>
+			<div class="col-md-2"></div>
 			<div class="feedHost col-md-8">
 				<form action="clientChanges.do" method="POST">
 					<div class="feed">
@@ -125,7 +125,7 @@
 
 		
 		
-		<div class="formTextLight rightColumn col-md-2"></div>
+		<div class="col-md-2"></div>
 		</div>
 	</div>
 	<div class="row"></div>

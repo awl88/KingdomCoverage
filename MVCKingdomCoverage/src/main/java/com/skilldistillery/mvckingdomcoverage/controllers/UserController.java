@@ -29,6 +29,7 @@ import com.skilldistillery.mvckingdomcoverage.data.InsurancePlanDAO;
 import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
 import com.skilldistillery.mvckingdomcoverage.data.MessageDAO;
 import com.skilldistillery.mvckingdomcoverage.data.OccupationDAO;
+import com.skilldistillery.mvckingdomcoverage.data.QuoteDAO;
 import com.skilldistillery.mvckingdomcoverage.data.SpeciesDAO;
 import com.skilldistillery.mvckingdomcoverage.data.UserDAO;
 
@@ -59,13 +60,31 @@ public class UserController {
 
 	@Autowired
 	InsurancePlanDAO ipdao;
+	
+	@Autowired
+	QuoteDAO qdao;
 
 	@RequestMapping(path = "index.do", method = RequestMethod.GET)
 	public ModelAndView index(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		session.removeAttribute("insuredSession");
 		session.removeAttribute("agentSession");
+		List<Occupation> jobs = odao.getAllOccupations();
+		List<Species> allSpecies = sdao.getAllSpecies();
+		List<CoverageType> coverages = ctdao.getAllTypes();
+		mv.addObject("jobs", jobs);
+		mv.addObject("allSpecies", allSpecies);
+		mv.addObject("coverages", coverages);
 		mv.setViewName("views/index.jsp");
+		return mv;
+	}
+	
+	@RequestMapping(path="getQuote.do", method=RequestMethod.POST)
+	public ModelAndView getQuote(@RequestParam("coverageIdForQuote") Integer coverageIdForQuote, @RequestParam("speciesIdForQuote") Integer speciesIdForQuote, @RequestParam("occupationIdForQuote") Integer occupationIdForQuote) {
+		ModelAndView mv = new ModelAndView();
+		Integer userQuote = qdao.getQuote(coverageIdForQuote, speciesIdForQuote, occupationIdForQuote);
+		mv.addObject("userQuote", userQuote);
+		mv.setViewName("views/quote.jsp");
 		return mv;
 	}
 
@@ -94,7 +113,7 @@ public class UserController {
 	public ModelAndView createdInsured(UserInsuredAddressDTO dto) {
 		ModelAndView mv = new ModelAndView();
 		if (udao.getUserByName(dto.getUserName()) == null) {
-			Insured insured = idao.createUserAndInsuredAndAddress(dto);
+			idao.createUserAndInsuredAndAddress(dto);
 			mv.setViewName("views/index.jsp");
 		} else {
 			// put in a method to pass the dto object back to the form later, take this out
@@ -205,7 +224,6 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
-//		mv.addObject("totalCostOfPlan", totalCostOfPlan);
 		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
 		mv.addObject("messages", messages);
 		mv.addObject("premium", premium);

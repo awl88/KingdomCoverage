@@ -107,7 +107,7 @@
 				</div>
 			</div>
 
-			<div class="formTextLight rightColumn col-md-4">
+			<div class="feed formTextLight rightColumn col-md-4">
 				<table>
 					<thead>
 						<tr>

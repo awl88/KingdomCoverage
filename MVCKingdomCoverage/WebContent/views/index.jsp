@@ -4,8 +4,6 @@
 <jsp:include page="partials/head.jsp"></jsp:include>
 <body>
 <div id="pleaseWork" class="container-fluid">
-	
-		<!-- navbar, page headers will go here -->
 	<jsp:include page="partials/navbar.jsp"></jsp:include>
 	<div class="blended_grid">
 		<div class="topBanner">
@@ -13,7 +11,7 @@
 			<div class="fancyBox">
 				<h1 class="companyName">Kingdom Coverage</h1>
 				<h4 class="script">
-					<em>Kingdom has you covered if you have the coin..</em>
+					<em>Kingdom has you covered if you have the coin...</em>
 				</h4>
 			</div>
 		</div>
@@ -21,19 +19,38 @@
 			<div class="formTextLight leftColumn col-md-1" id="invisible"></div>
 			<div class="feedHost col-md-8">
 				<div class="feed">
-					<h1>some stuff</h1>
+					<h1>Get a Quote</h1>
 				</div>
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
-				<div class="feed">
-					<h1>some stuff</h1>
-				</div>
+				<form action="getQuote.do" method="POST">
+					<div class="feed">
+						<label for="coverageIdForQuote">Please select your desired coverage:</label>
+						<select name="coverageIdForQuote" style="margin-top: 1.5px;">
+							<c:forEach var = "coverage" items="${coverages}">
+								<option value="${coverage.name}">${coverage.name}</option>
+							</c:forEach>
+						</select>			
+					</div>
+					<div class="feed">
+						<label for="speciesIdForQuote">Please select your species:</label> 
+						<select name="speciesIdForQuote" style="margin-top: 1.5px;">
+							<c:forEach var="species" items="${allSpecies}">
+								<option name="${species.name}" value="${species.id}">${species.name}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="feed">
+						<label for="occupationIdForQuote">Please select your occupation:</label> 
+						<select name="occupationIdForQuote" style="margin-top: 1.5px;">
+							<c:forEach var="job" items="${jobs}">
+								<option name="${job.name}" value="${job.id}">${job.name}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="feed">
+					<button type="submit" class="btn btn-info">Get Quote</button>					</div>
+				</form>
 			</div>
-			<div class="formTextLight rightColumn col-md-2">
+			<div class="feed formTextLight rightColumn col-md-2">
 			<h1>Login</h1>
 				<form action="login.do" method="POST">
 					Username: <input type="text" name="name" style="border-radius: 5px; margin-bottom: 2px;"> <br>

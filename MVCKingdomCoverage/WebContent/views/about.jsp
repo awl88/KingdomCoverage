@@ -12,12 +12,12 @@
 			<div class="fancyBox">
 				<h1 class="companyName">Kingdom Coverage</h1>
 				<h4 class="script">
-					<em>Kingdom has the coverage if you have the coin..</em>
+					<em>Kingdom has the coverage if you have the coin...</em>
 				</h4>
 			</div>
 		</div>
 		<div class="row">
-			<div class="formTextLight leftColumn col-md-3" id="invisible"></div>
+			<div class="formTextLight leftColumn col-md-3 about" id="invisible"></div>
 			<div class="feedHost col-md-6">
 				<div class="feed">
 					<h1>About Kingdom Coverage</h1>
@@ -27,7 +27,7 @@
 					the first company to provide coverage for your unicorn.
 					</p>
 					<p>
-					Founded in 984 AD by Jake From Statefarm, Kingdom Coverage quickly became the fastest growing corporation of all time. In 1052 AD we announced our
+					Founded in 984 AD by Jake From State Farm, Kingdom Coverage quickly became the fastest growing corporation of all time. In 1052 AD we announced our
 					monopoly over the insurance industry. 1058 AD was the year that we bribed the governments of the Five Realms to force all living beings to register
 					with us. Starting in 1243 Kingdom Coverage helped squash the rebellion of the orcs by charging them extra for their coverage. Today, in 1323 AD
 					Kingdom Coverage offers insurance to everyone, in fact, it is now law that we provide you with your insurance. What lies ahead is a mystery, but

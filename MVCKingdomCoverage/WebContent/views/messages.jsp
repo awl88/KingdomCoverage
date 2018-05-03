@@ -87,10 +87,9 @@
 															Message Id: ${message.id}<br>
 															To: ${message.insured.fName} ${message.insured.lName}<br>
 															From: ${message.agent.fName} ${message.agent.lName}<br>
-															Message: ${message.messageBody}<br>
+															Message: ${message.messageBody}<br><br>
 													</c:otherwise>
 												</c:choose>
-												<br>
 											</c:forEach>
 										</c:when>
 									</c:choose></td>
@@ -117,7 +116,7 @@
 													Message Id: ${message.id}<br>
 													To: ${message.agent.fName} ${message.agent.lName}<br>
 													From: ${message.insured.fName} ${message.insured.lName}<br>
-													Message: ${message.messageBody}<br>
+													Message: ${message.messageBody}<br><br>
 														</c:when>
 														<c:otherwise>
 	
@@ -125,7 +124,6 @@
 													From: ${m.agent.fName} ${m.agent.lName}<br> --%>
 														</c:otherwise>
 													</c:choose>
-													<br>
 												</c:forEach>
 											</c:when>
 										</c:choose></td>

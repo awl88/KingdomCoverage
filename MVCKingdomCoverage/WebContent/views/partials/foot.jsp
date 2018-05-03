@@ -22,5 +22,9 @@
 			<input type="submit" class="gimmeRoom btn btn-link"
 				value="About">
 		</form>
+		<form action="privacy.do" method="GET">
+			<input type="submit" class="gimmeRoom btn btn-link"
+				value="Privacy">
+		</form>
 	</div>
 </div>

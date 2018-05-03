@@ -232,8 +232,10 @@ public class UserController {
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		}
-		List<Message> messages = idao.getMessagesByInsuredId(insured.getId());
-		mv.addObject("messages", messages);
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(insured.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(insured.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
 		mv.addObject("premium", premium);
 		mv.addObject("agents", agents);
 		mv.addObject("plans", plans);

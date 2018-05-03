@@ -254,14 +254,14 @@ public class AgentController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "messages.do", method = RequestMethod.GET)
+	@RequestMapping(path = "agentMessages.do", method = RequestMethod.GET)
 	public ModelAndView getMessages(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Agent agent = (Agent)session.getAttribute("agentSession");
 		List<Message> messages = idao.getMessagesByInsuredId(agent.getId());
 		
 		mv.addObject("messages", messages);
-		mv.setViewName("views/messages.jsp");
+		mv.setViewName("views/agentMessages.jsp");
 		
 		return mv;
 	}

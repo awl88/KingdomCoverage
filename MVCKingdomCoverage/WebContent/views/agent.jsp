@@ -99,7 +99,7 @@
 									</c:when>
 									<c:otherwise>
 										<c:choose>
-												<c:when test="${inbox.toString() == 'n'}">
+												<c:when test="${inbox.toString() == 'y'}">
 													<!-- Can put this part into another div box for "sent" -->
 
 													<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
@@ -130,7 +130,7 @@
 									</c:when>
 									<c:otherwise>
 											<c:choose>
-												<c:when test="${sent.toString() == 'n'}">
+												<c:when test="${sent.toString() == 'y'}">
 											
 											Message Id: ${sent.id}<br>
 											To: ${sent.insured.fName} ${sent.insured.lName}<br>

@@ -22,9 +22,14 @@
 			<input type="submit" class="gimmeRoom btn btn-link"
 				value="About">
 		</form>
+		<img src="views/images/unicornsunglasses.png">
 		<form action="privacy.do" method="GET">
 			<input type="submit" class="gimmeRoom btn btn-link"
 				value="Privacy">
+		</form>
+		<form action="terms.do" method="GET">
+			<input type="submit" class="gimmeRoom btn btn-link"
+				value="Terms">
 		</form>
 	</div>
 </div>

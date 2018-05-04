@@ -291,6 +291,14 @@ public class AgentController {
 		return mv;
 	}
 	
+	@RequestMapping(path = "terms.do", method = RequestMethod.GET)
+	public ModelAndView getTerms(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("views/terms.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping(path = "agentMessages.do", method = RequestMethod.GET)
 	public ModelAndView getMessages(HttpSession session) {
 		ModelAndView mv = new ModelAndView();

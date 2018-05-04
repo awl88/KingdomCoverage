@@ -59,7 +59,7 @@ public class AgentDAOImpl implements AgentDAO {
 		user = em.createQuery(query, User.class)
 				.setParameter("name", name)
 				.setParameter("password", password)
-				.getSingleResult();
+				.getResultList().get(0);
 		return user.getId();
 	}
 	

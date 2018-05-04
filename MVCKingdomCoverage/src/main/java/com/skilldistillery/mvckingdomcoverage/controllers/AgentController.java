@@ -1,5 +1,6 @@
 package com.skilldistillery.mvckingdomcoverage.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -26,6 +27,7 @@ import com.skilldistillery.mvckingdomcoverage.data.InsuredDAO;
 import com.skilldistillery.mvckingdomcoverage.data.MessageDAO;
 import com.skilldistillery.mvckingdomcoverage.data.OccupationDAO;
 import com.skilldistillery.mvckingdomcoverage.data.SpeciesDAO;
+import com.skilldistillery.mvckingdomcoverage.data.UserDAO;
 
 @Transactional
 @Controller
@@ -46,6 +48,9 @@ public class AgentController {
 	@Autowired
 	MessageDAO mdao;
 	
+	@Autowired 
+	UserDAO udao;
+	
 	@Autowired
 	OccupationDAO odao;
 
@@ -64,8 +69,19 @@ public class AgentController {
 	@RequestMapping(path= "loginAgent.do", method = RequestMethod.POST)
 	public ModelAndView loginAgent(HttpSession session, @RequestParam("name") String name, @RequestParam("password") String password){
 		ModelAndView mv = new ModelAndView();
+		Agent agent = new Agent();
+		List<String> unsuccessfulLogin = new ArrayList<>();
 		
-		Agent agent = adao.show(adao.getUserIdByNameAndPass(name, password));
+		if (udao.getUserIdByNameAndPass(name, password) <= 5 && udao.getUserIdByNameAndPass(name, password) > 0) {
+			agent = adao.show(adao.getUserIdByNameAndPass(name, password));
+		}
+		else {
+			unsuccessfulLogin.add("Invalid username/password combination. Please try again.");
+			mv.addObject("unsuccessfulLogin", unsuccessfulLogin);
+			mv.setViewName("views/agentLogin.jsp");
+			return mv;
+		}
+		
 		agent.setClients(adao.getClients(agent.getId()));
 		agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
 		

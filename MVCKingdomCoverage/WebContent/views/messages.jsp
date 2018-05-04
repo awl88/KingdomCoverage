@@ -28,7 +28,8 @@
 			</div>
 		</div>
 			<div class="row">
-				<div class="feed formTextLight leftColumn col-md-4">
+			<div class="col-md-2"></div>
+				<div class="feed formTextLight leftColumn col-md-4 padding">
 					<table>
 						<thead>
 							<tr>
@@ -97,7 +98,7 @@
 						</tbody>
 					</table>
 					</div>
-					<div class="feed formTextLight rightColumn col-md-4">
+					<div class="feed formTextLight rightColumn col-md-4 padding">
 
 						<table>
 							<thead>
@@ -132,6 +133,12 @@
 						</table>
 				</div>
 			</div>
+		</div>
+		<div class="row">
+			<form action="insured.do" , method="GET">
+				<input type="submit" class="gimmeRoom btn btn-" value="Back">
+			</form>
+
 		</div>
 		<div class="row"></div>
 	</div>

@@ -183,6 +183,53 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping(path="insured.do", method=RequestMethod.GET)
+	public ModelAndView insuredHome(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		
+		
+		Insured insured = (Insured)session.getAttribute("insuredSession");
+		
+		
+		List<Occupation> jobs = odao.getAllOccupations();
+		List<Species> allSpecies = sdao.getAllSpecies();
+		List<CoverageType> coveragesList = ctdao.getAllTypes();
+		mv.addObject("coveragesList", coveragesList);
+		mv.addObject("jobs", jobs);
+		mv.addObject("allSpecies", allSpecies);
+		int premium = 0;
+		
+		List<InsurancePlan> plans = idao.listPlans(insured.getId());
+		List<CoverageType> coverages = idao.getCoveragesByInsuredId(insured.getId());
+		if (plans.size() > 0) {
+			for (InsurancePlan insurancePlan : plans) {
+				insured.setPlans(idao.listPlans(insured.getId()));
+				coverages = idao.getCoveragesByInsuredId(insured.getId());
+				insurancePlan.setCoverages(idao.getCoveragesByInsuredId(insured.getId()));
+				premium = ipdao.getTotalCostOfPlanAndMultiplier(insured);
+			}
+		}
+		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
+		if (agents.size() > 0) {
+			Agent agent = adao.show(agents.get(0).getId());
+			insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
+			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
+			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
+		}
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(insured.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(insured.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
+		mv.addObject("premium", premium);
+		mv.addObject("agents", agents);
+		mv.addObject("plans", plans);
+		mv.addObject("insured", insured);
+		mv.addObject("coverages", coverages);
+		mv.setViewName("views/insured.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping(path = "logoutInsured.do", method = RequestMethod.GET)
 	public ModelAndView logoutAgent(HttpSession session) {
 		ModelAndView mv = new ModelAndView();

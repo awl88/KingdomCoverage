@@ -18,7 +18,7 @@
 		</div>
 		<div class="row">
 			<div class="formTextLight leftColumn col-md-3 padding" id="invisible"></div>
-			<div class="feedHost col-md-6">
+			<div class="feedHost col-md-6 padding">
 				<div class="feed">
 					<h1>About Kingdom Coverage</h1>
 					<p>Kingdom Coverage is the premier insurance company in all the lands. We proudly provide insurance for every being within the Five Realms, 

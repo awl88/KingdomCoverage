@@ -303,16 +303,11 @@ public class AgentController {
 	public ModelAndView getMessages(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Agent agent = (Agent)session.getAttribute("agentSession");
-		List<Message> messages = idao.getMessagesByInsuredId(agent.getId());
-		
-		List<Insured> clients = adao.getClients(agent.getId());
-		
+		List<Message> messages = adao.getMessagesByAgentId(agent.getId());
 		
 		mv.addObject("messages", messages);
-		mv.addObject("clients", clients);
 		mv.setViewName("views/agentMessages.jsp");
 		
 		return mv;
 	}
-
 }

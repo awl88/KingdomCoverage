@@ -214,7 +214,7 @@
 					<tfoot>
 						<tr>
 							<td>
-								<form action="agentMessages.do" , method="GET">
+								<form action="messages.do" , method="GET">
 									<input type="submit" class="pressed btn btn-info btn-lg"
 										value="Messages">
 								</form>

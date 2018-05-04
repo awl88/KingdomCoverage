@@ -124,7 +124,7 @@ thead {
 	background-color: rgba(0,0,0,0);
 }
 
-body,h1,h2,h3,h4,h5,h6,small,p,form, input, label, select, option, button, img, a {
+body,h1,h2,h3,h4,h5,h6,small,p,form, label, select, option, button, img, a {
 	cursor: url("https://raw.githubusercontent.com/awl88/KingdomCoverage/master/MVCKingdomCoverage/WebContent/views/images/favicon.png"),  auto !important;		
 }
 

@@ -17,7 +17,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="feedHost col-md-8">
+			<div class=" col-md-2"></div>
+			<div class="feedHost col-md-5">
 				<!-- Verification of request for coverage being submitted -->
 				<c:if test="${! empty updateMessage}">
 					<div class="feed">
@@ -110,7 +111,7 @@
 				</div>
 			</div>
 
-			<div class="feed formTextLight rightColumn col-md-4 padding">
+			<div class="feed formTextLight rightColumn col-md-3 padding">
 				<table style="width: 100%">
 					<tr>
 						<td align="center">
@@ -227,12 +228,7 @@
 					</tfoot>
 				</table>
 			</div>
-			<div class="formTextLight rightColumn col-md-4">
-				<table>
-				</table>
-			</div>
 		</div>
-		<div class="row"></div>
 	</div>
 	<jsp:include page="partials/foot.jsp"></jsp:include>
 </body>

@@ -35,7 +35,7 @@
 							<tr>
 								<td>Name:</td>
 								<td></td>
-								<td>${insured.fName} ${insured.lName}</td>
+								<td>${insured.fName}${insured.lName}</td>
 							</tr>
 							<tr>
 								<td>Age:</td>
@@ -50,7 +50,7 @@
 							<tr>
 								<td>Address:</td>
 								<td></td>
-								<td>${insured.address.street}, ${insured.address.city}, 
+								<td>${insured.address.street},${insured.address.city},
 									${insured.address.realm}</td>
 							</tr>
 							<tr>
@@ -79,7 +79,8 @@
 
 					<form action="updateInsured.do" method="GET">
 						<input type="hidden" value="${insured.id}"> <input
-							type="submit" class="pressed btn btn-default" value="Update Profile">
+							type="submit" class="pressed btn btn-default"
+							value="Update Profile">
 					</form>
 				</div>
 				<div class="feed">
@@ -100,7 +101,8 @@
 						<div class="col-md-6">
 							<form action="createPlan.do" method="get">
 								<input type="hidden" value="${insured.id}"> <input
-									type="submit" class="pressed btn btn-default" value="Add a Plan">
+									type="submit" class="pressed btn btn-default"
+									value="Add a Plan">
 							</form>
 						</div>
 						<div class="col-md-3"></div>
@@ -108,7 +110,48 @@
 				</div>
 			</div>
 
-			<div class="feed formTextLight rightColumn col-md-4">
+			<div class="feed formTextLight rightColumn col-md-4 padding">
+				<table style="width: 100%">
+					<tr>
+						<td align="center">
+							<form action="composedMessage.do" method="POST">
+								<button type="button" class="pressed btn btn-info btn-lg"
+									data-toggle="modal" data-target="#myModalCompose"
+									style="margin: 1em 1em 1em 1em;">&#9998 Compose
+									Message</button>
+
+								<!-- Modal -->
+								<div id="myModalCompose" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<h4 class="modal-title">Share a message with a client:</h4>
+											</div>
+											<div class="modal-body">
+												<select name="client">
+													<c:forEach var="c" items="${clients}">
+														<option value="${c.id}">${c.fName}${c.lName}</option>
+													</c:forEach>
+												</select>
+												<textarea rows="4" cols="50" name="messageBody"
+													placeholder="Type your message here..."></textarea>
+												<input type="submit" class="btn btn-warning"
+													value="Send &#x00A; &#x2709">
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Back</button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</form>
+						</td>
+					</tr>
+				</table>
 				<table>
 					<thead>
 						<tr>
@@ -116,64 +159,27 @@
 						</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>
-								<form action="composedMessageFromInsured.do" method="POST">
-									<button type="button" class="pressed btn btn-info btn-lg"
-										data-toggle="modal" data-target="#myModalCompose"
-										style="margin: 1em 1em 1em 1em;">&#9998 Compose
-										Message</button>
-
-									<!-- Modal -->
-									<div id="myModalCompose" class="modal fade" role="dialog">
-										<div class="modal-dialog">
-
-											<!-- Modal content-->
-											<div class="modal-content">
-												<div class="modal-header">
-													<h4 class="modal-title">Share a message with your
-														agent:</h4>
-												</div>
-												<div class="modal-body">
-
-													<textarea rows="4" cols="50" name="messageBody"
-														placeholder="Type your message here..."></textarea>
-													<input type="submit" class="pressed btn btn-warning"
-														value="Send &#x00A; &#x2709">
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="pressed btn btn-default"
-														data-dismiss="modal">Back</button>
-												</div>
-											</div>
-
-										</div>
-									</div>
-								</form>
-							</td>
-						</tr>
 						<tr>
-							<td>
-							<c:choose>
+							<td><c:choose>
 									<c:when test="${inbox == 'null'}">
 											You have no messages in your inbox.
 									</c:when>
 									<c:otherwise>
 										<c:choose>
-												<c:when test="${inbox.toString() == 'y'}">
-													<!-- Can put this part into another div box for "sent" -->
+											<c:when test="${inbox.toString() == 'y'}">
+												<!-- Can put this part into another div box for "sent" -->
 
-													<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
+												<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
 											From: ${m.insured.fName} ${m.insured.lName}<br> --%>
-												</c:when>
-												<c:otherwise>
+											</c:when>
+											<c:otherwise>
 													Message Id: ${inbox.id}<br>
 													To: ${inbox.insured.fName} ${inbox.insured.lName}<br>
 													From: ${inbox.agent.fName} ${inbox.agent.lName}<br>
 													Message: ${inbox.messageBody}<br>
-												</c:otherwise>
-											</c:choose>
-											<br>
+											</c:otherwise>
+										</c:choose>
+										<br>
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
@@ -190,29 +196,35 @@
 										You have not sent any messages yet.
 									</c:when>
 									<c:otherwise>
-											<c:choose>
-												<c:when test="${sent.toString() == 'y'}">
+										<c:choose>
+											<c:when test="${sent.toString() == 'y'}">
 											
 											Message Id: ${sent.id}<br>
 											To: ${sent.agent.fName} ${sent.agent.lName}<br>
 											From: ${sent.insured.fName} ${sent.insured.lName}<br>
 											Message: ${sent.messageBody}<br>
-												</c:when>
-												<c:otherwise>
+											</c:when>
+											<c:otherwise>
 
-													<%-- To: ${m.insured.fName} ${m.insured.lName}<br>
+												<%-- To: ${m.insured.fName} ${m.insured.lName}<br>
 											From: ${m.agent.fName} ${m.agent.lName}<br> --%>
-												</c:otherwise>
-											</c:choose>
-											<br>
+											</c:otherwise>
+										</c:choose>
+										<br>
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
 					</tbody>
-						<form action="messages.do" , method="GET">
-						<input type="submit" class="gimmeRoom btn btn-link"
-							value="Messages">
-						</form>
+					<tfoot>
+						<tr>
+							<td>
+								<form action="agentMessages.do" , method="GET">
+									<input type="submit" class="pressed btn btn-info btn-lg"
+										value="Messages">
+								</form>
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 			</div>
 			<div class="formTextLight rightColumn col-md-4">

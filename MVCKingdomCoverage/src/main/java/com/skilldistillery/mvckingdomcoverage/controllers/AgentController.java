@@ -157,6 +157,7 @@ public class AgentController {
 		Agent agent= (Agent) session.getAttribute("agentSession");
 		ModelAndView mv = new ModelAndView();
 		Insured insured = idao.show(id);
+		List<Insured> clients = adao.getClients(agent.getId());
 		
 		for (Integer coverageId : coverageIds) {
 			ipdao.deleteCoverageTypeById(insured.getPlans().get(0).getId(), coverageId);
@@ -167,6 +168,7 @@ public class AgentController {
 		Message sent = adao.getNewestSentMessagesByAgentId(agent.getId());  
 		mv.addObject("inbox", inbox);
 		mv.addObject("sent", sent);
+		mv.addObject("clients", clients);
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "The coverage has been removed!");
 		mv.setViewName("views/agent.jsp");
@@ -206,6 +208,7 @@ public class AgentController {
 		Message sent = adao.getNewestSentMessagesByAgentId(agent.getId()); 
 		mv.addObject("inbox", inbox);
 		mv.addObject("sent", sent);
+		mv.addObject("clients", clients);
 		mv.setViewName("views/agent.jsp");
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "The coverage has been added!");

@@ -115,7 +115,7 @@
 				<table style="width: 100%">
 					<tr>
 						<td align="center">
-							<form action="composedMessage.do" method="POST">
+							<form action="composedMessageFromInsured.do" method="POST">
 								<button type="button" class="pressed btn btn-info btn-lg"
 									data-toggle="modal" data-target="#myModalCompose"
 									style="margin: 1em 1em 1em 1em;">&#9998 Compose
@@ -128,14 +128,9 @@
 										<!-- Modal content-->
 										<div class="modal-content">
 											<div class="modal-header">
-												<h4 class="modal-title">Share a message with a client:</h4>
+												<h4 class="modal-title">Share a message with your agent:</h4>
 											</div>
 											<div class="modal-body">
-												<select name="client">
-													<c:forEach var="c" items="${clients}">
-														<option value="${c.id}">${c.fName}${c.lName}</option>
-													</c:forEach>
-												</select>
 												<textarea rows="4" cols="50" name="messageBody"
 													placeholder="Type your message here..."></textarea>
 												<input type="submit" class="btn btn-warning"

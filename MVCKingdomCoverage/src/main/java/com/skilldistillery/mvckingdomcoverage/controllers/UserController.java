@@ -140,6 +140,7 @@ public class UserController {
 		mv.addObject("jobs", jobs);
 		mv.addObject("allSpecies", allSpecies);
 		Insured insured = new Insured();
+		Agent agent = new Agent();
 		List<String> unsuccessfulLogin = new ArrayList<>();
 		int premium = 0;
 		if (udao.getUserIdByNameAndPass(name, password) > 5) {
@@ -164,7 +165,7 @@ public class UserController {
 		}
 		List<Agent> agents = idao.getAgentsByInsuredId(insured.getId());
 		if (agents.size() > 0) {
-			Agent agent = adao.show(agents.get(0).getId());
+			agent = adao.show(agents.get(0).getId());
 			insured.setAgents(idao.getAgentsByInsuredId(insured.getId()));
 			insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
 			agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
@@ -172,6 +173,7 @@ public class UserController {
 		Message inbox = idao.getNewestInboxMessagesByInsuredId(insured.getId());
 		Message sent = idao.getNewestSentMessagesByInsuredId(insured.getId()); 
 		mv.addObject("inbox", inbox);
+		mv.addObject("agent", agent);
 		mv.addObject("sent", sent);
 		mv.addObject("premium", premium);
 		mv.addObject("unsuccessfulLogin", unsuccessfulLogin);

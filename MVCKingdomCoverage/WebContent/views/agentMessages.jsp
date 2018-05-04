@@ -139,12 +139,12 @@
 				</table>
 			</div>
 		</div>
-		<div class="row">
-			<form action="agent.do" , method="GET">
-				<input type="submit" class="gimmeRoom btn btn-" value="Back">
-			</form>
+	</div>
+	<div class="fancyButtonBox">
+		<form action="agent.do" , method="GET">
+			<input type="submit" class="pressed btn btn-info btn-lg" value="Back">
+		</form>
 
-		</div>
 	</div>
 	<div class="row"></div>
 	<jsp:include page="partials/foot.jsp"></jsp:include>

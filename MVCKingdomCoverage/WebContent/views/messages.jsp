@@ -138,7 +138,7 @@
 	</div>
 	<div class="fancyButtonBox">
 		<form action="insured.do" , method="GET">
-			<input type="submit" class="gimmeRoom btn btn-" value="Back">
+			<input type="submit" class="pressed btn btn-info btn-lg" value="Back">
 		</form>
 
 	</div>

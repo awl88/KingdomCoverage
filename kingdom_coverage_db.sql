@@ -683,7 +683,7 @@ COMMIT;
 START TRANSACTION;
 USE `kingdom_coverage_db`;
 INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (1, 1, 1, 'Hey Jake. It\'s me Bilbo. What are you wearing?', 'y');
-INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (2, 2, 1, 'Hey Jake. It\'s me Gandalf. What are you wearing?', 'y');
+INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (2, 1, 1, 'Hey Bilbo. It\'s me Jake. What are you wearing?', 'y');
 INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (3, 28, 2, 'Hey Rebecca. I was hoping you\'d be able to get me a new Dragon Fire coverage plan. Thanks!', 'y');
 INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (4, 29, 2, 'Rebecca - I just got bit by a vampire, can you please contact me asap.', 'y');
 INSERT INTO `message` (`id`, `insured_id`, `agent_id`, `message_body`, `sender`) VALUES (5, 38, 3, 'Hey Eli. I am planning on buying a new schooner. Can we get together at ye olde tavern to talk about boat insurance?', 'y');

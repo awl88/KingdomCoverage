@@ -99,37 +99,6 @@
 					<tbody>
 						<tr>
 							<td><c:choose>
-									<c:when test="${inbox == 'null'}">
-                                            You have no messages in your inbox.
-                                    </c:when>
-									<c:otherwise>
-										<c:choose>
-											<c:when test="${inbox.toString() == 'y'}">
-												<!-- Can put this part into another div box for "sent" -->
-
-												<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
-                                            From: ${m.insured.fName} ${m.insured.lName}<br> --%>
-											</c:when>
-											<c:otherwise>
-                                                    Message Id: ${inbox.id}<br>
-                                                    To: ${inbox.insured.fName} ${inbox.insured.lName}<br>
-                                                    From: ${inbox.agent.fName} ${inbox.agent.lName}<br>
-                                                    Message: ${inbox.messageBody}<br>
-											</c:otherwise>
-										</c:choose>
-										<br>
-									</c:otherwise>
-								</c:choose></td>
-						</tr>
-					</tbody>
-					<thead>
-						<tr>
-							<td><h3 class="companyName">Sent Mail:</h3></td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><c:choose>
 									<c:when test="${sent == 'null'}">
                                         You have not sent any messages yet.
                                     </c:when>
@@ -146,6 +115,37 @@
 
 												<%-- To: ${m.insured.fName} ${m.insured.lName}<br>
                                             From: ${m.agent.fName} ${m.agent.lName}<br> --%>
+											</c:otherwise>
+										</c:choose>
+										<br>
+									</c:otherwise>
+								</c:choose></td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td><h3 class="companyName">Sent Mail:</h3></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<td><c:choose>
+									<c:when test="${inbox == 'null'}">
+                                            You have no messages in your inbox.
+                                    </c:when>
+									<c:otherwise>
+										<c:choose>
+											<c:when test="${inbox.toString() == 'y'}">
+												<!-- Can put this part into another div box for "sent" -->
+
+												<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
+                                            From: ${m.insured.fName} ${m.insured.lName}<br> --%>
+											</c:when>
+											<c:otherwise>
+                                                    Message Id: ${inbox.id}<br>
+                                                    To: ${inbox.insured.fName} ${inbox.insured.lName}<br>
+                                                    From: ${inbox.agent.fName} ${inbox.agent.lName}<br>
+                                                    Message: ${inbox.messageBody}<br>
 											</c:otherwise>
 										</c:choose>
 										<br>

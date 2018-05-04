@@ -75,7 +75,7 @@
 												<div class="modal-body">
 													<select name="client">
 														<c:forEach var="c" items="${clients}">
-															<option value="${c.id}">${c.fName}${c.lName}</option>
+															<option value="${c.id}">${c.fName} ${c.lName}</option>
 														</c:forEach>
 													</select>
 													<textarea rows="4" cols="50" name="messageBody"
@@ -109,8 +109,8 @@
 											</c:when>
 											<c:otherwise>
                                                     Message Id: ${inbox.id}<br>
-                                                    To: ${inbox.agent.fName} ${inbox.agent.lName}<br>
-                                                    From: ${inbox.insured.fName} ${inbox.insured.lName}<br>
+                                                    To: ${inbox.insured.fName} ${inbox.insured.lName}<br>
+                                                    From: ${inbox.agent.fName} ${inbox.agent.lName}<br>
                                                     Message: ${inbox.messageBody}<br>
 											</c:otherwise>
 										</c:choose>
@@ -135,8 +135,8 @@
 											<c:when test="${sent.toString() == 'y'}">
                                             
                                             Message Id: ${sent.id}<br>
-                                            To: ${sent.insured.fName} ${sent.insured.lName}<br>
-                                            From: ${sent.agent.fName} ${sent.agent.lName}<br>
+                                            To: ${sent.agent.fName} ${sent.agent.lName}<br>
+                                            From: ${sent.insured.fName} ${sent.insured.lName}<br>
                                             Message: ${sent.messageBody}<br>
 											</c:when>
 											<c:otherwise>

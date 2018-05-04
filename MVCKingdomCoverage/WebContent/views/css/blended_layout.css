@@ -108,6 +108,15 @@ body {
 	border: solid .5px black;
 	background-color: rgba(0,0,0,.45);
 }
+
+.fancyButtonBox {
+	padding: 30px 30px 3px 30px;
+	margin-right: 150px;
+	margin-left: 150px;
+	border: solid .5px black;
+	background-color: rgba(0,0,0,.45);
+}
+
 thead {
 	border-bottom: solid 1.5px black;
 }

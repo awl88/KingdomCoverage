@@ -75,8 +75,8 @@ public class AgentController {
 
 		session.setAttribute("agentSession", agent);
 		
-		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
-		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		Message inbox = adao.getNewestInboxMessagesByAgentId(agent.getId());
+		Message sent = adao.getNewestSentMessagesByAgentId(agent.getId()); 
 		mv.addObject("inbox", inbox);
 		mv.addObject("sent", sent);
 		mv.addObject("clients", clients);
@@ -100,8 +100,8 @@ public class AgentController {
 
 		session.setAttribute("agentSession", agent);
 		
-		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
-		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		Message inbox = adao.getNewestInboxMessagesByAgentId(agent.getId());
+		Message sent = adao.getNewestSentMessagesByAgentId(agent.getId()); 
 		mv.addObject("inbox", inbox);
 		mv.addObject("sent", sent);
 		mv.addObject("clients", clients);
@@ -163,8 +163,8 @@ public class AgentController {
 		}
 		
 
-		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
-		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		Message inbox = adao.getNewestInboxMessagesByAgentId(agent.getId());
+		Message sent = adao.getNewestSentMessagesByAgentId(agent.getId());  
 		mv.addObject("inbox", inbox);
 		mv.addObject("sent", sent);
 		mv.addObject("agent", session.getAttribute("agentSession"));
@@ -202,8 +202,8 @@ public class AgentController {
 		
 		ipdao.addCoverageTypeById(insured.getPlans().get(0).getId(), coverage.getId());
 
-		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
-		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		Message inbox = adao.getNewestInboxMessagesByAgentId(agent.getId());
+		Message sent = adao.getNewestSentMessagesByAgentId(agent.getId()); 
 		mv.addObject("inbox", inbox);
 		mv.addObject("sent", sent);
 		mv.setViewName("views/agent.jsp");
@@ -236,8 +236,8 @@ public class AgentController {
 		
 		
 
-		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
-		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		Message inbox = adao.getNewestInboxMessagesByAgentId(agent.getId());
+		Message sent = adao.getNewestSentMessagesByAgentId(agent.getId()); 
 		mv.addObject("inbox", inbox);
 		mv.addObject("sent", sent);
 		mv.addObject("clients", clients);

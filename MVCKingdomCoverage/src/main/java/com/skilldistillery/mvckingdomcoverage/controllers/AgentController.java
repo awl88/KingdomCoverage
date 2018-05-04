@@ -86,6 +86,31 @@ public class AgentController {
 		return mv;
 	}
 	
+	@RequestMapping(path="agent.do", method=RequestMethod.GET)
+	public ModelAndView agentHome(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Agent agent = (Agent)session.getAttribute("agentSession");
+		
+		agent.setClients(adao.getClients(agent.getId()));
+		agent.setMessages(adao.getMessagesByAgentId(agent.getId()));
+		
+		Insured insured = idao.show(agent.getClients().get(0).getId());
+		insured.setMessages(idao.getMessagesByInsuredId(insured.getId()));
+		List<Insured> clients = adao.getClients(agent.getId());
+
+		session.setAttribute("agentSession", agent);
+		
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
+		mv.addObject("clients", clients);
+		mv.addObject("agent", agent);
+		mv.setViewName("views/agent.jsp");
+		
+		return mv;
+	}
+	
 	@RequestMapping(path = "logoutAgent.do", method = RequestMethod.GET)
 	public ModelAndView logoutAgent(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -137,8 +162,11 @@ public class AgentController {
 			ipdao.deleteCoverageTypeById(insured.getPlans().get(0).getId(), coverageId);
 		}
 		
-		List<Message> messages = adao.getMessagesByAgentId(agent.getId());
-		mv.addObject("messages", messages);
+
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "The coverage has been removed!");
 		mv.setViewName("views/agent.jsp");
@@ -173,8 +201,11 @@ public class AgentController {
 		
 		
 		ipdao.addCoverageTypeById(insured.getPlans().get(0).getId(), coverage.getId());
-		List<Message> messages = adao.getMessagesByAgentId(agent.getId());
-		mv.addObject("messages", messages);
+
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
 		mv.setViewName("views/agent.jsp");
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "The coverage has been added!");
@@ -204,29 +235,16 @@ public class AgentController {
 		mdao.persistSender(message);
 		
 		
-		List<Message> messages = adao.getMessagesByAgentId(agent.getId());
-		mv.addObject("messages", messages);
+
+		Message inbox = idao.getNewestInboxMessagesByInsuredId(agent.getId());
+		Message sent = idao.getNewestSentMessagesByInsuredId(agent.getId()); 
+		mv.addObject("inbox", inbox);
+		mv.addObject("sent", sent);
 		mv.addObject("clients", clients);
 		mv.setViewName("views/agent.jsp");
 		mv.addObject("agent", session.getAttribute("agentSession"));
 		mv.addObject("updateMessage", "Your message has been sent!");
 		
-		return mv;
-	}
-
-	@RequestMapping(path = "approved.do", method = RequestMethod.POST)
-	public ModelAndView approved(HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("views/agent.jsp");
-
-		return mv;
-	}
-
-	@RequestMapping(path = "declined.do", method = RequestMethod.POST)
-	public ModelAndView declined() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("views/agent.jsp");
-
 		return mv;
 	}
 	
@@ -260,7 +278,11 @@ public class AgentController {
 		Agent agent = (Agent)session.getAttribute("agentSession");
 		List<Message> messages = idao.getMessagesByInsuredId(agent.getId());
 		
+		List<Insured> clients = adao.getClients(agent.getId());
+		
+		
 		mv.addObject("messages", messages);
+		mv.addObject("clients", clients);
 		mv.setViewName("views/agentMessages.jsp");
 		
 		return mv;

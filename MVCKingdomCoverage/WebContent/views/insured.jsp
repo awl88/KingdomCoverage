@@ -167,7 +167,7 @@
 											From: ${m.insured.fName} ${m.insured.lName}<br> --%>
 												</c:when>
 												<c:otherwise>
-													Message Id: ${m.id}<br>
+													Message Id: ${inbox.id}<br>
 													To: ${inbox.insured.fName} ${inbox.insured.lName}<br>
 													From: ${inbox.agent.fName} ${inbox.agent.lName}<br>
 													Message: ${inbox.messageBody}<br>

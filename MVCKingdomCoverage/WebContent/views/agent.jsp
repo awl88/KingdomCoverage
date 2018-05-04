@@ -55,9 +55,9 @@
 						</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>
-								<form action="composedMessageFromInsured.do" method="POST">
+						<tr>
+							<td>
+								<form action="composedMessage.do" method="POST">
 									<button type="button" class="pressed btn btn-info btn-lg"
 										data-toggle="modal" data-target="#myModalCompose"
 										style="margin: 1em 1em 1em 1em;">&#9998 Compose
@@ -70,18 +70,21 @@
 											<!-- Modal content-->
 											<div class="modal-content">
 												<div class="modal-header">
-													<h4 class="modal-title">Share a message with your
-														agent:</h4>
+													<h4 class="modal-title">Share a message with a client:</h4>
 												</div>
 												<div class="modal-body">
-
+													<select name="client">
+														<c:forEach var="c" items="${clients}">
+															<option value="${c.id}">${c.fName}${c.lName}</option>
+														</c:forEach>
+													</select>
 													<textarea rows="4" cols="50" name="messageBody"
 														placeholder="Type your message here..."></textarea>
-													<input type="submit" class="pressed btn btn-warning"
+													<input type="submit" class="btn btn-warning"
 														value="Send &#x00A; &#x2709">
 												</div>
 												<div class="modal-footer">
-													<button type="button" class="pressed btn btn-default"
+													<button type="button" class="btn btn-default"
 														data-dismiss="modal">Back</button>
 												</div>
 											</div>
@@ -92,27 +95,26 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-							<c:choose>
+							<td><c:choose>
 									<c:when test="${inbox == 'null'}">
-											You have no messages in your inbox.
-									</c:when>
+                                            You have no messages in your inbox.
+                                    </c:when>
 									<c:otherwise>
 										<c:choose>
-												<c:when test="${inbox.toString() == 'y'}">
-													<!-- Can put this part into another div box for "sent" -->
+											<c:when test="${inbox.toString() == 'y'}">
+												<!-- Can put this part into another div box for "sent" -->
 
-													<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
-											From: ${m.insured.fName} ${m.insured.lName}<br> --%>
-												</c:when>
-												<c:otherwise>
-													Message Id: ${inbox.id}<br>
-													To: ${inbox.agent.fName} ${inbox.agent.lName}<br>
-													From: ${inbox.insured.fName} ${inbox.insured.lName}<br>
-													Message: ${inbox.messageBody}<br>
-												</c:otherwise>
-											</c:choose>
-											<br>
+												<%-- To: ${m.agent.fName} ${m.agent.lName}<br>
+                                            From: ${m.insured.fName} ${m.insured.lName}<br> --%>
+											</c:when>
+											<c:otherwise>
+                                                    Message Id: ${inbox.id}<br>
+                                                    To: ${inbox.agent.fName} ${inbox.agent.lName}<br>
+                                                    From: ${inbox.insured.fName} ${inbox.insured.lName}<br>
+                                                    Message: ${inbox.messageBody}<br>
+											</c:otherwise>
+										</c:choose>
+										<br>
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
@@ -126,32 +128,32 @@
 						<tr>
 							<td><c:choose>
 									<c:when test="${sent == 'null'}">
-										You have not sent any messages yet.
-									</c:when>
+                                        You have not sent any messages yet.
+                                    </c:when>
 									<c:otherwise>
-											<c:choose>
-												<c:when test="${sent.toString() == 'y'}">
-											
-											Message Id: ${sent.id}<br>
-											To: ${sent.insured.fName} ${sent.insured.lName}<br>
-											From: ${sent.agent.fName} ${sent.agent.lName}<br>
-											Message: ${sent.messageBody}<br>
-												</c:when>
-												<c:otherwise>
+										<c:choose>
+											<c:when test="${sent.toString() == 'y'}">
+                                            
+                                            Message Id: ${sent.id}<br>
+                                            To: ${sent.insured.fName} ${sent.insured.lName}<br>
+                                            From: ${sent.agent.fName} ${sent.agent.lName}<br>
+                                            Message: ${sent.messageBody}<br>
+											</c:when>
+											<c:otherwise>
 
-													<%-- To: ${m.insured.fName} ${m.insured.lName}<br>
-											From: ${m.agent.fName} ${m.agent.lName}<br> --%>
-												</c:otherwise>
-											</c:choose>
-											<br>
+												<%-- To: ${m.insured.fName} ${m.insured.lName}<br>
+                                            From: ${m.agent.fName} ${m.agent.lName}<br> --%>
+											</c:otherwise>
+										</c:choose>
+										<br>
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
 					</tbody>
-						<form action="agentMessages.do" , method="GET">
+					<form action="agentMessages.do" , method="GET">
 						<input type="submit" class="gimmeRoom btn btn-link"
 							value="Messages">
-						</form>
+					</form>
 				</table>
 			</div>
 		</div>
